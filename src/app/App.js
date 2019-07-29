@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import GlobalStyle from './GlobalStyle';
-import cardData from '../pages/__mock__/cards.json';
+import challengeData from '../pages/__mock__/cards.json';
 
 function App() {
-  const [data, setData] = useState(cardData);
+  const [challenges, setChallenges] = useState(challengeData);
+  const [joined, setJoined] = useState(false);
+
+  function handleJoinChallenge(challenge) {
+    setChallenges(challenges);
+    console.log(challenge);
+  }
   return (
     <>
       <Router>
@@ -13,7 +19,12 @@ function App() {
         <Switch>
           <Route
             path="/Challenges"
-            render={props => <Challenges cardData={data} />}
+            render={props => (
+              <Challenges
+                challengeData={challenges}
+                onJoinChallenge={handleJoinChallenge}
+              />
+            )}
           />
         </Switch>
       </Router>

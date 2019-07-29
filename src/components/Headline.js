@@ -24,6 +24,7 @@ function getFont(font) {
 const StyledHeadline = styled.h1`
   font-size: ${props => getSize(props.size)};
   font-family: ${props => getFont(props.font)};
+  font-weight: bold;
 `;
 
 function Headline({ size, font, ...props }) {

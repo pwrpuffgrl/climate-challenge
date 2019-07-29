@@ -10,21 +10,23 @@ const StyledCard = styled.div`
   padding: 20px;
   border-radius: 12px;
   background: #d3e7ee;
-  opacity: 70%;
   margin: 15px;
   position: relative;
 `;
 
 const Content = styled.p``;
 
-function Card({ data }) {
+function Card({ data, onJoin }) {
+  function handleClick() {
+    onJoin(data);
+  }
   return (
     <StyledCard>
       <Headline size="S" font="sub">
         {data.title}
       </Headline>
       <Content>{data.rules}</Content>
-      <JoinButton />
+      <JoinButton onClick={handleClick} />
       {data.duration}
     </StyledCard>
   );

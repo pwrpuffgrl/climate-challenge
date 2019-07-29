@@ -6,6 +6,7 @@
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 15 - 2019",
     "duration": "2 weeks",
+    "joined": false,
     "lastParticipated": null
   },
   {
@@ -15,6 +16,7 @@
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 04 - 2019",
     "duration": "3 days",
+    "joined": false,
     "lastParticipated": null
   },
   {
@@ -24,6 +26,7 @@
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 04 - 2019",
     "duration": "3 days",
+    "joined": false,
     "lastParticipated": null
   }
 ]

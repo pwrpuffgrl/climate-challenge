@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeartIcon from '../Images/HeartIcon.png';
 
-const StyledButton = styled.img`
+const StyledButton = styled.button`
   position: absolute;
-  right: 25px;
-  bottom: 25px;
+  right: 15px;
+  bottom: 15px;
+  font-size: 20px;
 `;
 
-function JoinButton() {
-  return <StyledButton src={HeartIcon} />;
+function JoinButton({ onClick }) {
+  return (
+    <StyledButton onClick={onClick}>
+      <i class="fas fa-plus-circle" />
+    </StyledButton>
+  );
 }
 
 export default JoinButton;
