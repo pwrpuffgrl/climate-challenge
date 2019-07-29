@@ -4,8 +4,26 @@
     "title": "No animal products",
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "startDate": "08 - 01 - 2019",
-    "endDate": "08 - 15 - 2010",
+    "endDate": "08 - 15 - 2019",
     "duration": "2 weeks",
+    "lastParticipated": null
+  },
+  {
+    "_id": 2,
+    "title": "Zero Waste",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "startDate": "08 - 01 - 2019",
+    "endDate": "08 - 04 - 2019",
+    "duration": "3 days",
+    "lastParticipated": null
+  },
+  {
+    "_id": 3,
+    "title": "Only public transportation",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "startDate": "08 - 01 - 2019",
+    "endDate": "08 - 04 - 2019",
+    "duration": "3 days",
     "lastParticipated": null
   }
 ]

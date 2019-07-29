@@ -1,13 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import BackgroundImage from '../Images/Header_Background.png';
+import Headline from '../components/Headline';
+import HeaderBackground from '../Images/HeaderBackground.png';
 
-const StyledHeader = styled.img``;
+const StyledHeader = styled.div`
+  height: 60px;
+  background-image: url(${HeaderBackground});
+`;
+const StyledHeadline = styled(Headline)`
+  color: #242d42;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+`;
 
-function Header({ size, font }) {
+function Header({ title, ...props }) {
   return (
     <>
-      <StyledHeader src={BackgroundImage} />
+      <StyledHeader>
+        <StyledHeadline size="L" font="main">
+          {title}
+        </StyledHeadline>
+      </StyledHeader>
     </>
   );
 }

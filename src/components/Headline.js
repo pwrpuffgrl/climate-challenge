@@ -22,7 +22,6 @@ function getFont(font) {
 }
 
 const StyledHeadline = styled.h1`
-  color: #0d1c2e;
   font-size: ${props => getSize(props.size)};
   font-family: ${props => getFont(props.font)};
 `;

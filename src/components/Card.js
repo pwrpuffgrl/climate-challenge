@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import PropTypes from 'prop-types';
+import JoinButton from './JoinButton';
 
 const StyledCard = styled.div`
   min-height: 240px;
@@ -10,15 +11,21 @@ const StyledCard = styled.div`
   border-radius: 12px;
   background: #d3e7ee;
   opacity: 70%;
+  margin: 15px;
+  position: relative;
 `;
 
-function Card({ title, ...props }) {
+const Content = styled.p``;
+
+function Card({ data }) {
   return (
     <StyledCard>
       <Headline size="S" font="sub">
-        {title}
+        {data.title}
       </Headline>
-      <p />
+      <Content>{data.rules}</Content>
+      <JoinButton />
+      {data.duration}
     </StyledCard>
   );
 }
