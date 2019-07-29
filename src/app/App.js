@@ -10,7 +10,7 @@ function App() {
 
   function handleJoinChallenge(challenge) {
     setChallenges(challenges);
-    console.log(challenge);
+    console.log(challenge.joined);
   }
   return (
     <>

@@ -9,9 +9,11 @@ const StyledCard = styled.div`
   min-width: 320px;
   padding: 20px;
   border-radius: 12px;
-  background: #d3e7ee;
+  background: #bcaaa2;
   margin: 15px;
   position: relative;
+  opacity: 0.9;
+  box-shadow: 10px 10px 8px;
 `;
 
 const Content = styled.p``;

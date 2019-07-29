@@ -5,6 +5,7 @@
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 15 - 2019",
+    "category": "food",
     "duration": "2 weeks",
     "joined": false,
     "lastParticipated": null
@@ -15,6 +16,7 @@
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 04 - 2019",
+    "category": "plastic",
     "duration": "3 days",
     "joined": false,
     "lastParticipated": null
@@ -25,6 +27,7 @@
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "startDate": "08 - 01 - 2019",
     "endDate": "08 - 04 - 2019",
+    "category": "fossil fules",
     "duration": "3 days",
     "joined": false,
     "lastParticipated": null
