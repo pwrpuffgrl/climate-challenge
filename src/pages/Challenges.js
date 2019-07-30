@@ -13,7 +13,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-function Challenges({ challengeData, onJoinChallenge, onShowDuration }) {
+function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
   return (
     <>
       <Container>
@@ -23,7 +23,7 @@ function Challenges({ challengeData, onJoinChallenge, onShowDuration }) {
             key={challenge._id}
             challenge={challenge}
             onJoin={onJoinChallenge}
-            onDuration={onShowDuration}
+            onDate={onShowDate}
           />
         ))}
       </Container>

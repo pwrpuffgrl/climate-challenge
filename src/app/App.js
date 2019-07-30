@@ -10,7 +10,11 @@ function App() {
   const [challenges, setChallenges] = useState(
     getFromLocal('challenges') || challengeData
   );
-  const [duration, setDuration] = useState(getFromLocal('duration'));
+
+  var date = new Date().getDate();
+  var month = new Date().getMonth() + 1;
+  var year = new Date().getFullYear();
+  var today = year + '-' + month + '-' + date;
 
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
 
@@ -19,14 +23,13 @@ function App() {
     const challenge = challenges[index];
     setChallenges([
       ...challenges.slice(0, index),
-      { ...challenge, joined: !challenge.joined },
+      { ...challenge, joined: !challenge.joined, startDate: today },
       ...challenges.slice(index + 1)
     ]);
-    console.log(challenges);
   }
 
-  function handleShowDuration(duration) {
-    console.log(duration);
+  function handleShowDate(startDate, endDate) {
+    console.log(startDate, endDate);
   }
 
   return (
@@ -40,7 +43,7 @@ function App() {
               <Challenges
                 challengeData={challenges}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDuration={handleShowDuration}
+                onShowDate={handleShowDate}
               />
             )}
           />
@@ -52,7 +55,7 @@ function App() {
                   challenge => challenge.joined === true
                 )}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDuration={handleShowDuration}
+                onShowDate={handleShowDate}
               />
             )}
           />

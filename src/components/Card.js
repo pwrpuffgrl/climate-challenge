@@ -4,6 +4,7 @@ import Headline from './Headline';
 import PropTypes from 'prop-types';
 import JoinButton from './JoinButton';
 import Calender from './Calender';
+import CategoryIcon from './Category';
 
 const StyledCard = styled.div`
   min-height: 240px;
@@ -22,23 +23,25 @@ const Content = styled.p`
   font-size: 16px;
 `;
 
-function Card({ challenge, onJoin, onDuration }) {
+function Card({ challenge, onJoin, onDate }) {
   function handleClick() {
     onJoin(challenge._id);
+    console.log(challenge.category);
   }
 
-  function handleDurationClick() {
-    onDuration(challenge.duration);
+  function handleDateClick() {
+    onDate(challenge.endDate, challenge.startDate);
   }
 
   return (
     <StyledCard>
       <Headline size="S" font="sub">
         {challenge.title}
+        <CategoryIcon category={challenge.category} />
       </Headline>
       <Content>{challenge.rules}</Content>
       <JoinButton joined={challenge.joined} onClick={handleClick} />
-      <Calender onClick={handleDurationClick} />
+      <Calender onClick={handleDateClick} />
     </StyledCard>
   );
 }
