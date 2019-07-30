@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
+import HeaderImage from '../Images/HeaderBackground.png';
 
 const StyledHeader = styled.div`
   height: 60px;
-  background: #bcaaa2;
+  background-image: url(${HeaderImage});
 `;
 const StyledHeadline = styled(Headline)`
-  color: #242d42;
+  color: rgb(37, 48, 68);
   margin: 0;
   padding: 10px;
   text-align: center;

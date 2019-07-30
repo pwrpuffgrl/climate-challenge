@@ -8,10 +8,14 @@ const StyledButton = styled.button`
   font-size: 20px;
 `;
 
-function JoinButton({ onClick }) {
+function JoinButton({ onClick, joined }) {
   return (
     <StyledButton onClick={onClick}>
-      <i class="fas fa-plus-circle" />
+      {joined ? (
+        <i class="fas fa-minus-circle" />
+      ) : (
+        <i class="fas fa-plus-circle" />
+      )}
     </StyledButton>
   );
 }
