@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
+import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
@@ -37,6 +38,7 @@ function App() {
       <Router>
         <GlobalStyle />
         <Switch>
+          <Route path="/Home" render={props => <Landing />} />
           <Route
             path="/Challenges"
             render={props => (

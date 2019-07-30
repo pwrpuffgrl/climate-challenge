@@ -14,7 +14,7 @@ const StyledCard = styled.div`
   background: #d3e7ee;
   margin: 15px;
   position: relative;
-  opacity: 0.8;
+  opacity: 0.9;
   box-shadow: 10px 10px 8px;
 `;
 
