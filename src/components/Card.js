@@ -6,6 +6,10 @@ import JoinButton from './JoinButton';
 import CalendarIcon from './CalendarIcon';
 import CategoryIcon from './CategoryIcon';
 
+import * as moment from 'moment';
+
+let now = moment().format('LLLL');
+
 const StyledCard = styled.div`
   min-height: 240px;
   min-width: 320px;
@@ -46,8 +50,10 @@ function Card({ challenge, onJoin, onDate }) {
   function handleDateClick() {
     onDate(challenge);
     setShowDate(!showDate);
-    console.log('calendar');
+    console.log(challenge.startDate);
   }
+  var start = moment(challenge.startDate);
+  var end = moment(challenge.endDate);
 
   return (
     <StyledCard>
@@ -58,12 +64,7 @@ function Card({ challenge, onJoin, onDate }) {
       <Content>{challenge.rules}</Content>
       <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
       <CalendarIcon onClick={handleDateClick} />
-      {showDate && (
-        <DateRange>
-          Start:
-          {challenge.startDate}
-        </DateRange>
-      )}
+      {showDate && <DateRange>Ends {start.to(end)}</DateRange>}
     </StyledCard>
   );
 }

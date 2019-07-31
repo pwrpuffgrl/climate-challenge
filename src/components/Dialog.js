@@ -11,7 +11,7 @@ const Backdrop = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 `;
 
 const DialogContainer = styled.div`
@@ -19,6 +19,8 @@ const DialogContainer = styled.div`
   border-radius: 15px;
   padding: 20px;
   min-height: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 function Dialog({ children, onClose }) {

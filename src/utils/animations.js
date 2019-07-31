@@ -34,14 +34,3 @@ export const appear = props => keyframes`
    opacity: 1;
  }
 `;
-
-export const disappear = props => keyframes`
-from {
-  opacity: 1;
-}
-
-
-to {
-  opacity: 0;
-}
-`;
