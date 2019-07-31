@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
-import BackgroundImage from '../components/BackgroundImage';
+
 import Background from '../Images/AppBackground.png';
 
 const Container = styled.div`
@@ -12,6 +12,14 @@ const Container = styled.div`
   height: 100vh;
   position: relative;
   padding-top: 50px;
+`;
+
+const BackgroundImage = styled.img`
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  filter: brightness(0.8) saturate(1.5);
+  position: fixed;
 `;
 
 function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {

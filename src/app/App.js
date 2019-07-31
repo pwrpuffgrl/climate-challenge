@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Challenges from '../pages/challenges';
-import MyChallenges from '../pages/myChallenges';
-import Landing from '../pages/landing';
+import Challenges from '../pages/Challenges';
+import MyChallenges from '../pages/MyChallenges';
+import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
@@ -42,7 +42,9 @@ function App() {
             path="/challenges"
             render={props => (
               <Challenges
-                challengeData={challenges}
+                challengeData={challenges.filter(
+                  challenge => !challenge.joined
+                )}
                 onJoinChallenge={handleJoinChallenge}
                 onShowDate={handleShowDate}
               />
@@ -52,15 +54,13 @@ function App() {
             path="/myChallenges"
             render={props => (
               <MyChallenges
-                challenges={challenges.filter(
-                  challenge => challenge.joined === true
-                )}
+                challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
                 onShowDate={handleShowDate}
               />
             )}
           />
-          <Route path="/" render={props => <Landing />} />
+          <Route path="/" component={Landing} />
         </Switch>
       </Router>
     </>

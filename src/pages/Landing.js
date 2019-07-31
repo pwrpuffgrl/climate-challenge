@@ -4,8 +4,6 @@ import Headline from '../components/Headline';
 import MainLogo from '../components/MainLogo';
 import styled from 'styled-components';
 import { fadeIn, fadeOut, appear } from '../utils/animations';
-import BackgroundImage from '../components/BackgroundImage';
-import Background from '../Images/AppBackground.png';
 import ButtonLink from '../components/ButtonLink';
 
 const Span = styled.span`
@@ -19,10 +17,13 @@ const Title = styled(Headline)`
   font-size: 36px;
 `;
 
+const StartLink = styled(ButtonLink)`
+  animation: ${props => props.animation} 9s;
+`;
+
 function Landing() {
   return (
     <>
-      <BackgroundImage src={Background} />
       <Fullscreen>
         <div>
           <MainLogo animation={fadeIn} />
@@ -31,7 +32,9 @@ function Landing() {
         <Title>
           Climate Cha<Span animation={appear}>lle</Span>nge
         </Title>
-        <ButtonLink to="/Challenges">Click to Start</ButtonLink>
+        <StartLink animation={appear} to="/challenges">
+          Click to Start
+        </StartLink>
       </Fullscreen>
     </>
   );
