@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
@@ -6,6 +7,16 @@ import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
+
+import Background from '../Images/AppBackground.png';
+
+const BackgroundImage = styled.img`
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  filter: brightness(0.8) saturate(1.5);
+  position: fixed;
+`;
 
 function App() {
   const [challenges, setChallenges] = useState(
@@ -36,6 +47,7 @@ function App() {
   return (
     <>
       <Router>
+        <BackgroundImage src={Background} />
         <GlobalStyle />
         <Switch>
           <Route
