@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Challenges from '../pages/Challenges';
-import MyChallenges from '../pages/MyChallenges';
-import Landing from '../pages/Landing';
+import Challenges from '../pages/challenges';
+import MyChallenges from '../pages/myChallenges';
+import Landing from '../pages/landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
@@ -29,8 +29,8 @@ function App() {
     ]);
   }
 
-  function handleShowDate(startDate, endDate) {
-    console.log(startDate, endDate);
+  function handleShowDate(challenge) {
+    console.log('date', challenge.startDate);
   }
 
   return (
@@ -38,9 +38,8 @@ function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route path="/Home" render={props => <Landing />} />
           <Route
-            path="/Challenges"
+            path="/challenges"
             render={props => (
               <Challenges
                 challengeData={challenges}
@@ -50,7 +49,7 @@ function App() {
             )}
           />
           <Route
-            path="/MyChallenges"
+            path="/myChallenges"
             render={props => (
               <MyChallenges
                 challenges={challenges.filter(
@@ -61,6 +60,7 @@ function App() {
               />
             )}
           />
+          <Route path="/" render={props => <Landing />} />
         </Switch>
       </Router>
     </>

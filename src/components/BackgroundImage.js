@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 const BackgroundImage = styled.img`
-  position: absolute;
-  z-index: -1;
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
+  object-fit: contain;
   filter: brightness(0.8) saturate(1.5);
+  position: fixed;
 `;
 
 export default BackgroundImage;

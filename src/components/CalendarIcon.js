@@ -8,7 +8,7 @@ const StyledCalender = styled.button`
   font-size: 20px;
 `;
 
-function Calender({ onClick }) {
+function CalenderIcon({ onClick }) {
   return (
     <StyledCalender onClick={onClick}>
       <i class="far fa-calendar-alt" />
@@ -16,4 +16,4 @@ function Calender({ onClick }) {
   );
 }
 
-export default Calender;
+export default CalenderIcon;

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import PropTypes from 'prop-types';
 import JoinButton from './JoinButton';
-import Calender from './Calender';
+import CalendarIcon from './CalendarIcon';
 import CategoryIcon from './Category';
+import Calendar from '../components/Calendar';
 
 const StyledCard = styled.div`
   min-height: 240px;
@@ -24,25 +25,36 @@ const Content = styled.p`
 `;
 
 function Card({ challenge, onJoin, onDate }) {
+  const [show, setShow] = useState(false);
+
   function handleClick() {
     onJoin(challenge._id);
     console.log(challenge.category);
   }
 
   function handleDateClick() {
-    onDate(challenge.endDate, challenge.startDate);
+    onDate(challenge);
+    setShow(!show);
+    console.log('calendar');
   }
 
   return (
-    <StyledCard>
-      <Headline size="S" font="sub">
-        {challenge.title}
-        <CategoryIcon category={challenge.category} />
-      </Headline>
-      <Content>{challenge.rules}</Content>
-      <JoinButton joined={challenge.joined} onClick={handleClick} />
-      <Calender onClick={handleDateClick} />
-    </StyledCard>
+    <>
+      <StyledCard>
+        <Headline size="S" font="sub">
+          {challenge.title}
+          <CategoryIcon category={challenge.category} />
+        </Headline>
+        <Content>{challenge.rules}</Content>
+        <JoinButton joined={challenge.joined} onClick={handleClick} />
+        <CalendarIcon onClick={handleDateClick} />
+      </StyledCard>
+      {show && (
+        <StyledCard>
+          <Calendar />
+        </StyledCard>
+      )}
+    </>
   );
 }
 

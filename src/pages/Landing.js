@@ -5,6 +5,8 @@ import MainLogo from '../components/MainLogo';
 import styled from 'styled-components';
 import { fadeIn, fadeOut, appear } from '../utils/animations';
 import BackgroundImage from '../components/BackgroundImage';
+import Background from '../Images/AppBackground.png';
+import ButtonLink from '../components/ButtonLink';
 
 const Span = styled.span`
   color: lightblue;
@@ -20,8 +22,8 @@ const Title = styled(Headline)`
 function Landing() {
   return (
     <>
+      <BackgroundImage src={Background} />
       <Fullscreen>
-        <BackgroundImage src="https://www.androidworld.it/wp-content/uploads/2016/11/wallpaper-oneplus-3t-4.jpg" />
         <div>
           <MainLogo animation={fadeIn} />
           <MainLogo animation={fadeOut} />
@@ -29,6 +31,7 @@ function Landing() {
         <Title>
           Climate Cha<Span animation={appear}>lle</Span>nge
         </Title>
+        <ButtonLink to="/Challenges">Click to Start</ButtonLink>
       </Fullscreen>
     </>
   );
