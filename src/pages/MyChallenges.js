@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import Grid from '../components/Grid';
+import Footer from '../components/Footer';
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0;
-  height: 100vh;
+  margin: 0 auto;
+  max-width: 600px;
   position: relative;
-  padding-top: 50px;
+  overflow-y: auto;
 `;
 
 function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
@@ -28,6 +29,7 @@ function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
           />
         ))}
       </CardContainer>
+      <Footer />
     </Grid>
   );
 }

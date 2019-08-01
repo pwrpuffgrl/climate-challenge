@@ -7,6 +7,7 @@
     "endDate": "2019-07-30",
     "category": "agriculture",
     "joined": false,
+    "duration": "14",
     "lastParticipated": null
   },
   {
@@ -17,6 +18,7 @@
     "endDate": "2019-08-08",
     "category": "plastic",
     "joined": false,
+    "duration": "14",
     "lastParticipated": null
   },
   {
@@ -27,6 +29,7 @@
     "endDate": "2019-07-30",
     "category": "transportation",
     "joined": false,
+    "duration": "14",
     "lastParticipated": null
   },
   {
@@ -37,6 +40,7 @@
     "endDate": "2019-07-30",
     "category": "activism",
     "joined": false,
+    "duration": "14",
     "lastParticipated": null
   }
 ]

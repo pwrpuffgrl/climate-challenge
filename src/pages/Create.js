@@ -6,11 +6,10 @@ import Grid from '../components/Grid';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  margin: 0 auto;
   max-width: 600px;
   position: relative;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 `;
 
 const Form = styled.form`
@@ -44,30 +43,112 @@ const DropDown = styled.select`
   padding: 5px;
 `;
 
+const Label = styled.label`
+  font-size: 16px;
+  color: white;
+  font-family: helvetica;
+`;
+
+const Checkbox = styled.input`
+  height: 20px;
+  width: 20px;
+`;
+
 const BigHeader = styled(Header)`
   height: 200px;
 `;
 
-function Create() {
+const Button = styled.button`
+  margin-top: 20px;
+  background: #d3e7ee;
+  font-size: 16px;
+  border-radius: 8px;
+`;
+
+function CreateChallenge({ history, onCreate }) {
+  const [formValues, setFormValues] = React.useState({
+    title: '',
+    rules: '',
+    duration: '',
+    category: '',
+    joined: '',
+    startDate: '',
+    endDate: ''
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const challenge = {
+      title: formValues.title,
+      rules: formValues.rules,
+      duration: formValues.duration,
+      category: formValues.category,
+      joined: formValues.joined
+    };
+    console.log(challenge);
+    onCreate(challenge);
+    history.replace('/challenges');
+    console.log(formValues.joined);
+  }
+
   return (
     <Grid>
       <BigHeader title="CREATE" />
       <Container>
-        <Form>
-          <Input name="title" placeholder="Please enter a title" />
-          <Textarea name="rules" placeholder="Tell us about your challenge" />
-          <Input name="duration" placeholder="Enter the duration in days" />
-          <DropDown>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            name="title"
+            value={formValues.title}
+            placeholder="Please enter a title"
+            onChange={handleChange}
+          />
+          <Textarea
+            name="rules"
+            value={formValues.rules}
+            placeholder="Tell us about your challenge"
+            onChange={handleChange}
+          />
+          <Input
+            name="duration"
+            type="number"
+            value={formValues.duration}
+            placeholder="Enter the duration in days"
+            onChange={handleChange}
+          />
+          <DropDown
+            name="category"
+            value={formValues.category}
+            onChange={handleChange}
+          >
             <option>Select a category </option>
-            <option>Plastic</option>
-            <option>Transportation</option>
-            <option>Agriculture</option>
-            <option>Activism</option>
+            <option value="plastic">Plastic</option>
+            <option value="transportation">Transportation</option>
+            <option value="agriculture">Agriculture</option>
+            <option value="activism">Activism</option>
           </DropDown>
+          <Label>
+            <Checkbox
+              name="joined"
+              type="checkbox"
+              value={formValues.joined}
+              onChange={handleChange}
+            />
+            Join Challenge
+          </Label>
+          <Button>Create Challenge</Button>
         </Form>
       </Container>
     </Grid>
   );
 }
 
-export default Create;
+export default CreateChallenge;
