@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
+import Create from '../pages/Create';
 import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
@@ -57,6 +58,8 @@ function App() {
         <BackgroundImage src={Background} />
         <GlobalStyle />
         <Switch>
+          <Route path="/create" render={props => <Create />} />
+          )} />
           <Route
             path="/challenges"
             render={props => (

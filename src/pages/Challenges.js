@@ -42,7 +42,11 @@ function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
       {showJoined && (
         <Dialog onClose={() => setShowJoined(false)}>
           <Headline size="S" font="sub">
-            Yay! 💜 💙 Thanks for participating in this challenge!{' '}
+            Yay!{' '}
+            <span role="img" aria-label="heart emoji">
+              💜 💙
+            </span>{' '}
+            Thanks for participating in this challenge!{' '}
           </Headline>
           <ButtonLink to="/mychallenges">See My Challenges</ButtonLink>
         </Dialog>

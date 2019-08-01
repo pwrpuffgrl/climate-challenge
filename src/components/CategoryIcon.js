@@ -12,6 +12,8 @@ function CategoryIcon({ category }) {
         <i class="fas fa-recycle" />
       ) : category === 'transportation' ? (
         <i class="fas fa-car-side" />
+      ) : category === 'activism' ? (
+        <i class="fas fa-fist-raised" />
       ) : (
         <i class="fab fa-pagelines" />
       )}

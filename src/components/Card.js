@@ -8,8 +8,6 @@ import CategoryIcon from './CategoryIcon';
 
 import * as moment from 'moment';
 
-let now = moment().format('LLLL');
-
 const StyledCard = styled.div`
   min-height: 240px;
   min-width: 320px;

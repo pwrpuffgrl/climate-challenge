@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Headline from '../components/Headline';
 
 const StyledHeader = styled.div`
-  height: 60px;
+  min-height: 60px;
   background: #242d42;
   position: fixed;
   z-index: 5;
