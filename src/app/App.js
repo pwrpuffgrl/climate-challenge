@@ -7,6 +7,7 @@ import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
+import * as moment from 'moment';
 
 import Background from '../Images/AppBackground.png';
 
@@ -35,9 +36,15 @@ function App() {
     const challenge = challenges[index];
     setChallenges([
       ...challenges.slice(0, index),
-      { ...challenge, joined: !challenge.joined, startDate: today },
+      {
+        ...challenge,
+        joined: !challenge.joined,
+        startDate: moment(today),
+        endDate: moment(today).add(14, 'days')
+      },
       ...challenges.slice(index + 1)
     ]);
+    console.log(challenge.startDate, challenge.endDate);
   }
 
   function handleShowDate(challenge) {
