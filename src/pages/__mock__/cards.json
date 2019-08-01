@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "title": "No animal products",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-06-30",
+    "endDate": "2019-07-30",
+    "category": "agriculture",
+    "joined": false,
+    "lastParticipated": null
+  },
+  {
+    "_id": 2,
+    "title": "Zero Waste",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-07-30",
+    "endDate": "2019-08-08",
+    "category": "plastic",
+    "joined": false,
+    "lastParticipated": null
+  },
+  {
+    "_id": 3,
+    "title": "Leave the car",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-07-15",
+    "endDate": "2019-07-30",
+    "category": "transportation",
+    "joined": false,
+    "lastParticipated": null
+  }
+]
