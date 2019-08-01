@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
+import Grid from '../components/Grid';
 
-const Container = styled.div`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -15,17 +16,19 @@ const Container = styled.div`
 function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
   console.log(challenges);
   return (
-    <Container>
+    <Grid>
       <Header title="MY CHALLENGES" />
-      {challenges.map(challenge => (
-        <Card
-          key={challenge._id}
-          challenge={challenge}
-          onJoin={onJoinChallenge}
-          onDate={onShowDate}
-        />
-      ))}
-    </Container>
+      <CardContainer>
+        {challenges.map(challenge => (
+          <Card
+            key={challenge._id}
+            challenge={challenge}
+            onJoin={onJoinChallenge}
+            onDate={onShowDate}
+          />
+        ))}
+      </CardContainer>
+    </Grid>
   );
 }
 

@@ -12,12 +12,11 @@ import * as moment from 'moment';
 
 import Background from '../Images/AppBackground.png';
 
-const BackgroundImage = styled.img`
+const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
-  filter: brightness(0.8) saturate(1.5);
-  position: fixed;
+  background: url(${Background});
+  background-size: cover;
 `;
 
 function App() {
@@ -53,9 +52,8 @@ function App() {
   }
 
   return (
-    <>
+    <Container>
       <Router>
-        <BackgroundImage src={Background} />
         <GlobalStyle />
         <Switch>
           <Route path="/create" render={props => <Create />} />
@@ -85,7 +83,7 @@ function App() {
           <Route path="/" component={Landing} />
         </Switch>
       </Router>
-    </>
+    </Container>
   );
 }
 

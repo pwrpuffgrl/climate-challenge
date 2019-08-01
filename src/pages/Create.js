@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import Grid from '../components/Grid';
 
 const Container = styled.div`
   display: flex;
@@ -8,14 +9,12 @@ const Container = styled.div`
   height: 100vh;
   max-width: 600px;
   position: relative;
-  padding-top: 50px;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
 `;
 
 const Form = styled.form`
-  margin-top: 60px;
-  margin-left: 30px;
+  padding: 20px;
 `;
 
 const Input = styled.input`
@@ -23,7 +22,7 @@ const Input = styled.input`
   font-size: 16px;
   border-radius: 8px;
   background: white;
-  min-width: 320px;
+  width: 100%;
   margin-top: 15px;
   padding: 5px;
 `;
@@ -34,7 +33,7 @@ const Textarea = styled.textarea`
   background: white;
   font-size: 16px;
   margin-top: 15px;
-  min-width: 320px;
+  width: 100%;
   padding: 5px;
 `;
 
@@ -51,21 +50,23 @@ const BigHeader = styled(Header)`
 
 function Create() {
   return (
-    <Container>
-      <BigHeader title="CREATE A CHALLENGE" />
-      <Form>
-        <Input name="title" placeholder="Please enter a title" />
-        <Textarea name="rules" placeholder="Tell us about your challenge" />
-        <Input name="duration" placeholder="Enter the duration in days" />
-        <DropDown>
-          <option>Select a category </option>
-          <option>Plastic</option>
-          <option>Transportation</option>
-          <option>Agriculture</option>
-          <option>Activism</option>
-        </DropDown>
-      </Form>
-    </Container>
+    <Grid>
+      <BigHeader title="CREATE" />
+      <Container>
+        <Form>
+          <Input name="title" placeholder="Please enter a title" />
+          <Textarea name="rules" placeholder="Tell us about your challenge" />
+          <Input name="duration" placeholder="Enter the duration in days" />
+          <DropDown>
+            <option>Select a category </option>
+            <option>Plastic</option>
+            <option>Transportation</option>
+            <option>Agriculture</option>
+            <option>Activism</option>
+          </DropDown>
+        </Form>
+      </Container>
+    </Grid>
   );
 }
 

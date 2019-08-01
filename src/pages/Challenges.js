@@ -6,15 +6,15 @@ import Footer from '../components/Footer';
 import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
+import Grid from '../components/Grid';
 
-const Container = styled.div`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  height: 100vh;
   max-width: 600px;
   position: relative;
-  padding-top: 50px;
+  overflow-y: auto;
 `;
 
 function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
@@ -27,18 +27,21 @@ function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
 
   return (
     <>
-      <Container>
+      <Grid>
         <Header title="CHALLENGES" />
-        {challengeData.map(challenge => (
-          <Card
-            key={challenge._id}
-            challenge={challenge}
-            onJoin={handleJoin}
-            onDate={onShowDate}
-          />
-        ))}
+        <CardContainer>
+          {challengeData.map(challenge => (
+            <Card
+              key={challenge._id}
+              challenge={challenge}
+              onJoin={handleJoin}
+              onDate={onShowDate}
+            />
+          ))}
+        </CardContainer>
         <Footer />
-      </Container>
+      </Grid>
+
       {showJoined && (
         <Dialog onClose={() => setShowJoined(false)}>
           <Headline size="S" font="sub">
