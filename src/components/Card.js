@@ -38,17 +38,23 @@ const DateRange = styled.div`
   left: 45px;
 `;
 
-function Card({ challenge, onJoin, onDate }) {
+function Card({ challenge, onJoin, onDate, joined }) {
   const [showDate, setShowDate] = useState(false);
 
   function handleJoinClick() {
     onJoin(challenge._id);
   }
+  function renderDateType() {
+    return joined ? (
+      <DateRange>Ends {start.to(end)}</DateRange>
+    ) : (
+      <DateRange>Duration: {challenge.duration} days </DateRange>
+    );
+  }
 
   function handleDateClick() {
     onDate(challenge);
     setShowDate(!showDate);
-    console.log(challenge.startDate);
   }
   var start = moment(challenge.startDate);
   var end = moment(challenge.endDate);
@@ -63,7 +69,7 @@ function Card({ challenge, onJoin, onDate }) {
       <Content>{challenge.tips}</Content>
       <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
       <CalendarIcon onClick={handleDateClick} />
-      {showDate && <DateRange>Ends {start.to(end)}</DateRange>}
+      {showDate && renderDateType()}
     </StyledCard>
   );
 }

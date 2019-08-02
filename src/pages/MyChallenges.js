@@ -26,6 +26,7 @@ function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
             challenge={challenge}
             onJoin={onJoinChallenge}
             onDate={onShowDate}
+            joined={challenge.joined}
           />
         ))}
       </CardContainer>
