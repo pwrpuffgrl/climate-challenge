@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import Headline from '../components/Headline';
 
 const StyledHeader = styled.div`
+  align-items: center;
   min-height: 60px;
-  background: rgba(f, f, f, 1);
+  background: rgba(36, 45, 66, 0.6);
 `;
 
 const StyledHeadline = styled(Headline)`
-  color: black;
+  color: white;
   margin: 0;
   padding: 10px;
   text-align: center;

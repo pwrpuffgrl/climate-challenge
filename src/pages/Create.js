@@ -44,9 +44,11 @@ const DropDown = styled.select`
 `;
 
 const Label = styled.label`
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   color: white;
   font-family: helvetica;
+  padding: 10px;
 `;
 
 const Checkbox = styled.input`
@@ -65,13 +67,21 @@ const Button = styled.button`
   border-radius: 8px;
 `;
 
+const CheckboxContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  color: white;
+`;
+
 function CreateChallenge({ history, onCreate }) {
   const [formValues, setFormValues] = React.useState({
     title: '',
     rules: '',
+    tips: '',
     duration: '',
     category: '',
-    joined: '',
+    joined: false,
     startDate: '',
     endDate: ''
   });
@@ -84,17 +94,25 @@ function CreateChallenge({ history, onCreate }) {
     });
   }
 
+  function handleCheckboxChange(event) {
+    const { name } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: !formValues.joined
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
     const challenge = {
       title: formValues.title,
       rules: formValues.rules,
+      tips: formValues.tips,
       duration: formValues.duration,
       category: formValues.category,
       joined: formValues.joined
     };
-    console.log(challenge);
     onCreate(challenge);
     history.replace('/challenges');
     console.log(formValues.joined);
@@ -114,7 +132,13 @@ function CreateChallenge({ history, onCreate }) {
           <Textarea
             name="rules"
             value={formValues.rules}
-            placeholder="Tell us about your challenge"
+            placeholder="What are the rules for this challenge?"
+            onChange={handleChange}
+          />
+          <Textarea
+            name="tips"
+            value={formValues.tips}
+            placeholder="Share helpful strategies and tips for completing this challenge!"
             onChange={handleChange}
           />
           <Input
@@ -135,15 +159,16 @@ function CreateChallenge({ history, onCreate }) {
             <option value="agriculture">Agriculture</option>
             <option value="activism">Activism</option>
           </DropDown>
-          <Label>
+          <CheckboxContainer>
+            <Label for="joined">Join challenge now</Label>
             <Checkbox
               name="joined"
+              id="joined"
               type="checkbox"
               value={formValues.joined}
-              onChange={handleChange}
+              onChange={handleCheckboxChange}
             />
-            Join Challenge
-          </Label>
+          </CheckboxContainer>
           <Button>Create Challenge</Button>
         </Form>
       </Container>
