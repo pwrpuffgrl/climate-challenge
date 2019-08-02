@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import Headline from '../components/Headline';
 
 const StyledHeader = styled.div`
-  height: 60px;
-  background: #242d42;
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  right: 0;
-  left: 0;
+  align-items: center;
+  min-height: 60px;
+  background: rgba(36, 45, 66, 0.6);
 `;
+
 const StyledHeadline = styled(Headline)`
   color: white;
   margin: 0;
@@ -20,13 +17,11 @@ const StyledHeadline = styled(Headline)`
 
 function Header({ title, ...props }) {
   return (
-    <>
-      <StyledHeader>
-        <StyledHeadline size="L" font="main">
-          {title}
-        </StyledHeadline>
-      </StyledHeader>
-    </>
+    <StyledHeader>
+      <StyledHeadline size="L" font="main">
+        {title}
+      </StyledHeadline>
+    </StyledHeader>
   );
 }
 

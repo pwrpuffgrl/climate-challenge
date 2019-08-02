@@ -2,30 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
+import Grid from '../components/Grid';
+import Footer from '../components/Footer';
 
-const Container = styled.div`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0;
-  height: 100vh;
+  margin: 0 auto;
+  max-width: 600px;
   position: relative;
-  padding-top: 50px;
+  overflow-y: auto;
 `;
 
 function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
   console.log(challenges);
   return (
-    <Container>
+    <Grid>
       <Header title="MY CHALLENGES" />
-      {challenges.map(challenge => (
-        <Card
-          key={challenge._id}
-          challenge={challenge}
-          onJoin={onJoinChallenge}
-          onDate={onShowDate}
-        />
-      ))}
-    </Container>
+      <CardContainer>
+        {challenges.map(challenge => (
+          <Card
+            key={challenge._id}
+            challenge={challenge}
+            onJoin={onJoinChallenge}
+            onDate={onShowDate}
+          />
+        ))}
+      </CardContainer>
+      <Footer />
+    </Grid>
   );
 }
 

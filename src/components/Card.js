@@ -8,8 +8,6 @@ import CategoryIcon from './CategoryIcon';
 
 import * as moment from 'moment';
 
-let now = moment().format('LLLL');
-
 const StyledCard = styled.div`
   min-height: 240px;
   min-width: 320px;
@@ -62,6 +60,7 @@ function Card({ challenge, onJoin, onDate }) {
         <CategoryIcon category={challenge.category} />
       </Headline>
       <Content>{challenge.rules}</Content>
+      <Content>{challenge.tips}</Content>
       <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
       <CalendarIcon onClick={handleDateClick} />
       {showDate && <DateRange>Ends {start.to(end)}</DateRange>}

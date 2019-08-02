@@ -3,20 +3,21 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
+import CreateChallenge from '../pages/Create';
 import Landing from '../pages/Landing';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
+import uuid from 'uuid/v1';
 
 import Background from '../Images/AppBackground.png';
 
-const BackgroundImage = styled.img`
+const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
-  filter: brightness(0.8) saturate(1.5);
-  position: fixed;
+  background: url(${Background});
+  background-size: cover;
 `;
 
 function App() {
@@ -40,23 +41,33 @@ function App() {
         ...challenge,
         joined: !challenge.joined,
         startDate: moment(today),
-        endDate: moment(today).add(14, 'days')
+        endDate: moment(today).add(challenge.duration, 'days')
       },
       ...challenges.slice(index + 1)
     ]);
-    console.log(challenge.startDate, challenge.endDate);
+    console.log(challenge.duration);
   }
 
   function handleShowDate(challenge) {
     console.log('date', challenge.startDate);
   }
 
+  function handleCreate(challenge) {
+    const newChallenge = { _id: uuid(), ...challenge };
+    setChallenges([newChallenge, ...challenges]);
+  }
   return (
-    <>
+    <Container>
       <Router>
-        <BackgroundImage src={Background} />
         <GlobalStyle />
         <Switch>
+          <Route
+            path="/create"
+            render={props => (
+              <CreateChallenge onCreate={handleCreate} {...props} />
+            )}
+          />
+          )} />
           <Route
             path="/challenges"
             render={props => (
@@ -82,7 +93,7 @@ function App() {
           <Route path="/" component={Landing} />
         </Switch>
       </Router>
-    </>
+    </Container>
   );
 }
 

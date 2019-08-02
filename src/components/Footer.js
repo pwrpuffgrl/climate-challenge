@@ -3,12 +3,7 @@ import styled from 'styled-components';
 
 const StyledFooter = styled.div`
   height: 60px;
-  background: #242d42;
-  position: fixed;
-  z-index: 5;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  background: rgba(36, 45, 66, 0.6);
 `;
 
 function Footer() {
