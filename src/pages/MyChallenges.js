@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Card from '../components/Card';
 import Grid from '../components/Grid';
 import Footer from '../components/Footer';
+import { cardFade } from '../utils/animations';
 
 const CardContainer = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  animation: ${cardFade} 2s ease 1 both;
 `;
 
 function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Grid from '../components/Grid';
+import Footer from '../components/Footer';
+import { createFade } from '../utils/animations';
 
 const Container = styled.div`
   display: flex;
@@ -10,6 +12,7 @@ const Container = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  animation: ${createFade} 1s ease both;
 `;
 
 const Form = styled.form`
@@ -172,6 +175,7 @@ function CreateChallenge({ history, onCreate }) {
           <Button>Create Challenge</Button>
         </Form>
       </Container>
+      <Footer />
     </Grid>
   );
 }

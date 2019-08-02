@@ -7,6 +7,7 @@ import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
+import { cardFade } from '../utils/animations';
 
 const CardContainer = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  animation: ${cardFade} 2s ease 1 both;
 `;
 
 function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
