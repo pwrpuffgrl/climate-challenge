@@ -19,7 +19,7 @@ const CardContainer = styled.div`
   animation: ${cardFade} 2s ease 1 both;
 `;
 
-function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
+function Challenges({ challengeData, onJoinChallenge }) {
   const [showJoined, setShowJoined] = useState(false);
 
   function handleJoin(id) {
@@ -37,7 +37,6 @@ function Challenges({ challengeData, onJoinChallenge, onShowDate }) {
               key={challenge._id}
               challenge={challenge}
               onJoin={handleJoin}
-              onDate={onShowDate}
             />
           ))}
         </CardContainer>

@@ -25,14 +25,10 @@ function App() {
     getFromLocal('challenges') || challengeData
   );
 
-  var date = new Date().getDate();
-  var month = new Date().getMonth() + 1;
-  var year = new Date().getFullYear();
-  var today = year + '-' + month + '-' + date;
-
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
 
   function handleJoinChallenge(id) {
+    const today = moment().toISOString();
     const index = challenges.findIndex(challenge => challenge._id === id);
     const challenge = challenges[index];
     setChallenges([
@@ -40,22 +36,30 @@ function App() {
       {
         ...challenge,
         joined: !challenge.joined,
-        startDate: moment(today),
-        endDate: moment(today).add(challenge.duration, 'days')
+        startDate: today,
+        lastParticipated: today,
+        endDate: moment(today)
+          .add(challenge.duration, 'days')
+          .toISOString() // TODO: remove
       },
       ...challenges.slice(index + 1)
     ]);
-    console.log(challenge.duration);
-  }
-
-  function handleShowDate(challenge) {
-    console.log('date', challenge.startDate);
   }
 
   function handleCreate(challenge) {
     const newChallenge = { _id: uuid(), ...challenge };
     setChallenges([newChallenge, ...challenges]);
   }
+
+  function handleUpdateChallenge(challenge) {
+    const index = challenges.findIndex(item => item._id === challenge._id);
+    setChallenges([
+      ...challenges.slice(0, index),
+      challenge,
+      ...challenges.slice(index + 1)
+    ]);
+  }
+
   return (
     <Container>
       <Router>
@@ -76,7 +80,6 @@ function App() {
                   challenge => !challenge.joined
                 )}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDate={handleShowDate}
               />
             )}
           />
@@ -86,7 +89,7 @@ function App() {
               <MyChallenges
                 challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDate={handleShowDate}
+                onUpdateChallenge={handleUpdateChallenge}
               />
             )}
           />

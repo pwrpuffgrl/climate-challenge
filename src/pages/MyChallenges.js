@@ -16,8 +16,16 @@ const CardContainer = styled.div`
   animation: ${cardFade} 2s ease 1 both;
 `;
 
-function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
+function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   console.log(challenges);
+
+  function handleUpdateProgress(lastParticipated, challenge) {
+    onUpdateChallenge({
+      ...challenge,
+      lastParticipated
+    });
+  }
+
   return (
     <Grid>
       <Header title="MY CHALLENGES" />
@@ -27,8 +35,10 @@ function MyChallenges({ challenges, onJoinChallenge, onShowDate }) {
             key={challenge._id}
             challenge={challenge}
             onJoin={onJoinChallenge}
-            onDate={onShowDate}
             joined={challenge.joined}
+            onUpdateProgress={lastParticipated =>
+              handleUpdateProgress(lastParticipated, challenge)
+            }
           />
         ))}
       </CardContainer>

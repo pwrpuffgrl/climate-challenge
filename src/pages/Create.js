@@ -86,7 +86,8 @@ function CreateChallenge({ history, onCreate }) {
     category: '',
     joined: false,
     startDate: '',
-    endDate: ''
+    endDate: '',
+    lastParticipated: ''
   });
 
   function handleChange(event) {
@@ -114,7 +115,8 @@ function CreateChallenge({ history, onCreate }) {
       tips: formValues.tips,
       duration: formValues.duration,
       category: formValues.category,
-      joined: formValues.joined
+      joined: formValues.joined,
+      lastParticipated: ''
     };
     onCreate(challenge);
     history.replace('/challenges');

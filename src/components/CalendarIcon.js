@@ -11,7 +11,7 @@ const StyledCalender = styled.button`
 function CalenderIcon({ onClick }) {
   return (
     <StyledCalender onClick={onClick}>
-      <i class="far fa-calendar-alt" />
+      <i className="far fa-calendar-alt" />
     </StyledCalender>
   );
 }

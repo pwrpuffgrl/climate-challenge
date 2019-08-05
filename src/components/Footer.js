@@ -19,16 +19,16 @@ function Footer() {
   return (
     <StyledFooter>
       <NavLink to="/mychallenges">
-        <i class="fas fa-home" />
+        <i className="fas fa-home" />
       </NavLink>
       <NavLink to="/create">
-        <i class="fas fa-plus-circle" />
+        <i className="fas fa-plus-circle" />
       </NavLink>
       <NavLink to="/">
-        <i class="fas fa-newspaper" />
+        <i className="fas fa-newspaper" />
       </NavLink>
       <NavLink to="/challenges">
-        <i class="fas fa-globe-africa" />
+        <i className="fas fa-globe-africa" />
       </NavLink>
     </StyledFooter>
   );
