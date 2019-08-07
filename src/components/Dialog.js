@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Backdrop = styled.div`
   position: fixed;
@@ -35,12 +36,16 @@ const DialogContainer = styled.div`
 function Dialog({ children, onClose }) {
   return (
     <>
-      <Backdrop onClick={onClose} />
-      <Container>
+      <Backdrop />
+      <Container onClick={onClose}>
         <DialogContainer>{children}</DialogContainer>
       </Container>
     </>
   );
 }
+
+Dialog.propTypes = {
+  onClick: PropTypes.func
+};
 
 export default Dialog;

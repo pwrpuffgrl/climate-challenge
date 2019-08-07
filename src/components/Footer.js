@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import icon from '../Images/icon.png';
 
 const StyledFooter = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const NavLink = styled(Link)`
   font-size: 34px;
   color: white;
 `;
+
 function Footer() {
   return (
     <StyledFooter>
@@ -29,6 +31,9 @@ function Footer() {
       </NavLink>
       <NavLink to="/challenges">
         <i className="fas fa-globe-africa" />
+      </NavLink>
+      <NavLink to="/news">
+        <i className="fas fa-newspaper" />
       </NavLink>
     </StyledFooter>
   );

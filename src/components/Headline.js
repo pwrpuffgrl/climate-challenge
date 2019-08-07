@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const sizes = {
+  XS: '14px',
   S: '20px',
   M: '24px',
   L: '34px'

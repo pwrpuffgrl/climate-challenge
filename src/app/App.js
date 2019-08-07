@@ -5,6 +5,7 @@ import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
 import CreateChallenge from '../pages/Create';
 import Landing from '../pages/Landing';
+import NewsFeed from '../pages/News';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
@@ -65,6 +66,7 @@ function App() {
       <Router>
         <GlobalStyle />
         <Switch>
+          <Route path="/news" component={NewsFeed} />
           <Route
             path="/create"
             render={props => (

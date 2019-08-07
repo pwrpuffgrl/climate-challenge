@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import PropTypes from 'prop-types';
@@ -25,6 +25,7 @@ const StyledCard = styled.div`
 const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
+  padding-bottom: 10px;
 `;
 
 const DateRange = styled.div`
@@ -148,7 +149,11 @@ function Card({ challenge, onJoin, joined, onUpdateProgress }) {
 }
 
 Card.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  rules: PropTypes.string,
+  tips: PropTypes.string,
+  duration: PropTypes.number,
+  joined: PropTypes.bool
 };
 
 export default Card;
