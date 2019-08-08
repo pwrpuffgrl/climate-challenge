@@ -5,52 +5,53 @@ import Grid from '../components/Grid';
 import Footer from '../components/Footer';
 import { getArticles } from '../utils/newsAPI';
 import Headline from '../components/Headline';
+import { cardFade } from '../utils/animations';
 
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   max-width: 600px;
   position: relative;
   overflow-y: auto;
 `;
-
+const StyledHeadline = styled(Headline)`
+  color: #242d42;
+`;
 const NewsCard = styled.div`
   padding: 20px;
-  color: white;
+  color: #242d42;
   z-index: 2000;
-  max-width: 360px;
+  min-width: 380px;
+  background: #d3e7ee;
   border-radius: 12px;
-  background: #242d42;
   margin: 15px;
   position: relative;
   opacity: 1;
   box-shadow: 10px 10px 8px;
-  animation: ${props => props.animation} 5s;
+  animation: ${cardFade} 2s ease 1 both;
 `;
 const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
-  padding: 15px;
-`;
-
-const Image = styled.img`
-  height: 200px;
-  width: 300px;
 `;
 
 const A = styled.a`
   font-family: helvetica;
   font-size: 16px;
   padding-bottom: 10px;
-  color: white;
+  color: #943855;
 `;
 
 const Info = styled.i`
+  color: #242d42;
   position: absolute;
   bottom: 15px;
   right: 15px;
   font-size: 20px;
+`;
+
+const Image = styled.img`
+  height: 100%
+  width: 260px; 
 `;
 
 function NewsFeed() {
@@ -68,10 +69,10 @@ function NewsFeed() {
         {articles &&
           articles.map(article => (
             <NewsCard>
-              <Headline font="sub" size="S">
+              <Image src={article.url} />
+              <StyledHeadline font="main" size="S">
                 {article.title}
-              </Headline>
-              {/* <Image src={article.url} /> */}
+              </StyledHeadline>
               <Info
                 className="fas fa-info-circle"
                 onClick={() => setShowContent(!showContent)}
