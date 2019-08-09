@@ -80,6 +80,7 @@ const CheckboxContainer = styled.div`
 
 const CreateContainer = styled.div`
   background: url(${CreateBackground});
+  filter: saturate(70%);
 `;
 
 function CreateChallenge({ history, onCreate }) {

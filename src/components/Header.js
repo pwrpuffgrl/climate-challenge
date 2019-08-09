@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
+import BackgroundPicture from '../Images/BackgroundPicture.png';
 
 const StyledHeader = styled.div`
   align-items: center;
   min-height: 60px;
-  background: none;
+  background: url(${BackgroundPicture});
   z-index: 1;
 `;
 

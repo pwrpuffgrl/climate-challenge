@@ -14,6 +14,7 @@ import { cardFade } from '../utils/animations';
 const StyledCard = styled.div`
   margin: 15px;
   position: relative;
+  background: white;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
   animation: ${cardFade} 2s ease 1 both;
 `;
@@ -32,7 +33,9 @@ const DateRange = styled.div`
   font-family: helvetica;
   font-size: 16px;
   position: absolute;
-  bottom: 20px;
+  font-weight: 200;
+  line-height: 1.4;
+  bottom: 12px;
   left: 45px;
   color: #46395c;
 `;

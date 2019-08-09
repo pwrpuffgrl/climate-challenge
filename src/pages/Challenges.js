@@ -7,6 +7,7 @@ import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
+import BackgroundPicture from '../Images/BackgroundPicture.png';
 
 const CardContainer = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  background: url(${BackgroundPicture});
 `;
 
 function Challenges({ challengeData, onJoinChallenge }) {
@@ -46,9 +48,8 @@ function Challenges({ challengeData, onJoinChallenge }) {
           <Headline size="S" font="sub">
             Yay!{' '}
             <span role="img" aria-label="heart emoji">
-              💜 💙
-            </span>{' '}
-            Thanks for participating in this challenge!{' '}
+              &#9829; Thanks for participating in this challenge! &#9829;
+            </span>
           </Headline>
           <ButtonLink to="/mychallenges">See My Challenges</ButtonLink>
         </Dialog>

@@ -9,12 +9,14 @@ import { cardFade } from '../utils/animations';
 
 const CardContainer = styled.div`
   margin: 0 auto;
+  padding: 0;
   max-width: 600px;
   position: relative;
   overflow-y: auto;
 `;
 const StyledHeadline = styled(Headline)`
   color: #242d42;
+  margin: 0;
 `;
 
 const NewsCard = styled.div`
@@ -25,6 +27,7 @@ const NewsCard = styled.div`
   margin: 15px;
   position: relative;
   opacity: 1;
+  text-align: left;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
   animation: ${cardFade} 2s ease 1 both;
 `;
@@ -40,17 +43,20 @@ const Image = styled.img`
   max-height: 200px;
 `;
 
-const Content = styled.p`
+const Content = styled.div`
   font-family: helvetica;
-  font-size: 18px;
+  font-size: 16px;
+  color: #46395c;
+  padding: 15px;
+  font-weight: 200;
   line-height: 1.4;
 `;
 
 const A = styled.a`
   font-family: helvetica;
   font-size: 14px;
-  padding-bottom: 20px;
-  margin-top: 10px;
+  padding: 20px;
+  margin: 10px;
   color: slategray;
   text-decoration: none;
 `;
