@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 
 const DialogContainer = styled.div`
-  background: white;
+  background: #b6ffea;
   border-radius: 15px;
   padding: 20px;
   min-height: 200px;

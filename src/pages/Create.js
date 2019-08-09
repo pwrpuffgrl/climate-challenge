@@ -115,7 +115,6 @@ function CreateChallenge({ history, onCreate }) {
     };
     onCreate(challenge);
     history.replace('/challenges');
-    console.log(formValues.joined);
   }
 
   return (
@@ -124,7 +123,7 @@ function CreateChallenge({ history, onCreate }) {
       <Container>
         <Form onSubmit={handleSubmit}>
           <FormRow>
-            <Label forHtml="title">Title</Label>
+            <Label htmlFor="title">Title</Label>
             <Input
               name="title"
               value={formValues.title}
@@ -133,7 +132,7 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label forHtml="rules">Rules</Label>
+            <Label htmlFor="rules">Rules</Label>
             <Textarea
               name="rules"
               value={formValues.rules}
@@ -142,7 +141,7 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label for="tips">Tips</Label>
+            <Label htmlFor="tips">Tips</Label>
             <Textarea
               name="tips"
               value={formValues.tips}
@@ -151,7 +150,7 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label for="duration">Duration</Label>
+            <Label htmlFor="duration">Duration</Label>
             <Input
               name="duration"
               type="number"
@@ -175,7 +174,7 @@ function CreateChallenge({ history, onCreate }) {
           </FormRow>
           <FormRow>
             <CheckboxContainer>
-              <Label for="joined">Join challenge now</Label>
+              <Label htmlFor="joined">Join challenge now</Label>
               <Checkbox
                 name="joined"
                 id="joined"

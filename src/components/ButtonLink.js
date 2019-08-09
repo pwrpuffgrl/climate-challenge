@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button`
-  background: white;
+  background: #242d42;
   height: 40px;
+  color: white;
   margin-top: 30px;
   border-radius: 12px;
   font-family: 'Raleway';

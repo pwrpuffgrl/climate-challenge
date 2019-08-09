@@ -52,6 +52,8 @@ const Info = styled.i`
 const Image = styled.img`
   height: 100%
   width: 260px; 
+  border-radius: 12px;
+  border: solid white 2px; 
 `;
 
 function NewsFeed() {
@@ -60,7 +62,7 @@ function NewsFeed() {
 
   React.useEffect(() => {
     getArticles().then(articles => setArticles(articles));
-  }, []);
+  }, [articles]);
 
   return (
     <Grid>
@@ -68,7 +70,7 @@ function NewsFeed() {
       <CardContainer>
         {articles &&
           articles.map(article => (
-            <NewsCard>
+            <NewsCard key={article.title}>
               <Image src={article.url} />
               <StyledHeadline font="main" size="S">
                 {article.title}

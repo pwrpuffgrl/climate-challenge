@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Headline from '../components/Headline';
 
 const StyledFooter = styled.div`
   display: flex;
@@ -16,20 +15,6 @@ const NavLink = styled(Link)`
   font-size: 34px;
   color: white;
   text-decoration: none;
-`;
-
-const StyledHeadline = styled(Headline)`
-  font-size: 12px;
-`;
-
-const Titles = styled.div`
-  display: flex;
-  height: 10px;
-  align-items: center;
-  justify-content: space-around;
-  background: rgba(36, 45, 66, 0.6);
-  padding-bottom: 5px;
-  margin: 0;
 `;
 
 function Footer() {
