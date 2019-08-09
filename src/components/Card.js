@@ -9,11 +9,13 @@ import * as moment from 'moment';
 import Progress from '../components/Progress';
 import CardHeaderImage from '../Images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
+import { cardFade } from '../utils/animations';
 
 const StyledCard = styled.div`
   margin: 15px;
   position: relative;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
+  animation: ${cardFade} 2s ease 1 both;
 `;
 
 const Content = styled.p`
