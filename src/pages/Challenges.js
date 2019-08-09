@@ -7,7 +7,6 @@ import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
-import BackgroundPicture from '../Images/BackgroundPicture.png';
 
 const CardContainer = styled.div`
   display: flex;
@@ -16,7 +15,6 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
-  background: url(${BackgroundPicture});
 `;
 
 function Challenges({ challengeData, onJoinChallenge }) {
