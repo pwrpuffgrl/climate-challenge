@@ -7,13 +7,13 @@ const StyledFooter = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 60px;
-  background: #6b8c79;
+  background: white;
 `;
 
 const NavLink = styled(Link)`
   margin: 0;
   font-size: 34px;
-  color: white;
+  color: #936979;
   text-decoration: none;
 `;
 

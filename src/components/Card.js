@@ -7,21 +7,22 @@ import CalendarIcon from './CalendarIcon';
 import CategoryIcon from './CategoryIcon';
 import * as moment from 'moment';
 import Progress from '../components/Progress';
+import CardHeaderImage from '../Images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
 
 const StyledCard = styled.div`
-  padding: 20px;
-  border-radius: 12px;
   margin: 15px;
   position: relative;
-  box-shadow: 12px 7px 17px 1px rgba(209, 205, 209, 1);
-  animation: ${props => props.animation} 5s;
+  box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
 `;
 
 const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
   color: #46395c;
+  padding-bottom: 15px;
+  font-weight: 200;
+  line-height: 1.4;
 `;
 
 const DateRange = styled.div`
@@ -32,6 +33,20 @@ const DateRange = styled.div`
   bottom: 20px;
   left: 45px;
   color: #46395c;
+`;
+
+const CardHeader = styled.div`
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  object-fit: cover;
+  margin: 0;
+  color: white;
+  background: url(${CardHeaderImage});
+`;
+const ContentContainer = styled.div`
+  padding: 10px;
+  margin-bottom: 10px;
 `;
 
 function Card({ challenge, onJoin, joined, onProgress }) {
@@ -66,17 +81,21 @@ function Card({ challenge, onJoin, joined, onProgress }) {
 
   return (
     <StyledCard>
-      <Headline size="M" font="sub">
-        {challenge.title}
-        <CategoryIcon category={challenge.category} />
-      </Headline>
-      <Content>{challenge.rules}</Content>
-      <Content>{challenge.tips}</Content>
-      <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
-      <CalendarIcon onClick={handleDateClick} />
-      {showDate && renderDateType()}
-      {joined && <Progress percentage={percentage} />}
-      {joined && <ProgressButton onClick={handleProgressClick} />}
+      <CardHeader>
+        <Headline size="M" font="sub">
+          {challenge.title}
+          <CategoryIcon category={challenge.category} />
+        </Headline>
+      </CardHeader>
+      <ContentContainer>
+        <Content>{challenge.rules}</Content>
+        <Content>{challenge.tips}</Content>
+        <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
+        <CalendarIcon onClick={handleDateClick} />
+        {showDate && renderDateType()}
+        {joined && <Progress percentage={percentage} />}
+        {joined && <ProgressButton onClick={handleProgressClick} />}
+      </ContentContainer>
     </StyledCard>
   );
 }

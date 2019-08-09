@@ -6,7 +6,8 @@ const sizes = {
   XS: '14px',
   S: '20px',
   M: '22px',
-  L: '34px'
+  L: '26px',
+  XL: '34px'
 };
 
 const fonts = {
@@ -27,7 +28,7 @@ const StyledHeadline = styled.h1`
   font-family: ${props => getFont(props.font)};
   font-weight: bold;
   margin: 0;
-  padding-top: 5px;
+  padding: 10px;
 `;
 
 function Headline({ size, font, ...props }) {

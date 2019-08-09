@@ -5,10 +5,10 @@ import MainLogo from '../components/MainLogo';
 import styled from 'styled-components';
 import { fadeIn, fadeOut, appear } from '../utils/animations';
 import ButtonLink from '../components/ButtonLink';
-import Background from '../Images/AppBackground.png';
+import Background from '../Images/Abstract4.png';
 
 const Span = styled.span`
-  color: lightblue;
+  color: white;
   animation: ${props => props.animation} 9s;
 `;
 const BackgroundDiv = styled.div`
@@ -19,7 +19,7 @@ const BackgroundDiv = styled.div`
 const Title = styled(Headline)`
   color: white;
   font-family: 'Raleway';
-  font-size: 36px;
+  font-size: 32px;
 `;
 
 const StartLink = styled(ButtonLink)`

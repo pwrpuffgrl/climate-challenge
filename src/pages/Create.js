@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Grid from '../components/Grid';
 import Footer from '../components/Footer';
 import { createFade } from '../utils/animations';
+import CreateBackground from '../Images/CreateBackground1.png';
 
 const Container = styled.div`
   width: 100%;
@@ -14,10 +14,12 @@ const Container = styled.div`
 const Form = styled.form`
   padding: 20px;
   animation: ${createFade} 1s ease both;
+  background: transparent;
 `;
 
 const FormRow = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  background: transparent; s
 `;
 
 const Input = styled.input`
@@ -32,7 +34,7 @@ const Input = styled.input`
 const Textarea = styled.textarea`
   font-size: 16px;
   width: 100%;
-  height: 100px;
+  height: 80px;
   padding: 10px;
   font-family: helvetica;
   border-radius: 8px;
@@ -49,7 +51,8 @@ const DropDown = styled.select`
 const Label = styled.label`
   font-size: 20px;
   font-weight: bold;
-  color: #46395c;
+  color: #936979;
+  text-shadow: 1px 1px rgba(256, 256, 256, 0.6);
   font-family: helvetica;
 `;
 
@@ -61,18 +64,22 @@ const Checkbox = styled.input`
 `;
 
 const Button = styled.button`
-  background: #6b8c79;
+  background: #7c5d6a;
   color: white;
   border: none;
   font-size: 20px;
   border-radius: 8px;
-  font-family: helvetica;
+  font-family: 'Raleway';
 `;
 
 const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   color: white;
+`;
+
+const CreateContainer = styled.div`
+  background: url(${CreateBackground});
 `;
 
 function CreateChallenge({ history, onCreate }) {
@@ -121,13 +128,14 @@ function CreateChallenge({ history, onCreate }) {
   }
 
   return (
-    <Grid>
+    <CreateContainer>
       <Header title="CREATE" />
       <Container>
         <Form onSubmit={handleSubmit}>
           <FormRow>
             <Label htmlFor="title">Title</Label>
             <Input
+              maxLength="18"
               name="title"
               value={formValues.title}
               placeholder="Please enter a title"
@@ -193,7 +201,7 @@ function CreateChallenge({ history, onCreate }) {
         </Form>
       </Container>
       <Footer />
-    </Grid>
+    </CreateContainer>
   );
 }
 

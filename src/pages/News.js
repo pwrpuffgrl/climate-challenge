@@ -16,6 +16,7 @@ const CardContainer = styled.div`
 const StyledHeadline = styled(Headline)`
   color: #242d42;
 `;
+
 const NewsCard = styled.div`
   color: #242d42;
   z-index: 2000;
@@ -24,7 +25,7 @@ const NewsCard = styled.div`
   margin: 15px;
   position: relative;
   opacity: 1;
-  box-shadow: 12px 7px 17px 1px rgba(209, 205, 209, 1);
+  box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
   animation: ${cardFade} 2s ease 1 both;
 `;
 
@@ -32,7 +33,6 @@ const CardHeader = styled.div`
   width: 100%;
   object-fit: cover;
   margin: 0;
-  border-radius: 12px;
 `;
 
 const Image = styled.img`
@@ -49,7 +49,8 @@ const Content = styled.p`
 const A = styled.a`
   font-family: helvetica;
   font-size: 14px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  margin-top: 10px;
   color: slategray;
   text-decoration: none;
 `;

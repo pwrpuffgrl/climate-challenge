@@ -6,6 +6,9 @@ const StyledButton = styled.button`
   right: 15px;
   bottom: 15px;
   font-size: 20px;
+  border: none;
+  background: none;
+  color: #2e1f4c;
 `;
 
 function JoinButton({ onClick, joined }) {

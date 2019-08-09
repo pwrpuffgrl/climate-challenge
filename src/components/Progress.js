@@ -7,10 +7,10 @@ import 'react-circular-progressbar/dist/styles.css';
 import React from 'react';
 
 const ProgressContainer = styled.div`
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 15px;
 `;
 function Progress({ percentage }) {
@@ -24,9 +24,9 @@ function Progress({ percentage }) {
         height={25}
         width={25}
         styles={buildStyles({
-          textColor: '#6b8c79',
-          pathColor: '#6b8c79',
-          trailColor: 'lightgray',
+          textColor: '#2e1f4c',
+          pathColor: '#2E1F4C',
+          trailColor: 'white',
           textSize: '160%'
         })}
       />

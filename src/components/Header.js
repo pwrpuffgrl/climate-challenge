@@ -5,11 +5,12 @@ import Headline from '../components/Headline';
 const StyledHeader = styled.div`
   align-items: center;
   min-height: 60px;
-  background: #6b8c79;
+  background: none;
+  z-index: 1;
 `;
 
 const StyledHeadline = styled(Headline)`
-  color: white;
+  color: #936979;
   margin: 0;
   padding: 10px;
   text-align: center;
@@ -18,7 +19,7 @@ const StyledHeadline = styled(Headline)`
 function Header({ title, ...props }) {
   return (
     <StyledHeader>
-      <StyledHeadline size="L" font="main">
+      <StyledHeadline size="XL" font="main">
         {title}
       </StyledHeadline>
     </StyledHeader>
