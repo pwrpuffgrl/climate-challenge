@@ -12,13 +12,10 @@ import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
 import uuid from 'uuid/v1';
 
-import Background from '../Images/AppBackground.png';
-
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  background: url(${Background});
-  background-size: cover;
+  background: white;
 `;
 
 function App() {

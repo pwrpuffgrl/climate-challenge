@@ -5,7 +5,7 @@ import Headline from '../components/Headline';
 const StyledHeader = styled.div`
   align-items: center;
   min-height: 60px;
-  background: rgba(36, 45, 66, 0.6);
+  background: #6b8c79;
 `;
 
 const StyledHeadline = styled(Headline)`

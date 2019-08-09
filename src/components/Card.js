@@ -12,28 +12,26 @@ import ProgressButton from '../components/PorgressButton';
 const StyledCard = styled.div`
   padding: 20px;
   border-radius: 12px;
-  background: #d3e7ee;
   margin: 15px;
   position: relative;
-  opacity: 1;
-  box-shadow: 10px 10px 8px;
+  box-shadow: 12px 7px 17px 1px rgba(209, 205, 209, 1);
   animation: ${props => props.animation} 5s;
 `;
 
 const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
-  padding-bottom: 10px;
+  color: #46395c;
 `;
 
 const DateRange = styled.div`
-  background: #d3e7ee;
   text-align: center;
   font-family: helvetica;
   font-size: 16px;
   position: absolute;
   bottom: 20px;
   left: 45px;
+  color: #46395c;
 `;
 
 function Card({ challenge, onJoin, joined, onProgress }) {
@@ -68,7 +66,7 @@ function Card({ challenge, onJoin, joined, onProgress }) {
 
   return (
     <StyledCard>
-      <Headline size="S" font="sub">
+      <Headline size="M" font="sub">
         {challenge.title}
         <CategoryIcon category={challenge.category} />
       </Headline>

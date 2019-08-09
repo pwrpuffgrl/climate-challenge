@@ -6,16 +6,14 @@ import Footer from '../components/Footer';
 import { createFade } from '../utils/animations';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
   margin: 0 auto;
   max-width: 600px;
-  animation: ${createFade} 1s ease both;
 `;
 
 const Form = styled.form`
   padding: 20px;
+  animation: ${createFade} 1s ease both;
 `;
 
 const FormRow = styled.div`
@@ -23,47 +21,52 @@ const FormRow = styled.div`
 `;
 
 const Input = styled.input`
-  border: none;
   font-size: 16px;
-  background: white;
   width: 100%;
+  padding: 10px;
+  font-family: helvetica;
+  border: solid #46395c 0.5px;
+  border-radius: 8px;
 `;
 
 const Textarea = styled.textarea`
-  border: none;
-  background: white;
   font-size: 16px;
   width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-family: helvetica;
+  border-radius: 8px;
+  border: solid #46395c 0.5px;
 `;
 
 const DropDown = styled.select`
-  background: white;
   font-size: 16px;
   padding: 5px;
+  border-radius: 8px;
+  border: solid #46395c 0.5px;
 `;
 
 const Label = styled.label`
   font-size: 20px;
   font-weight: bold;
-  color: white;
-  background: #242d42;
+  color: #46395c;
   font-family: helvetica;
-  padding: 3px;
 `;
 
 const Checkbox = styled.input`
-  height: 20px;
-  width: 20px;
-`;
-
-const BigHeader = styled(Header)`
-  height: 200px;
+  height: 25px;
+  width: 25px;
+  border-radius: 8px;
+  margin-left: 10px;
 `;
 
 const Button = styled.button`
-  background: #d3e7ee;
+  background: #6b8c79;
+  color: white;
+  border: none;
   font-size: 20px;
   border-radius: 8px;
+  font-family: helvetica;
 `;
 
 const CheckboxContainer = styled.div`
@@ -119,7 +122,7 @@ function CreateChallenge({ history, onCreate }) {
 
   return (
     <Grid>
-      <BigHeader title="CREATE" />
+      <Header title="CREATE" />
       <Container>
         <Form onSubmit={handleSubmit}>
           <FormRow>

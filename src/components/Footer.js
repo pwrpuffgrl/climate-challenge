@@ -7,7 +7,7 @@ const StyledFooter = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 60px;
-  background: rgba(36, 45, 66, 0.6);
+  background: #6b8c79;
 `;
 
 const NavLink = styled(Link)`

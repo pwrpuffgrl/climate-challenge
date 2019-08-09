@@ -5,10 +5,15 @@ import MainLogo from '../components/MainLogo';
 import styled from 'styled-components';
 import { fadeIn, fadeOut, appear } from '../utils/animations';
 import ButtonLink from '../components/ButtonLink';
+import Background from '../Images/AppBackground.png';
 
 const Span = styled.span`
   color: lightblue;
   animation: ${props => props.animation} 9s;
+`;
+const BackgroundDiv = styled.div`
+  background: url(${Background});
+  background-size: cover;
 `;
 
 const Title = styled(Headline)`
@@ -24,18 +29,20 @@ const StartLink = styled(ButtonLink)`
 function Landing() {
   return (
     <>
-      <Fullscreen>
-        <div>
-          <MainLogo animation={fadeIn} />
-          <MainLogo animation={fadeOut} />
-        </div>
-        <Title>
-          Climate Cha<Span animation={appear}>lle</Span>nge
-        </Title>
-        <StartLink animation={appear} to="/challenges">
-          Click to Start
-        </StartLink>
-      </Fullscreen>
+      <BackgroundDiv>
+        <Fullscreen>
+          <div>
+            <MainLogo animation={fadeIn} />
+            <MainLogo animation={fadeOut} />
+          </div>
+          <Title>
+            Climate Cha<Span animation={appear}>lle</Span>nge
+          </Title>
+          <StartLink animation={appear} to="/challenges">
+            Click to Start
+          </StartLink>
+        </Fullscreen>
+      </BackgroundDiv>
     </>
   );
 }

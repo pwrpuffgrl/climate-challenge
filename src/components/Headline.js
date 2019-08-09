@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 const sizes = {
   XS: '14px',
   S: '20px',
-  M: '24px',
+  M: '22px',
   L: '34px'
 };
 
 const fonts = {
-  main: 'helvetica',
+  main: 'Merriweather',
   sub: 'Merriweather'
 };
 
@@ -27,6 +27,7 @@ const StyledHeadline = styled.h1`
   font-family: ${props => getFont(props.font)};
   font-weight: bold;
   margin: 0;
+  padding-top: 5px;
 `;
 
 function Headline({ size, font, ...props }) {

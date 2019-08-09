@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledIcon = styled.div`
   margin: 8px;
+  font-size: 22px;
   display: inline-block;
 `;
 

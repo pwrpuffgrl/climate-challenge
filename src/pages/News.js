@@ -17,28 +17,41 @@ const StyledHeadline = styled(Headline)`
   color: #242d42;
 `;
 const NewsCard = styled.div`
-  padding: 20px;
   color: #242d42;
   z-index: 2000;
-  min-width: 380px;
-  background: #d3e7ee;
-  border-radius: 12px;
+  min-width: 340px;
+  background: white;
   margin: 15px;
   position: relative;
   opacity: 1;
-  box-shadow: 10px 10px 8px;
+  box-shadow: 12px 7px 17px 1px rgba(209, 205, 209, 1);
   animation: ${cardFade} 2s ease 1 both;
 `;
+
+const CardHeader = styled.div`
+  width: 100%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 12px;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  max-height: 200px;
+`;
+
 const Content = styled.p`
   font-family: helvetica;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.4;
 `;
 
 const A = styled.a`
   font-family: helvetica;
-  font-size: 16px;
+  font-size: 14px;
   padding-bottom: 10px;
-  color: #943855;
+  color: slategray;
+  text-decoration: none;
 `;
 
 const Info = styled.i`
@@ -49,20 +62,13 @@ const Info = styled.i`
   font-size: 20px;
 `;
 
-const Image = styled.img`
-  height: 100%
-  width: 260px; 
-  border-radius: 12px;
-  border: solid white 2px; 
-`;
-
 function NewsFeed() {
   const [articles, setArticles] = React.useState([]);
   const [showContent, setShowContent] = React.useState(false);
 
   React.useEffect(() => {
     getArticles().then(articles => setArticles(articles));
-  }, [articles]);
+  }, []);
 
   return (
     <Grid>
@@ -71,7 +77,9 @@ function NewsFeed() {
         {articles &&
           articles.map(article => (
             <NewsCard key={article.title}>
-              <Image src={article.url} />
+              <CardHeader>
+                <Image src={article.url} />
+              </CardHeader>
               <StyledHeadline font="main" size="S">
                 {article.title}
               </StyledHeadline>
@@ -80,7 +88,7 @@ function NewsFeed() {
                 onClick={() => setShowContent(!showContent)}
               />
               {showContent && <Content>{article.content}</Content>}
-              <A href={article.link}>Go to article</A>
+              <A href={article.link}>&#8594; GO TO ARTICLE</A>
             </NewsCard>
           ))}
       </CardContainer>
