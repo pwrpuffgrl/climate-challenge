@@ -71,11 +71,20 @@ const Info = styled.i`
 
 function NewsFeed() {
   const [articles, setArticles] = React.useState([]);
-  const [showContent, setShowContent] = React.useState(false);
 
   React.useEffect(() => {
     getArticles().then(articles => setArticles(articles));
   }, []);
+
+  function handleClick(article) {
+    const index = articles.findIndex(item => item.url === article.url);
+    const newArticle = articles[index];
+    setArticles([
+      ...articles.slice(0, index),
+      { ...newArticle, showContent: !article.showContent },
+      ...articles.slice(index + 1)
+    ]);
+  }
 
   return (
     <Grid>
@@ -92,9 +101,9 @@ function NewsFeed() {
               </StyledHeadline>
               <Info
                 className="fas fa-info-circle"
-                onClick={() => setShowContent(!showContent)}
+                onClick={() => handleClick(article)}
               />
-              {showContent && <Content>{article.content}</Content>}
+              {article.showContent && <Content>{article.content}</Content>}
               <A href={article.link}>&#8594; GO TO ARTICLE</A>
             </NewsCard>
           ))}

@@ -17,12 +17,28 @@ const CardContainer = styled.div`
   overflow-y: auto;
 `;
 
-function Challenges({ challengeData, onJoinChallenge }) {
-  const [showJoined, setShowJoined] = useState(false);
+const Button = styled.button`
+  background: #7c5d6a;
+  border: none;
+  height: 40px;
+  color: white;
+  margin-top: 30px;
+  border-radius: 12px;
+  font-family: 'Raleway';
+  font-size: 16px;
+`;
 
+function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
+  const [showJoined, setShowJoined] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
   function handleJoin(id) {
     onJoinChallenge(id);
     setShowJoined(true);
+  }
+
+  function handleDelete(id) {
+    setShowDialog(!showDialog);
+    onDeleteChallenge(id);
   }
 
   return (
@@ -35,6 +51,7 @@ function Challenges({ challengeData, onJoinChallenge }) {
               key={challenge._id}
               challenge={challenge}
               onJoin={handleJoin}
+              onDelete={handleDelete}
             />
           ))}
         </CardContainer>
@@ -50,6 +67,15 @@ function Challenges({ challengeData, onJoinChallenge }) {
             </span>
           </Headline>
           <ButtonLink to="/mychallenges">See My Challenges</ButtonLink>
+        </Dialog>
+      )}
+
+      {showDialog && (
+        <Dialog onClose={() => setShowDialog(false)}>
+          <Headline size="S" font="sub">
+            Do you really want to delete this challenge?
+          </Headline>
+          <Button onClick={handleDelete}>Delete</Button>
         </Dialog>
       )}
     </>

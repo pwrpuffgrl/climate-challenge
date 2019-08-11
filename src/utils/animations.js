@@ -58,3 +58,12 @@ export const createFade = props => keyframes`
     transform: translate3d(0px, 0, 0);
   }
 `;
+
+export const wobble = props => keyframes`
+from{
+  transform: translateX(0%)
+}
+
+to {
+  transform-origin: 50% 50%;
+}`;

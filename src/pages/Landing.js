@@ -14,6 +14,7 @@ const Span = styled.span`
 const BackgroundDiv = styled.div`
   background: url(${Background});
   background-size: cover;
+  height: 100vh;
 `;
 
 const Title = styled(Headline)`

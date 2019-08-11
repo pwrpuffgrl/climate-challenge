@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Headline from './Headline';
 import PropTypes from 'prop-types';
 import JoinButton from './JoinButton';
+import DeleteButton from './DeleteButton';
 import CalendarIcon from './CalendarIcon';
 import CategoryIcon from './CategoryIcon';
 import * as moment from 'moment';
@@ -54,7 +55,7 @@ const ContentContainer = styled.div`
   margin-bottom: 10px;
 `;
 
-function Card({ challenge, onJoin, joined, onProgress }) {
+function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
 
   const today = moment();
@@ -71,6 +72,10 @@ function Card({ challenge, onJoin, joined, onProgress }) {
 
   function handleDateClick() {
     setShowDate(!showDate);
+  }
+
+  function handleDeleteClick() {
+    onDelete(challenge._id);
   }
 
   function renderDateType() {
@@ -96,6 +101,7 @@ function Card({ challenge, onJoin, joined, onProgress }) {
         <Content>{challenge.rules}</Content>
         <Content>{challenge.tips}</Content>
         <JoinButton joined={challenge.joined} onClick={handleJoinClick} />
+        {!joined && <DeleteButton onClick={handleDeleteClick} />}
         <CalendarIcon onClick={handleDateClick} />
         {showDate && renderDateType()}
         {joined && <Progress percentage={percentage} />}

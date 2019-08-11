@@ -44,6 +44,13 @@ function App() {
     ]);
   }
 
+  function handleDeleteChallenge(id) {
+    const newChallenges = challenges.filter(challenge => {
+      return challenge._id !== id;
+    });
+    setChallenges(newChallenges);
+  }
+
   function handleCreate(challenge) {
     const newChallenge = { _id: uuid(), ...challenge };
     setChallenges([newChallenge, ...challenges]);
@@ -79,6 +86,7 @@ function App() {
                   challenge => !challenge.joined
                 )}
                 onJoinChallenge={handleJoinChallenge}
+                onDeleteChallenge={handleDeleteChallenge}
               />
             )}
           />
