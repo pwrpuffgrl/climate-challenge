@@ -40,32 +40,24 @@ const Content = styled.p`
   padding-bottom: 10px;
 `;
 
-function MyChallenges({
-  challenges,
-  onJoinChallenge,
-  onUpdateChallenge,
-  onUpdateProgress
-}) {
-  const [showDialog, setShowDialog] = useState(false);
+function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
+  const [selectedChallenge, setSelectedChallenge] = useState(null);
 
-  function handleUpdateProgress(lastParticipated, challenge) {
-    onUpdateChallenge({
-      ...challenge,
-      lastParticipated
-    });
-  }
-  function handleProgressClick() {
-    setShowDialog(true);
+  function handleProgressClick(challenge) {
+    setSelectedChallenge(challenge);
   }
 
   function handleCheckbox(event) {
     const { value } = event.target;
 
     if (value === 'yes') {
-      onUpdateProgress(moment().toISOString());
+      onUpdateChallenge({
+        ...selectedChallenge,
+        lastParticipated: moment().toISOString()
+      });
     }
 
-    setShowDialog(false);
+    setSelectedChallenge(null);
   }
 
   return (
@@ -79,18 +71,15 @@ function MyChallenges({
               challenge={challenge}
               onJoin={onJoinChallenge}
               joined={challenge.joined}
-              onProgress={handleProgressClick}
-              onUpdateProgress={lastParticipated =>
-                handleUpdateProgress(lastParticipated, challenge)
-              }
+              onProgress={() => handleProgressClick(challenge)}
             />
           ))}
         </CardContainer>
         <Footer />
       </Grid>
 
-      {showDialog && (
-        <Dialog onClose={() => setShowDialog(false)}>
+      {selectedChallenge && (
+        <Dialog onClose={() => setSelectedChallenge(null)}>
           <Headline size="S" font="sub">
             Log your progress
           </Headline>
