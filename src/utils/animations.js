@@ -34,3 +34,36 @@ export const appear = props => keyframes`
    opacity: 1;
  }
 `;
+
+export const cardFade = props => keyframes`
+  from {
+    opacity: 0.8;
+    transform: translate3d(-200px, 0px, 0px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+  }
+`;
+
+export const createFade = props => keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0px, -100px, 0px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+  }
+`;
+
+export const wobble = props => keyframes`
+from{
+  transform: translateX(0%)
+}
+
+to {
+  transform-origin: 50% 50%;
+}`;

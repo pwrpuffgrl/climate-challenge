@@ -3,24 +3,20 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   position: absolute;
-  right: 15px;
-  bottom: 10px;
+  right: 50px;
+  bottom: 12px;
   font-size: 24px;
   border: none;
   background: none;
   color: #6b5f81;
 `;
 
-function JoinButton({ onClick, joined }) {
+function DeleteButton({ onClick }) {
   return (
     <StyledButton onClick={onClick}>
-      {joined ? (
-        <i class="far fa-minus-square" />
-      ) : (
-        <i class="far fa-plus-square" />
-      )}
+      <i class="far fa-trash-alt" />
     </StyledButton>
   );
 }
 
-export default JoinButton;
+export default DeleteButton;

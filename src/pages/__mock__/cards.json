@@ -9,7 +9,7 @@
     "category": "agriculture",
     "joined": false,
     "duration": "14",
-    "lastParticipated": null
+    "lastParticipated": "2019-07-02"
   },
   {
     "_id": 2,
@@ -21,11 +21,11 @@
     "category": "plastic",
     "joined": false,
     "duration": "14",
-    "lastParticipated": null
+    "lastParticipated": "2019-07-02"
   },
   {
     "_id": 3,
-    "title": "Leave the car",
+    "title": "Leave the Car",
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
     "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
     "startDate": "2019-07-15",
@@ -33,7 +33,7 @@
     "category": "transportation",
     "joined": false,
     "duration": "14",
-    "lastParticipated": null
+    "lastParticipated": "2019-07-02"
   },
   {
     "_id": 4,
@@ -45,6 +45,6 @@
     "category": "activism",
     "joined": false,
     "duration": "14",
-    "lastParticipated": null
+    "lastParticipated": "2019-07-02"
   }
 ]

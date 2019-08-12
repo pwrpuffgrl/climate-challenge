@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import CalenderLogo from './CalenderLogo';
 
 const StyledCalender = styled.button`
   position: absolute;
-  left: 15px;
-  bottom: 15px;
+  left: 10px;
+  bottom: 10px;
   font-size: 20px;
+  border: none;
+  background: none;
+  color: #2e1f4c;
 `;
 
 function CalenderIcon({ onClick }) {
   return (
     <StyledCalender onClick={onClick}>
-      <i class="far fa-calendar-alt" />
+      <CalenderLogo />
     </StyledCalender>
   );
 }

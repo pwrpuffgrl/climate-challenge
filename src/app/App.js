@@ -5,19 +5,17 @@ import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
 import CreateChallenge from '../pages/Create';
 import Landing from '../pages/Landing';
+import NewsFeed from '../pages/News';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
 import uuid from 'uuid/v1';
 
-import Background from '../Images/AppBackground.png';
-
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  background: url(${Background});
-  background-size: cover;
+  background: white;
 `;
 
 function App() {
@@ -25,14 +23,10 @@ function App() {
     getFromLocal('challenges') || challengeData
   );
 
-  var date = new Date().getDate();
-  var month = new Date().getMonth() + 1;
-  var year = new Date().getFullYear();
-  var today = year + '-' + month + '-' + date;
-
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
 
   function handleJoinChallenge(id) {
+    const today = moment().toISOString();
     const index = challenges.findIndex(challenge => challenge._id === id);
     const challenge = challenges[index];
     setChallenges([
@@ -40,27 +34,43 @@ function App() {
       {
         ...challenge,
         joined: !challenge.joined,
-        startDate: moment(today),
-        endDate: moment(today).add(challenge.duration, 'days')
+        startDate: today,
+        lastParticipated: today,
+        endDate: moment(today)
+          .add(challenge.duration, 'days')
+          .toISOString() // TODO: remove
       },
       ...challenges.slice(index + 1)
     ]);
-    console.log(challenge.duration);
   }
 
-  function handleShowDate(challenge) {
-    console.log('date', challenge.startDate);
+  function handleDeleteChallenge(id) {
+    const newChallenges = challenges.filter(challenge => {
+      return challenge._id !== id;
+    });
+    setChallenges(newChallenges);
   }
 
   function handleCreate(challenge) {
     const newChallenge = { _id: uuid(), ...challenge };
     setChallenges([newChallenge, ...challenges]);
   }
+
+  function handleUpdateChallenge(challenge) {
+    const index = challenges.findIndex(item => item._id === challenge._id);
+    setChallenges([
+      ...challenges.slice(0, index),
+      challenge,
+      ...challenges.slice(index + 1)
+    ]);
+  }
+
   return (
     <Container>
       <Router>
         <GlobalStyle />
         <Switch>
+          <Route path="/news" component={NewsFeed} />
           <Route
             path="/create"
             render={props => (
@@ -76,7 +86,7 @@ function App() {
                   challenge => !challenge.joined
                 )}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDate={handleShowDate}
+                onDeleteChallenge={handleDeleteChallenge}
               />
             )}
           />
@@ -86,7 +96,7 @@ function App() {
               <MyChallenges
                 challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
-                onShowDate={handleShowDate}
+                onUpdateChallenge={handleUpdateChallenge}
               />
             )}
           />
