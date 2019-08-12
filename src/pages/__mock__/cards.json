@@ -9,7 +9,9 @@
     "category": "agriculture",
     "joined": false,
     "duration": "14",
-    "lastParticipated": "2019-07-02"
+    "lastParticipated": "2019-07-02",
+    "completed": false,
+    "karma": 0
   },
   {
     "_id": 2,
@@ -21,7 +23,9 @@
     "category": "plastic",
     "joined": false,
     "duration": "14",
-    "lastParticipated": "2019-07-02"
+    "lastParticipated": "2019-07-02",
+    "completed": false,
+    "karma": 0
   },
   {
     "_id": 3,
@@ -33,7 +37,9 @@
     "category": "transportation",
     "joined": false,
     "duration": "14",
-    "lastParticipated": "2019-07-02"
+    "lastParticipated": "2019-07-02",
+    "completed": false,
+    "karma": 0
   },
   {
     "_id": 4,
@@ -45,6 +51,8 @@
     "category": "activism",
     "joined": false,
     "duration": "14",
-    "lastParticipated": "2019-07-02"
+    "lastParticipated": "2019-07-02",
+    "completed": false,
+    "karma": 0
   }
 ]

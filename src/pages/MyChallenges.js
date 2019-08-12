@@ -45,6 +45,12 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
 
   function handleProgressClick(challenge) {
     setSelectedChallenge(challenge);
+    if (challenge.lastParticipated === challenge.endDate) {
+      onUpdateChallenge({
+        ...selectedChallenge,
+        completed: true
+      });
+    }
   }
 
   function handleCheckbox(event) {
@@ -53,11 +59,10 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
     if (value === 'yes') {
       onUpdateChallenge({
         ...selectedChallenge,
-        lastParticipated: moment().toISOString()
+        lastParticipated: moment().toISOString(),
+        karma: +1
       });
     }
-
-    setSelectedChallenge(null);
   }
 
   return (

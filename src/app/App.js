@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
 import CreateChallenge from '../pages/Create';
+import Profile from '../pages/Profile';
 import Landing from '../pages/Landing';
 import NewsFeed from '../pages/News';
 import GlobalStyle from './GlobalStyle';
@@ -75,6 +76,16 @@ function App() {
             path="/create"
             render={props => (
               <CreateChallenge onCreate={handleCreate} {...props} />
+            )}
+          />
+          )} />
+          <Route
+            path="/profile"
+            render={props => (
+              <Profile
+                challenges={challenges.filter(challenge => challenge.joined)}
+                {...props}
+              />
             )}
           />
           )} />

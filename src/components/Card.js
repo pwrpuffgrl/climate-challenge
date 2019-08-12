@@ -16,6 +16,7 @@ const StyledCard = styled.div`
   margin: 15px;
   position: relative;
   background: white;
+  min-width: 340px;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
   animation: ${cardFade} 2s ease 1 both;
 `;
@@ -58,10 +59,9 @@ const ContentContainer = styled.div`
 function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
 
-  const today = moment();
   const start = moment(challenge.startDate);
   const end = moment(challenge.endDate);
-  const timeLeft = end.diff(today, 'days');
+  const timeLeft = end.endOf('day').fromNow();
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
   const percentage = Math.round(per);
@@ -80,7 +80,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
 
   function renderDateType() {
     return joined ? (
-      <DateRange>Ends in {timeLeft} days </DateRange>
+      <DateRange>Ends {timeLeft} </DateRange>
     ) : (
       <DateRange>Duration: {challenge.duration} days </DateRange>
     );

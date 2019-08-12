@@ -93,7 +93,9 @@ function CreateChallenge({ history, onCreate }) {
     joined: false,
     startDate: '',
     endDate: '',
-    lastParticipated: ''
+    lastParticipated: '',
+    completed: false,
+    karma: 0
   });
 
   function handleChange(event) {

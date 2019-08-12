@@ -12,7 +12,7 @@ const StyledFooter = styled.div`
 
 const NavLink = styled(Link)`
   margin: 0;
-  font-size: 34px;
+  font-size: 32px;
   color: #936979;
   text-decoration: none;
 `;
@@ -21,13 +21,13 @@ function Footer() {
   return (
     <StyledFooter>
       <NavLink to="/mychallenges">
-        <i className="fas fa-hand-holding-heart" />
+        <i class="fab fa-gratipay" />
       </NavLink>
       <NavLink to="/create">
         <i className="fas fa-plus-circle" />
       </NavLink>
-      <NavLink to="/">
-        <i className="fas fa-home" />
+      <NavLink to="/profile">
+        <i class="far fa-user-circle" />
       </NavLink>
       <NavLink to="/challenges">
         <i className="fas fa-globe-africa" />
