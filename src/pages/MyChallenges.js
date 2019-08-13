@@ -42,6 +42,17 @@ const Content = styled.p`
 
 function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
+  const [karmaPoints, setKarmaPoints] = useState(0);
+  const [streakPoints, setStreakPoints] = useState(0);
+  const [blockProgress, setBlockProgress] = useState(false);
+  const [modified, setModified] = useState(null);
+  const [showDialog, setShowDialog] = useState(false);
+
+  const tomorrow = moment()
+    .add(1, 'day')
+    .startOf('day');
+  const time = tomorrow.diff(moment().utc(), 'hours');
+  const today = moment().format('YYYY-MM-DD');
 
   function handleProgressClick(challenge) {
     setSelectedChallenge(challenge);
@@ -51,16 +62,32 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
         completed: true
       });
     }
+    if (challenge.modified === today) {
+      setBlockProgress(true);
+      setShowDialog(true);
+    }
   }
 
   function handleCheckbox(event) {
     const { value } = event.target;
-
     if (value === 'yes') {
+      console.log('clicked');
+      setModified(today);
+      setKarmaPoints(karmaPoints + 1);
+      setStreakPoints(streakPoints + 1);
+      console.log(karmaPoints);
       onUpdateChallenge({
         ...selectedChallenge,
-        lastParticipated: moment().toISOString(),
-        karma: +1
+        lastParticipated: today,
+        karma: karmaPoints,
+        modified: modified,
+        streak: streakPoints
+      });
+    } else {
+      setStreakPoints(0);
+      onUpdateChallenge({
+        ...selectedChallenge,
+        streak: streakPoints
       });
     }
   }
@@ -83,7 +110,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
         <Footer />
       </Grid>
 
-      {selectedChallenge && (
+      {selectedChallenge && !blockProgress && (
         <Dialog onClose={() => setSelectedChallenge(null)}>
           <Headline size="S" font="sub">
             Log your progress
@@ -97,7 +124,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
               name="progress"
               type="radio"
               value="yes"
-              onChange={handleCheckbox}
+              onClick={handleCheckbox}
             />
             <Label htmlFor="no">
               NO <i className="far fa-thumbs-down" />
@@ -110,6 +137,15 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             />
           </CheckboxContainer>
           <ButtonLink to="/challenges"> Not now</ButtonLink>
+        </Dialog>
+      )}
+
+      {blockProgress && showDialog && (
+        <Dialog onClose={() => setShowDialog(false)}>
+          <Headline size="S" font="sub">
+            You can only log your progress once a day.
+          </Headline>
+          <Content>You can log again in about {time} hours.</Content>
         </Dialog>
       )}
     </>

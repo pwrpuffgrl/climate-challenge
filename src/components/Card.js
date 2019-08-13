@@ -56,15 +56,29 @@ const ContentContainer = styled.div`
   margin-bottom: 10px;
 `;
 
+const Streak = styled.div`
+  right: 90px;
+  bottom: 12px;
+  position: fixed;
+  background: #c39791;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+`;
+
 function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   const start = moment(challenge.startDate);
   const end = moment(challenge.endDate);
   const timeLeft = end.endOf('day').fromNow();
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
-  const percentage = Math.round(per);
+  const percent = Math.round(per);
 
   function handleJoinClick() {
     onJoin(challenge._id);
@@ -87,6 +101,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   }
   function handleProgressClick() {
     onProgress(challenge);
+    setPercentage(percent);
   }
 
   return (
@@ -106,6 +121,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
         {showDate && renderDateType()}
         {joined && <Progress percentage={percentage} />}
         {joined && <ProgressButton onClick={handleProgressClick} />}
+        {joined && <Streak>{challenge.streak}</Streak>}
       </ContentContainer>
     </StyledCard>
   );

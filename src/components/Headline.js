@@ -36,7 +36,7 @@ function Headline({ size, font, ...props }) {
 }
 
 Headline.propTypes = {
-  size: PropTypes.oneOf(['S', 'M', 'L']),
+  size: PropTypes.oneOf(['XS', 'S', 'M', 'L', 'XL']),
   font: PropTypes.string
 };
 

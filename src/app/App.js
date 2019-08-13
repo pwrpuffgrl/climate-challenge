@@ -27,7 +27,7 @@ function App() {
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
 
   function handleJoinChallenge(id) {
-    const today = moment().toISOString();
+    const today = moment().format('YYYY-MM-DD');
     const index = challenges.findIndex(challenge => challenge._id === id);
     const challenge = challenges[index];
     setChallenges([
@@ -39,7 +39,7 @@ function App() {
         lastParticipated: today,
         endDate: moment(today)
           .add(challenge.duration, 'days')
-          .toISOString() // TODO: remove
+          .format('YYYY-MM-DD')
       },
       ...challenges.slice(index + 1)
     ]);
@@ -64,6 +64,7 @@ function App() {
       challenge,
       ...challenges.slice(index + 1)
     ]);
+    console.log('app');
   }
 
   return (

@@ -68,11 +68,10 @@ const Karma = styled.div`
 
 function Profile({ challenges, ...props }) {
   const challenge = challenges.map(challenge => challenge);
-  console.log(challenge);
 
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
-    const sum = points.reduce((a, b) => a + b, 0);
+    const sum = points.reduce((a, b) => a + b);
     return sum;
   }
 
@@ -81,7 +80,7 @@ function Profile({ challenges, ...props }) {
       <Container>
         <ProfileHeader>
           <Image src={florentine} />
-          <Name size="XL">Florentine Draeger</Name>
+          <Name size="L">Florentine Draeger</Name>
           <Karma>{renderKarma()}</Karma>
         </ProfileHeader>
         <Overview>
