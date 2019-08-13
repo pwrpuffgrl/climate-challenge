@@ -7,6 +7,7 @@ import CreateChallenge from '../pages/Create';
 import Profile from '../pages/Profile';
 import Landing from '../pages/Landing';
 import NewsFeed from '../pages/News';
+import Login from '../pages/Login';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
 import { getFromLocal, setToLocal } from '../services';
@@ -57,7 +58,7 @@ function App() {
     setChallenges([newChallenge, ...challenges]);
   }
 
-  function handleUpdateChallenge(challenge) {
+  async function handleUpdateChallenge(challenge) {
     const index = challenges.findIndex(item => item._id === challenge._id);
     setChallenges([
       ...challenges.slice(0, index),
@@ -112,6 +113,7 @@ function App() {
               />
             )}
           />
+          <Route path="/login" component={Login} />
           <Route path="/" component={Landing} />
         </Switch>
       </Router>

@@ -42,10 +42,12 @@ const Content = styled.p`
 
 function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
-  const [karmaPoints, setKarmaPoints] = useState(0);
-  const [streakPoints, setStreakPoints] = useState(0);
   const [blockProgress, setBlockProgress] = useState(false);
-  const [modified, setModified] = useState(null);
+  const [challengeValues, setChallengeValues] = useState({
+    streakPoints: '0',
+    karmaPoints: '0',
+    modified: null
+  });
   const [showDialog, setShowDialog] = useState(false);
 
   const tomorrow = moment()
@@ -68,26 +70,31 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
     }
   }
 
-  function handleCheckbox(event) {
+  async function handleCheckbox(event) {
     const { value } = event.target;
     if (value === 'yes') {
       console.log('clicked');
-      setModified(today);
-      setKarmaPoints(karmaPoints + 1);
-      setStreakPoints(streakPoints + 1);
-      console.log(karmaPoints);
-      onUpdateChallenge({
+      setChallengeValues({
+        karmaPoints: +1,
+        streakPoints: +1,
+        modified: today
+      });
+
+      await onUpdateChallenge({
         ...selectedChallenge,
         lastParticipated: today,
-        karma: karmaPoints,
-        modified: modified,
-        streak: streakPoints
+        karma: challengeValues.karmaPoints,
+        modified: challengeValues.modified,
+        streak: challengeValues.streakPoints
       });
     } else {
-      setStreakPoints(0);
+      setChallengeValues({
+        streakPoints: 0,
+        modified: today
+      });
       onUpdateChallenge({
         ...selectedChallenge,
-        streak: streakPoints
+        streak: challengeValues.streakPoints
       });
     }
   }

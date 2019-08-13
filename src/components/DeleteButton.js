@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   position: absolute;
   right: 50px;
-  bottom: 12px;
-  font-size: 24px;
+  bottom: 10px;
+  font-size: 22px;
   border: none;
   background: none;
   color: #6b5f81;
