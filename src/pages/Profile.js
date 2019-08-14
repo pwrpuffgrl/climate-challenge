@@ -66,8 +66,9 @@ const Karma = styled.div`
   align-items: center;
 `;
 
-function Profile({ challenges, user, ...props }) {
+function Profile({ challenges, activeUser, ...props }) {
   const challenge = challenges.map(challenge => challenge);
+  console.log(activeUser);
 
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
@@ -79,8 +80,10 @@ function Profile({ challenges, user, ...props }) {
     <ProfileGrid>
       <Container>
         <ProfileHeader>
-          <Image src={florentine} />
-          <Name size="L">Florentine Draeger</Name>
+          <Image src={activeUser.image_url} />
+          <Name size="L">
+            {activeUser.first_name} {activeUser.last_name}
+          </Name>
           <Karma>{renderKarma()}</Karma>
         </ProfileHeader>
         <Overview>

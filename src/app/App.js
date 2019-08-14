@@ -29,6 +29,7 @@ function App() {
   const [activeUser, setActiveUser] = useState({});
   React.useEffect(() => setToLocal('user', user), [userData]);
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
+  React.useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
   function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');
@@ -62,6 +63,7 @@ function App() {
   }
 
   function handleUpdateChallenge(challenge) {
+    console.log(challenge);
     const index = challenges.findIndex(item => item._id === challenge._id);
     setChallenges([
       ...challenges.slice(0, index),
@@ -94,6 +96,7 @@ function App() {
             path="/profile"
             render={props => (
               <Profile
+                activeUser={activeUser}
                 challenges={challenges.filter(challenge => challenge.joined)}
                 {...props}
               />

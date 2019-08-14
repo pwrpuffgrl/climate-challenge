@@ -43,11 +43,6 @@ const Content = styled.p`
 function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [blockProgress, setBlockProgress] = useState(false);
-  const [challengeValues, setChallengeValues] = useState({
-    streakPoints: '0',
-    karmaPoints: '0',
-    modified: null
-  });
   const [showDialog, setShowDialog] = useState(false);
 
   const tomorrow = moment()
@@ -73,32 +68,21 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   function handleCheckbox(event) {
     const { value } = event.target;
     if (value === 'yes') {
-      setChallengeValues({
-        karmaPoints: +1,
-        streakPoints: +1,
+      onUpdateChallenge({
+        ...selectedChallenge,
+        karma: selectedChallenge.karma + 1,
+        streak: selectedChallenge.streak + 1,
         modified: today,
         lastParticipated: today
       });
     } else {
-      setChallengeValues({
-        streakPoints: 0,
+      onUpdateChallenge({
+        ...selectedChallenge,
+        streak: 0,
         modified: today
       });
     }
   }
-
-  React.useEffect(() => {
-    onUpdateChallenge(
-      {
-        ...selectedChallenge,
-        lastParticipated: challengeValues.lastParticipated,
-        karma: challengeValues.karmaPoints,
-        modified: challengeValues.modified,
-        streak: challengeValues.streakPoints
-      },
-      [challengeValues]
-    );
-  });
 
   return (
     <>

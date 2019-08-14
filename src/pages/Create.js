@@ -127,7 +127,9 @@ function CreateChallenge({ history, onCreate }) {
       duration: formValues.duration,
       category: formValues.category,
       joined: formValues.joined,
-      lastParticipated: ''
+      lastParticipated: '',
+      karma: 0,
+      streak: 0
     };
     onCreate(challenge);
     history.replace('/challenges');
