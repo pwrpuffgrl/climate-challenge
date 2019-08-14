@@ -70,34 +70,35 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
     }
   }
 
-  async function handleCheckbox(event) {
+  function handleCheckbox(event) {
     const { value } = event.target;
     if (value === 'yes') {
-      console.log('clicked');
       setChallengeValues({
         karmaPoints: +1,
         streakPoints: +1,
-        modified: today
-      });
-
-      await onUpdateChallenge({
-        ...selectedChallenge,
-        lastParticipated: today,
-        karma: challengeValues.karmaPoints,
-        modified: challengeValues.modified,
-        streak: challengeValues.streakPoints
+        modified: today,
+        lastParticipated: today
       });
     } else {
       setChallengeValues({
         streakPoints: 0,
         modified: today
       });
-      onUpdateChallenge({
-        ...selectedChallenge,
-        streak: challengeValues.streakPoints
-      });
     }
   }
+
+  React.useEffect(() => {
+    onUpdateChallenge(
+      {
+        ...selectedChallenge,
+        lastParticipated: challengeValues.lastParticipated,
+        karma: challengeValues.karmaPoints,
+        modified: challengeValues.modified,
+        streak: challengeValues.streakPoints
+      },
+      [challengeValues]
+    );
+  });
 
   return (
     <>

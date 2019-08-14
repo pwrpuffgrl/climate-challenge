@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { createFade } from '../utils/animations';
-import CreateBackground from '../Images/CreateBackground1.png';
 
 const Container = styled.div`
   width: 100%;
@@ -46,13 +45,13 @@ const DropDown = styled.select`
   padding: 5px;
   border-radius: 8px;
   border: solid #46395c 0.5px;
+  overflow-y: auto;
 `;
 
 const Label = styled.label`
   font-size: 20px;
   font-weight: bold;
-  color: #936979;
-  text-shadow: 1px 1px rgba(256, 256, 256, 0.6);
+  color: white;
   font-family: helvetica;
 `;
 
@@ -79,8 +78,12 @@ const CheckboxContainer = styled.div`
 `;
 
 const CreateContainer = styled.div`
-  background: url(${CreateBackground});
-  filter: saturate(70%);
+  color: #46395c;
+  background: linear-gradient(
+    0deg,
+    rgba(124, 87, 109, 1) 20%,
+    rgba(48, 34, 75, 1) 100%
+  );
 `;
 
 function CreateChallenge({ history, onCreate }) {
@@ -164,14 +167,47 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label htmlFor="duration">Duration</Label>
-            <Input
+            <Label htmlFor="duration">Duration in days</Label>
+            <FormRow />
+            <DropDown
               name="duration"
               type="number"
               value={formValues.duration}
-              placeholder="Enter the duration in days"
               onChange={handleChange}
-            />
+            >
+              <option value="null">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </DropDown>
           </FormRow>
           <FormRow>
             <DropDown
@@ -198,9 +234,7 @@ function CreateChallenge({ history, onCreate }) {
               />
             </CheckboxContainer>
           </FormRow>
-          <Button disabled={!formValues.title || !formValues.rules}>
-            Create Challenge
-          </Button>
+          <Button disabled={!formValues}>Create Challenge</Button>
         </Form>
       </Container>
       <Footer />

@@ -10,6 +10,7 @@ import NewsFeed from '../pages/News';
 import Login from '../pages/Login';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
+import userData from '../pages/__mock__/user.json';
 import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
 import uuid from 'uuid/v1';
@@ -24,7 +25,9 @@ function App() {
   const [challenges, setChallenges] = useState(
     getFromLocal('challenges') || challengeData
   );
-
+  const [user, setUser] = useState(getFromLocal('user') || userData);
+  const [activeUser, setActiveUser] = useState({});
+  React.useEffect(() => setToLocal('user', user), [userData]);
   React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
 
   function handleJoinChallenge(id) {
@@ -58,14 +61,20 @@ function App() {
     setChallenges([newChallenge, ...challenges]);
   }
 
-  async function handleUpdateChallenge(challenge) {
+  function handleUpdateChallenge(challenge) {
     const index = challenges.findIndex(item => item._id === challenge._id);
     setChallenges([
       ...challenges.slice(0, index),
       challenge,
       ...challenges.slice(index + 1)
     ]);
-    console.log('app');
+  }
+
+  function handleLogin(formValues) {
+    const profile = formValues.user_name;
+    console.log(formValues);
+    const index = user.findIndex(user => user.user_name === profile);
+    setActiveUser(user[index]);
   }
 
   return (
@@ -113,7 +122,12 @@ function App() {
               />
             )}
           />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/login"
+            render={props => (
+              <Login onLogin={handleLogin} activeUser={activeUser} {...props} />
+            )}
+          />
           <Route path="/" component={Landing} />
         </Switch>
       </Router>

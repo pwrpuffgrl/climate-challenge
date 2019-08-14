@@ -66,12 +66,12 @@ const Karma = styled.div`
   align-items: center;
 `;
 
-function Profile({ challenges, ...props }) {
+function Profile({ challenges, user, ...props }) {
   const challenge = challenges.map(challenge => challenge);
 
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
-    const sum = points.reduce((a, b) => a + b);
+    const sum = points.reduce((a, b) => a + b, 0);
     return sum;
   }
 

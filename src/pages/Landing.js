@@ -40,7 +40,7 @@ function Landing() {
             Climate Cha<Span animation={appear}>lle</Span>nge
           </Title>
           <StartLink animation={appear} to="/login">
-            Click to Start
+            Login
           </StartLink>
         </Fullscreen>
       </BackgroundDiv>
