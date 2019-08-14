@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
@@ -25,11 +25,11 @@ function App() {
   const [challenges, setChallenges] = useState(
     getFromLocal('challenges') || challengeData
   );
+  const [activeUser, setActiveUser] = useState(userData);
   const [user, setUser] = useState(getFromLocal('user') || userData);
-  const [activeUser, setActiveUser] = useState({});
-  React.useEffect(() => setToLocal('user', user), [userData]);
-  React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
-  React.useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
+  useEffect(() => setToLocal('user', user), [userData]);
+  useEffect(() => setToLocal('challenges', challenges), [challenges]);
+  useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
   function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');
@@ -79,6 +79,10 @@ function App() {
     setActiveUser(user[index]);
   }
 
+  function handleUpdateUser(activeUser, challenge) {
+    console.log(activeUser);
+    console.log(challenge);
+  }
   return (
     <Container>
       <Router>
@@ -119,9 +123,11 @@ function App() {
             path="/myChallenges"
             render={props => (
               <MyChallenges
+                activeUser={activeUser}
                 challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
                 onUpdateChallenge={handleUpdateChallenge}
+                onUpdateUser={handleUpdateUser}
               />
             )}
           />

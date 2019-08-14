@@ -40,7 +40,13 @@ const Content = styled.p`
   padding-bottom: 10px;
 `;
 
-function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
+function MyChallenges({
+  challenges,
+  activeUser,
+  onJoinChallenge,
+  onUpdateChallenge,
+  onUpdateUser
+}) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [blockProgress, setBlockProgress] = useState(false);
   const [showDialog, setShowDialog] = useState(false);

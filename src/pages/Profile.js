@@ -68,7 +68,6 @@ const Karma = styled.div`
 
 function Profile({ challenges, activeUser, ...props }) {
   const challenge = challenges.map(challenge => challenge);
-  console.log(activeUser);
 
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
@@ -80,7 +79,7 @@ function Profile({ challenges, activeUser, ...props }) {
     <ProfileGrid>
       <Container>
         <ProfileHeader>
-          <Image src={activeUser.image_url} />
+          <Image src={florentine} />
           <Name size="L">
             {activeUser.first_name} {activeUser.last_name}
           </Name>
@@ -88,13 +87,7 @@ function Profile({ challenges, activeUser, ...props }) {
         </ProfileHeader>
         <Overview>
           <Headline size="M">About me</Headline>
-          <Container>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          </Container>
+          <Container>{activeUser.about_me}</Container>
           <Headline size="S">My Challenges</Headline>
           {!challenge.completed && (
             <Overview>You haven't completed any challenges yet</Overview>
