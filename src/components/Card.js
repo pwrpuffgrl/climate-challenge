@@ -10,7 +10,6 @@ import * as moment from 'moment';
 import Progress from '../components/Progress';
 import CardHeaderImage from '../Images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
-import { cardFade } from '../utils/animations';
 
 const StyledCard = styled.div`
   margin: 15px;
@@ -18,7 +17,6 @@ const StyledCard = styled.div`
   background: white;
   min-width: 340px;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
-  animation: ${cardFade} 2s ease 1 both;
 `;
 
 const Content = styled.p`
@@ -57,28 +55,28 @@ const ContentContainer = styled.div`
 `;
 
 const Streak = styled.div`
-  right: 90px;
-  bottom: 12px;
-  position: fixed;
-  background: #c39791;
+  right: 94px;
+  bottom: 13px;
+  position: absolute;
+  border: solid #6b5f81 1.5px;
+  color: #6b5f81;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
+  height: 22px;
+  width: 22px;
 `;
 
 function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
-  const [percentage, setPercentage] = useState(0);
-
   const start = moment(challenge.startDate);
   const end = moment(challenge.endDate);
   const timeLeft = end.endOf('day').fromNow();
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
   const percent = Math.round(per);
+  const [percentage, setPercentage] = useState(percent);
 
   function handleJoinClick() {
     onJoin(challenge._id);

@@ -38,14 +38,14 @@ const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
   padding-bottom: 10px;
+  margin: 10px;
 `;
 
 function MyChallenges({
   challenges,
   activeUser,
   onJoinChallenge,
-  onUpdateChallenge,
-  onUpdateUser
+  onUpdateChallenge
 }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [blockProgress, setBlockProgress] = useState(false);

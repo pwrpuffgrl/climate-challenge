@@ -25,7 +25,9 @@ function App() {
   const [challenges, setChallenges] = useState(
     getFromLocal('challenges') || challengeData
   );
-  const [activeUser, setActiveUser] = useState(userData);
+  const [activeUser, setActiveUser] = useState(
+    getFromLocal('activeUser') || userData
+  );
   const [user, setUser] = useState(getFromLocal('user') || userData);
   useEffect(() => setToLocal('user', user), [userData]);
   useEffect(() => setToLocal('challenges', challenges), [challenges]);

@@ -27,7 +27,7 @@ function Progress({ percentage }) {
           textColor: '#2e1f4c',
           pathColor: '#2E1F4C',
           trailColor: 'white',
-          textSize: '160%'
+          textSize: '180%'
         })}
       />
     </ProgressContainer>

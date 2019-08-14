@@ -68,7 +68,7 @@ const Karma = styled.div`
 
 function Profile({ challenges, activeUser, ...props }) {
   const challenge = challenges.map(challenge => challenge);
-
+  console.log(challenge);
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
     const sum = points.reduce((a, b) => a + b, 0);
@@ -89,14 +89,11 @@ function Profile({ challenges, activeUser, ...props }) {
           <Headline size="M">About me</Headline>
           <Container>{activeUser.about_me}</Container>
           <Headline size="S">My Challenges</Headline>
-          {!challenge.completed && (
-            <Overview>You haven't completed any challenges yet</Overview>
-          )}
           <Container>
             {challenge.completed && (
               <Tag>
                 <CategoryIcon category={challenge.category} />
-                <div>{challenge.title}</div>
+                <Headline>{challenge.title}</Headline>
               </Tag>
             )}
           </Container>

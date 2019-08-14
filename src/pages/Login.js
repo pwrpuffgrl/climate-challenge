@@ -63,11 +63,9 @@ function Login({ history, activeUser, onLogin, ...props }) {
       ...formValues,
       [name]: value
     });
-    onLogin(formValues);
   }
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(activeUser);
     try {
       if (
         activeUser.user_name === formValues.user_name &&
@@ -80,6 +78,7 @@ function Login({ history, activeUser, onLogin, ...props }) {
     } catch (e) {
       console.log(e);
     }
+    onLogin(formValues);
   }
 
   return (

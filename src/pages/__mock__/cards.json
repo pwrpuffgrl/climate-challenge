@@ -62,5 +62,37 @@
     "lastParticipated": null,
     "completed": false,
     "karma": 0
+  },
+  {
+    "_id": 5,
+    "title": "Leave the bag",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-08-04",
+    "endDate": "2019-08-15",
+    "category": "plastic",
+    "joined": true,
+    "duration": 11,
+    "modified": "2019-08-14",
+    "streak": 6,
+    "lastParticipated": "2019-08-14",
+    "completed": false,
+    "karma": 11
+  },
+  {
+    "_id": 5,
+    "title": "Leave the bag",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-08-04",
+    "endDate": "2019-08-14",
+    "category": "plastic",
+    "joined": true,
+    "duration": 10,
+    "modified": "2019-08-14",
+    "streak": 8,
+    "lastParticipated": "2019-08-14",
+    "completed": true,
+    "karma": 10
   }
 ]

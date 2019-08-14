@@ -63,7 +63,7 @@ const Checkbox = styled.input`
 `;
 
 const Button = styled.button`
-  background: #7c5d6a;
+  background: #c39791;
   color: white;
   border: none;
   font-size: 20px;
@@ -169,7 +169,6 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label htmlFor="duration">Duration in days</Label>
             <FormRow />
             <DropDown
               name="duration"
@@ -177,7 +176,7 @@ function CreateChallenge({ history, onCreate }) {
               value={formValues.duration}
               onChange={handleChange}
             >
-              <option value="null">Select</option>
+              <option value="null">Select duration</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
