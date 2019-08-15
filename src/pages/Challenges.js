@@ -32,7 +32,7 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
   return (
     <>
       <Grid>
-        <Header title="CHALLENGES" />
+        <Header title="Challenges" />
         <CardContainer>
           {challengeData.map(challenge => (
             <Card

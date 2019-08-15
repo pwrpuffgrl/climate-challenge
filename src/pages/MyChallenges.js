@@ -88,7 +88,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   return (
     <>
       <Grid>
-        <Header title="MY CHALLENGES" />
+        <Header title="My Challenges" />
         <CardContainer>
           {challenges.map(challenge => (
             <Card
