@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { createFade } from '../utils/animations';
+import Grid from '../components/Grid';
 
 const Container = styled.div`
   width: 100%;
@@ -51,8 +52,8 @@ const DropDown = styled.select`
 const Label = styled.label`
   font-size: 20px;
   font-weight: bold;
-  color: white;
   font-family: helvetica;
+  color: #46395c;
 `;
 
 const Checkbox = styled.input`
@@ -75,15 +76,6 @@ const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   color: white;
-`;
-
-const CreateContainer = styled.div`
-  color: #46395c;
-  background: linear-gradient(
-    0deg,
-    rgba(124, 87, 109, 1) 20%,
-    rgba(48, 34, 75, 1) 100%
-  );
 `;
 
 function CreateChallenge({ history, onCreate }) {
@@ -136,7 +128,7 @@ function CreateChallenge({ history, onCreate }) {
   }
 
   return (
-    <CreateContainer>
+    <Grid>
       <Header title="CREATE" />
       <Container>
         <Form onSubmit={handleSubmit}>
@@ -239,7 +231,7 @@ function CreateChallenge({ history, onCreate }) {
         </Form>
       </Container>
       <Footer />
-    </CreateContainer>
+    </Grid>
   );
 }
 

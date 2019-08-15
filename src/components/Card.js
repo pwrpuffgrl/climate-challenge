@@ -26,6 +26,7 @@ const Content = styled.p`
   padding-bottom: 15px;
   font-weight: 200;
   line-height: 1.4;
+  margin: 10px;
 `;
 
 const DateRange = styled.div`
@@ -64,7 +65,7 @@ const Streak = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 22px;
+  height: 21px;
   width: 22px;
 `;
 
