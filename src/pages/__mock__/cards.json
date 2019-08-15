@@ -4,8 +4,8 @@
     "title": "No animal products",
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ",
     "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
-    "startDate": "2019-06-30",
-    "endDate": "2019-07-30",
+    "startDate": "2019-08-2",
+    "endDate": "2019-08-16",
     "category": "agriculture",
     "joined": false,
     "modified": null,
@@ -13,7 +13,8 @@
     "duration": 14,
     "lastParticipated": null,
     "completed": false,
-    "karma": 0
+    "karma": 0,
+    "percent": 0
   },
   {
     "_id": 2,
@@ -29,7 +30,8 @@
     "duration": 14,
     "lastParticipated": null,
     "completed": false,
-    "karma": 0
+    "karma": 0,
+    "percent": 0
   },
   {
     "_id": 3,
@@ -45,7 +47,8 @@
     "streak": 0,
     "lastParticipated": null,
     "completed": false,
-    "karma": 0
+    "karma": 0,
+    "percent": 0
   },
   {
     "_id": 4,
@@ -61,7 +64,8 @@
     "streak": 0,
     "lastParticipated": null,
     "completed": false,
-    "karma": 0
+    "karma": 0,
+    "percent": 0
   },
   {
     "_id": 5,
@@ -77,22 +81,41 @@
     "streak": 6,
     "lastParticipated": "2019-08-14",
     "completed": false,
-    "karma": 11
+    "karma": 11,
+    "percent": 0
   },
   {
-    "_id": 5,
-    "title": "Leave the bag",
+    "_id": 6,
+    "title": "Hike and bike",
     "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
     "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
     "startDate": "2019-08-04",
-    "endDate": "2019-08-14",
-    "category": "plastic",
+    "endDate": "2019-08-16",
+    "category": "transportation",
     "joined": true,
-    "duration": 10,
+    "duration": 12,
     "modified": "2019-08-14",
     "streak": 8,
     "lastParticipated": "2019-08-14",
     "completed": true,
-    "karma": 10
+    "karma": 10,
+    "percent": 0
+  },
+  {
+    "_id": 7,
+    "title": "Shopping detox",
+    "rules": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "tips": "At vero eos et accusam et justo duo dolores et ea rebum.",
+    "startDate": "2019-08-01",
+    "endDate": "2019-08-15",
+    "category": "waste",
+    "joined": true,
+    "duration": 14,
+    "modified": "2019-08-14",
+    "streak": 2,
+    "lastParticipated": "2019-08-14",
+    "completed": false,
+    "karma": 13,
+    "percent": 0
   }
 ]

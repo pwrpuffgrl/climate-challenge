@@ -71,13 +71,15 @@ const Streak = styled.div`
 
 function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
+  const today = moment().format('YYYY-MM-DD');
   const start = moment(challenge.startDate);
   const end = moment(challenge.endDate);
   const timeLeft = end.endOf('day').fromNow();
+
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
-  const percent = Math.round(per);
-  const [percentage, setPercentage] = useState(percent);
+  const percentage = Math.round(per);
+  console.log(timePassed, challenge.duration, percentage);
 
   function handleJoinClick() {
     onJoin(challenge._id);
@@ -100,7 +102,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   }
   function handleProgressClick() {
     onProgress(challenge);
-    setPercentage(percent);
+    console.log(challenge);
   }
 
   return (

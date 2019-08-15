@@ -30,14 +30,13 @@ const Button = styled.button`
 
 function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
   const [showJoined, setShowJoined] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
+
   function handleJoin(id) {
     onJoinChallenge(id);
     setShowJoined(true);
   }
 
   function handleDelete(id) {
-    setShowDialog(!showDialog);
     onDeleteChallenge(id);
   }
 
@@ -67,15 +66,6 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
             </span>
           </Headline>
           <ButtonLink to="/mychallenges">See My Challenges</ButtonLink>
-        </Dialog>
-      )}
-
-      {showDialog && (
-        <Dialog onClose={() => setShowDialog(false)}>
-          <Headline size="S" font="sub">
-            Do you really want to delete this challenge?
-          </Headline>
-          <Button onClick={handleDelete}>Delete</Button>
         </Dialog>
       )}
     </>

@@ -65,7 +65,6 @@ function App() {
   }
 
   function handleUpdateChallenge(challenge) {
-    console.log(challenge);
     const index = challenges.findIndex(item => item._id === challenge._id);
     setChallenges([
       ...challenges.slice(0, index),

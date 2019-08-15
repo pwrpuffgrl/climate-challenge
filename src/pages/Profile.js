@@ -42,13 +42,19 @@ const Name = styled(Headline)`
 const Overview = styled.div`
   color: #30224b;
   padding: 5px;
+  overflow-y: auto;
 `;
 
-const Tag = styled.div`
+const Batch = styled.div`
   background: #c39791;
-  border-radius: 12px;
-  margin: 3px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 `;
 
 const Karma = styled.div`
@@ -90,12 +96,13 @@ function Profile({ challenges, activeUser, ...props }) {
           <Container>{activeUser.about_me}</Container>
           <Headline size="S">My Challenges</Headline>
           <Container>
-            {challenge.completed && (
-              <Tag>
-                <CategoryIcon category={challenge.category} />
-                <Headline>{challenge.title}</Headline>
-              </Tag>
-            )}
+            {challenges
+              .filter(challenge => challenge.completed === true)
+              .map(challenge => (
+                <Batch>
+                  <CategoryIcon category={challenge.category} />
+                </Batch>
+              ))}
           </Container>
           <Container />
         </Overview>

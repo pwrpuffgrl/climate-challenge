@@ -45,7 +45,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [blockProgress, setBlockProgress] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-
+  const [completed, setCompleted] = useState(false);
   const tomorrow = moment()
     .add(1, 'day')
     .startOf('day');
@@ -54,11 +54,13 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
 
   function handleProgressClick(challenge) {
     setSelectedChallenge(challenge);
-    if (challenge.lastParticipated === challenge.endDate) {
+    if (challenge.lastParticipated === today) {
       onUpdateChallenge({
         ...challenge,
-        completed: true
+        completed: true,
+        joined: false
       });
+      setCompleted(true);
     }
     if (challenge.modified === today) {
       setBlockProgress(true);
@@ -139,6 +141,19 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             You can only log your progress once a day.
           </Headline>
           <Content>You can log again in about {time} hours.</Content>
+        </Dialog>
+      )}
+
+      {completed && (
+        <Dialog onClose={() => setCompleted(false)}>
+          <Headline size="S" font="sub">
+            Congrats on completing this challenge!!!
+          </Headline>
+          <Content>
+            Thank's for making this world a little better, one challenge at a
+            time.
+          </Content>
+          <ButtonLink to="/profile">See my completed Challenges</ButtonLink>
         </Dialog>
       )}
     </>
