@@ -41,12 +41,7 @@ const Content = styled.p`
   margin: 10px;
 `;
 
-function MyChallenges({
-  challenges,
-  activeUser,
-  onJoinChallenge,
-  onUpdateChallenge
-}) {
+function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [blockProgress, setBlockProgress] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -61,7 +56,7 @@ function MyChallenges({
     setSelectedChallenge(challenge);
     if (challenge.lastParticipated === challenge.endDate) {
       onUpdateChallenge({
-        ...selectedChallenge,
+        ...challenge,
         completed: true
       });
     }

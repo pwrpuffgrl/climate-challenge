@@ -81,10 +81,6 @@ function App() {
     setActiveUser(user[index]);
   }
 
-  function handleUpdateUser(activeUser, challenge) {
-    console.log(activeUser);
-    console.log(challenge);
-  }
   return (
     <Container>
       <Router>
@@ -129,7 +125,6 @@ function App() {
                 challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
                 onUpdateChallenge={handleUpdateChallenge}
-                onUpdateUser={handleUpdateUser}
               />
             )}
           />
