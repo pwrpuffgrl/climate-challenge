@@ -53,7 +53,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
 
   function handleProgressClick(challenge) {
     setSelectedChallenge(challenge);
-    if (challenge.lastParticipated === today) {
+    if (challenge.lastParticipated === challenge.endDate) {
       onUpdateChallenge({
         ...challenge,
         completed: true,

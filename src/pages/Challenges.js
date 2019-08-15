@@ -17,17 +17,6 @@ const CardContainer = styled.div`
   overflow-y: auto;
 `;
 
-const Button = styled.button`
-  background: #7c5d6a;
-  border: none;
-  height: 40px;
-  color: white;
-  margin-top: 30px;
-  border-radius: 12px;
-  font-family: 'Raleway';
-  font-size: 16px;
-`;
-
 function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
   const [showJoined, setShowJoined] = useState(false);
 

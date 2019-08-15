@@ -90,8 +90,7 @@ function CreateChallenge({ history, onCreate }) {
     endDate: '',
     lastParticipated: '',
     completed: false,
-    karma: 0,
-    percent: 0
+    karma: 0
   });
 
   function handleChange(event) {
@@ -120,7 +119,7 @@ function CreateChallenge({ history, onCreate }) {
       duration: formValues.duration,
       category: formValues.category,
       joined: formValues.joined,
-      lastParticipated: '',
+      lastParticipated: formValues.lastParticipated,
       karma: 0,
       streak: 0
     };

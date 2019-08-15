@@ -45,18 +45,6 @@ const Overview = styled.div`
   overflow-y: auto;
 `;
 
-const Batch = styled.div`
-  background: #c39791;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-`;
-
 const Karma = styled.div`
   position: absolute;
   top: 90px;
@@ -70,6 +58,16 @@ const Karma = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Badge = styled.div`
+  width: 100%
+  height: 50px;
+  text-align: left;
+  object-fit: cover;
+  margin: 0;
+  color: white;
+  background: url(${CardHeader});
 `;
 
 function Profile({ challenges, activeUser, ...props }) {
@@ -99,9 +97,10 @@ function Profile({ challenges, activeUser, ...props }) {
             {challenges
               .filter(challenge => challenge.completed === true)
               .map(challenge => (
-                <Batch>
+                <Badge>
+                  <Headline>{challenge.title}</Headline>
                   <CategoryIcon category={challenge.category} />
-                </Batch>
+                </Badge>
               ))}
           </Container>
           <Container />
