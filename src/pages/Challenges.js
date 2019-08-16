@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
-import Footer from '../components/Footer';
 import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
@@ -15,6 +14,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  padding-bottom: 80px;
 `;
 
 function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import styled from 'styled-components';
 import icon from '../Images/icon.png';
 import { Link } from 'react-router-dom';
@@ -37,3 +37,4 @@ function Footer(onClick) {
 }
 
 export default Footer;
+*/

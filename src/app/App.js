@@ -57,10 +57,16 @@ function App() {
   }
 
   function handleDeleteChallenge(id) {
+    const sign = prompt('delete this challenge?');
     const newChallenges = challenges.filter(challenge => {
       return challenge._id !== id;
     });
-    setChallenges(newChallenges);
+
+    if (sign.toLowerCase() === 'yes') {
+      setTimeout(function() {
+        setChallenges(newChallenges);
+      }, 500);
+    }
   }
 
   function handleCreate(challenge) {

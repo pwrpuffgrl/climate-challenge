@@ -15,6 +15,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  padding-bottom: 80px;
 `;
 const CheckboxContainer = styled.form`
   display: flex;
@@ -51,6 +52,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const today = moment().format('YYYY-MM-DD');
 
   function handleProgressClick(challenge) {
+    console.log(challenge);
     setSelectedChallenge(challenge);
     if (challenge.lastParticipated === challenge.endDate) {
       onUpdateChallenge({

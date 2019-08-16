@@ -14,7 +14,7 @@ const StyledButton = styled.button`
 function DeleteButton({ onClick }) {
   return (
     <StyledButton onClick={onClick}>
-      <i class="far fa-trash-alt" />
+      <i className="far fa-trash-alt shake" />
     </StyledButton>
   );
 }

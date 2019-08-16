@@ -59,11 +59,14 @@ export const createFade = props => keyframes`
   }
 `;
 
-export const wobble = props => keyframes`
-from{
-  transform: translateX(0%)
-}
+export const popUp = props => keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0px, 200px, 0px);
+  }
 
-to {
-  transform-origin: 50% 50%;
-}`;
+  to {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+  }
+`;

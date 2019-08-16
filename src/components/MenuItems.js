@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
+import { popUp, createFade } from '../utils/animations';
 
 const A = styled.a`
   font-size: 20px;
@@ -41,11 +42,11 @@ const MenuContainer = styled.div`
   background: white;
   color: #7c5d6a;
   padding: 20px;
-  min-height: auto;
-  width: auto;
+  min-height: 50%;
+  width: 100%;
   position: absolute;
-  right: 0;
   top: 0;
+  animation: ${createFade} 0.5s;
 `;
 
 function MenuItems({ showMenu, onClose }) {
