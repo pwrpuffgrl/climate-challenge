@@ -204,7 +204,6 @@ function CreateChallenge({ history, onCreate }) {
           <Button disabled={!formValues}>Create Challenge</Button>
         </Form>
       </Container>
-      <Footer />
     </Grid>
   );
 }

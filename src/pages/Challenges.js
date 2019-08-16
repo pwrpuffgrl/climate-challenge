@@ -43,7 +43,6 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
             />
           ))}
         </CardContainer>
-        <Footer />
       </Grid>
 
       {showJoined && (

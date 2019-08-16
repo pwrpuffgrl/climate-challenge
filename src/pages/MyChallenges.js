@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import Grid from '../components/Grid';
-import Footer from '../components/Footer';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import ButtonLink from '../components/ButtonLink';
@@ -100,7 +99,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             />
           ))}
         </CardContainer>
-        <Footer />
       </Grid>
 
       {selectedChallenge && !blockProgress && (

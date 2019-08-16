@@ -21,7 +21,7 @@ const StyledHeadline = styled(Headline)`
 
 const NewsCard = styled.div`
   color: #242d42;
-  z-index: 2000;
+  z-index: 1000;
   min-width: 340px;
   background: white;
   margin: 15px;
@@ -88,7 +88,7 @@ function NewsFeed() {
 
   return (
     <Grid>
-      <Header title="CLIMATE NEWS" />
+      <Header title="Climate News" />
       <CardContainer>
         {articles &&
           articles.map(article => (
@@ -108,7 +108,6 @@ function NewsFeed() {
             </NewsCard>
           ))}
       </CardContainer>
-      <Footer />
     </Grid>
   );
 }

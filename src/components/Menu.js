@@ -1,26 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Icon = styled.div`
+const Icon = styled.i`
   font-size: 30px;
-  color: #6b5f81;
-  position: fixed;
-  right: 15px;
-
-  &:active {
-    height: 100%;
-    width: 400px;
-    background: #6b5f81;
-    position: fixed;
-    right: 15px;
-  }
+  color: #936979;
+  bottom: 15px;
+  z-index: 4000;
 `;
 
-function Menu({ onClick }) {
+const Footer = styled.div`
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: transparent;
+  z-index: 4000;
+`;
+
+const Background = styled.div`
+  background: white;
+  box-shadow: 2px 1px 22px 0px rgba(122, 100, 98, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+`;
+
+function Menu({ showMenu, setShowMenu }) {
   return (
-    <Icon onClick={onClick}>
-      <i className="fas fa-bars" />
-    </Icon>
+    <Footer>
+      <Background>
+        <Icon onClick={() => setShowMenu(!showMenu)} className="fas fa-bars" />
+      </Background>
+    </Footer>
   );
 }
 

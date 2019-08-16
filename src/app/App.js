@@ -14,6 +14,8 @@ import userData from '../pages/__mock__/user.json';
 import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
 import uuid from 'uuid/v1';
+import Menu from '../components/Menu';
+import MenuItems from '../components/MenuItems';
 
 const Container = styled.div`
   height: 100vh;
@@ -28,8 +30,10 @@ function App() {
   const [activeUser, setActiveUser] = useState(
     getFromLocal('activeUser') || userData
   );
+  const [showMenu, setShowMenu] = useState(false);
+  console.log(showMenu);
   const [user, setUser] = useState(getFromLocal('user') || userData);
-  useEffect(() => setToLocal('user', user), [userData]);
+  useEffect(() => setToLocal('user', user), [user]);
   useEffect(() => setToLocal('challenges', challenges), [challenges]);
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
@@ -84,6 +88,10 @@ function App() {
     <Container>
       <Router>
         <GlobalStyle />
+        <Menu setShowMenu={setShowMenu} showMenu={showMenu} />
+        {showMenu && (
+          <MenuItems showMenu={showMenu} onClose={() => setShowMenu(false)} />
+        )}
         <Switch>
           <Route path="/news" component={NewsFeed} />
           <Route

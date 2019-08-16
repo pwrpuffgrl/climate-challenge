@@ -106,7 +106,6 @@ function Profile({ challenges, activeUser, ...props }) {
           <Container />
         </Overview>
       </Container>
-      <Footer />
     </ProfileGrid>
   );
 }
