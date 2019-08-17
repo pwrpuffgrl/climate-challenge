@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
-import { popUp, createFade } from '../utils/animations';
+import { createFade } from '../utils/animations';
 
 const A = styled.a`
   font-size: 20px;

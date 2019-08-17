@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Footer from '../components/Footer';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
 import florentine from '../Images/florentineProfile.png';
@@ -73,7 +72,6 @@ const Badge = styled.div`
 
 function Profile({ challenges, activeUser, ...props }) {
   const challenge = challenges.map(challenge => challenge);
-  console.log(challenge);
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
     const sum = points.reduce((a, b) => a + b, 0);

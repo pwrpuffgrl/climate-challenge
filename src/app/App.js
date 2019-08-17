@@ -9,11 +9,16 @@ import Landing from '../pages/Landing';
 import NewsFeed from '../pages/News';
 import Login from '../pages/Login';
 import GlobalStyle from './GlobalStyle';
-import challengeData from '../pages/__mock__/cards.json';
 import userData from '../pages/__mock__/user.json';
-import { getFromLocal, setToLocal } from '../services';
+import {
+  getFromLocal,
+  setToLocal,
+  getChallenges,
+  postChallenge,
+  patchChallenge,
+  deleteChallenge
+} from '../services';
 import * as moment from 'moment';
-import uuid from 'uuid/v1';
 
 const Container = styled.div`
   height: 100vh;
@@ -22,23 +27,41 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [challenges, setChallenges] = useState(
-    getFromLocal('challenges') || challengeData
-  );
+  const [challenges, setChallenges] = useState([]);
   const [activeUser, setActiveUser] = useState(
     getFromLocal('activeUser') || userData
   );
-  const [showMenu, setShowMenu] = useState(false);
-  console.log(showMenu);
+
+  React.useEffect(() => {
+    loadChallenges();
+  }, [challenges]);
+
   const [user, setUser] = useState(getFromLocal('user') || userData);
   useEffect(() => setToLocal('user', user), [user]);
   useEffect(() => setToLocal('challenges', challenges), [challenges]);
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
+  async function loadChallenges() {
+    setChallenges(await getChallenges());
+  }
+
+  function updateChallengeInState(data) {
+    const index = challenges.findIndex(challenge => challenge._id === data._id);
+    setChallenges([
+      ...challenges.slice(0, index),
+      data,
+      ...challenges.slice(index + 1)
+    ]);
+  }
+
   function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');
     const index = challenges.findIndex(challenge => challenge._id === id);
-    const challenge = challenges[index];
+
+    const challenge = {
+      ...challenges[index],
+      joined: !challenges[index].joined
+    };
     setChallenges([
       ...challenges.slice(0, index),
       {
@@ -52,38 +75,40 @@ function App() {
       },
       ...challenges.slice(index + 1)
     ]);
+    patchChallenge(challenge, challenge._id).then(result =>
+      updateChallengeInState(result)
+    );
   }
 
-  function handleDeleteChallenge(id) {
+  function handleDeleteChallenge(id, challenge) {
     const sign = prompt('delete this challenge?');
     const newChallenges = challenges.filter(challenge => {
       return challenge._id !== id;
     });
-
     if (sign.toLowerCase() === 'yes') {
       setTimeout(function() {
         setChallenges(newChallenges);
       }, 500);
     }
+    /* deleteChallenge(id, challenge).then(result =>
+      setChallenges([result, ...challenges])
+    );*/
   }
 
   function handleCreate(challenge) {
-    const newChallenge = { _id: uuid(), ...challenge };
-    setChallenges([newChallenge, ...challenges]);
+    postChallenge(challenge).then(result =>
+      setChallenges([result, ...challenges])
+    );
   }
 
   function handleUpdateChallenge(challenge) {
-    const index = challenges.findIndex(item => item._id === challenge._id);
-    setChallenges([
-      ...challenges.slice(0, index),
-      challenge,
-      ...challenges.slice(index + 1)
-    ]);
+    patchChallenge(challenge, challenge._id).then(result =>
+      updateChallengeInState(result)
+    );
   }
 
   function handleLogin(formValues) {
     const profile = formValues.user_name;
-    console.log(formValues);
     const index = user.findIndex(user => user.user_name === profile);
     setActiveUser(user[index]);
   }
@@ -116,9 +141,7 @@ function App() {
             path="/challenges"
             render={props => (
               <Challenges
-                challengeData={challenges.filter(
-                  challenge => !challenge.joined
-                )}
+                challenges={challenges.filter(challenge => !challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
                 onDeleteChallenge={handleDeleteChallenge}
               />
@@ -141,7 +164,7 @@ function App() {
               <Login onLogin={handleLogin} activeUser={activeUser} {...props} />
             )}
           />
-          <Route path="/" components={Landing} />
+          <Route path="/" component={Landing} />
         </Switch>
       </Router>
     </Container>

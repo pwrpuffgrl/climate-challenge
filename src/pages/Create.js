@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { createFade } from '../utils/animations';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
+import * as moment from 'moment';
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -78,6 +79,7 @@ const CheckboxContainer = styled.div`
 `;
 
 function CreateChallenge({ history, onCreate }) {
+  const today = moment().format('YYYY-MM-DD');
   const [formValues, setFormValues] = React.useState({
     title: '',
     rules: '',
@@ -87,7 +89,7 @@ function CreateChallenge({ history, onCreate }) {
     joined: false,
     startDate: '',
     endDate: '',
-    lastParticipated: '',
+    lastParticipated: today,
     completed: false,
     karma: 0
   });
@@ -120,7 +122,9 @@ function CreateChallenge({ history, onCreate }) {
       joined: formValues.joined,
       lastParticipated: formValues.lastParticipated,
       karma: 0,
-      streak: 0
+      streak: 0,
+      startDate: formValues.lastParticipated,
+      endDate: formValues.lastParticipated
     };
     onCreate(challenge);
     history.replace('/challenges');

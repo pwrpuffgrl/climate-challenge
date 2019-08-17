@@ -18,7 +18,7 @@ const CardContainer = styled.div`
   padding-bottom: 80px;
 `;
 
-function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
+function Challenges({ challenges, onJoinChallenge, onDeleteChallenge }) {
   const [showJoined, setShowJoined] = useState(false);
 
   function handleJoin(id) {
@@ -35,7 +35,7 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
       <Grid>
         <Header title="Challenges" />
         <CardContainer>
-          {challengeData.map(challenge => (
+          {challenges.map(challenge => (
             <Card
               key={challenge._id}
               challenge={challenge}

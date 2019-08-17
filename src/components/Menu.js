@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MenuItems from './MenuItems';
-const Icon = styled.i`
-  font-size: 30px;
-  color: #936979;
-  bottom: 15px;
-  z-index: 4000;
-`;
+import MainLogo from './MainLogo';
+import { rotate } from '../utils/animations';
 
 const Footer = styled.div`
   display: flex;
@@ -31,6 +27,10 @@ const Background = styled.div`
   width: 70px;
 `;
 
+const StyledLogo = styled(MainLogo)`
+  fill: #936979;
+`;
+
 function Menu() {
   const [showMenu, setShowMenu] = useState(false);
   function handleClick() {
@@ -39,9 +39,9 @@ function Menu() {
   return (
     <Footer>
       <Background>
-        <Icon onClick={() => handleClick()} className="fas fa-bars" />
+        <StyledLogo animation={rotate} onClick={() => handleClick()} />
       </Background>
-      {showMenu && <MenuItems />}
+      {showMenu && <MenuItems onClose={() => setShowMenu(!showMenu)} />}
     </Footer>
   );
 }

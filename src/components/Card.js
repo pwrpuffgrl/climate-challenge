@@ -78,7 +78,6 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
   const percentage = Math.round(per);
-  console.log(timePassed, challenge.duration, percentage);
 
   function handleJoinClick() {
     onJoin(challenge._id);
