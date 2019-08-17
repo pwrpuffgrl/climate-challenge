@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import MenuItems from './MenuItems';
 const Icon = styled.i`
   font-size: 30px;
   color: #936979;
@@ -31,12 +31,17 @@ const Background = styled.div`
   width: 70px;
 `;
 
-function Menu({ showMenu, setShowMenu }) {
+function Menu() {
+  const [showMenu, setShowMenu] = useState(false);
+  function handleClick() {
+    setShowMenu(!showMenu);
+  }
   return (
     <Footer>
       <Background>
-        <Icon onClick={() => setShowMenu(!showMenu)} className="fas fa-bars" />
+        <Icon onClick={() => handleClick()} className="fas fa-bars" />
       </Background>
+      {showMenu && <MenuItems />}
     </Footer>
   );
 }

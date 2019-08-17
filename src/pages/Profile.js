@@ -6,6 +6,7 @@ import ProfileGrid from '../components/ProfileGrid';
 import florentine from '../Images/florentineProfile.png';
 import CardHeader from '../Images/CardHeader.png';
 import CategoryIcon from '../components/CategoryIcon';
+import Menu from '../components/Menu';
 
 const Image = styled.img`
   height: 110px;
@@ -106,6 +107,7 @@ function Profile({ challenges, activeUser, ...props }) {
           <Container />
         </Overview>
       </Container>
+      <Menu />
     </ProfileGrid>
   );
 }

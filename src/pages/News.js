@@ -5,6 +5,7 @@ import Grid from '../components/Grid';
 import { getArticles } from '../utils/newsAPI';
 import Headline from '../components/Headline';
 import { cardFade } from '../utils/animations';
+import Menu from '../components/Menu';
 
 const CardContainer = styled.div`
   margin: 0 auto;
@@ -107,6 +108,7 @@ function NewsFeed() {
             </NewsCard>
           ))}
       </CardContainer>
+      <Menu />
     </Grid>
   );
 }

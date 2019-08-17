@@ -6,6 +6,7 @@ import Grid from '../components/Grid';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import ButtonLink from '../components/ButtonLink';
+import Menu from '../components/Menu';
 import * as moment from 'moment';
 
 const CardContainer = styled.div`
@@ -101,6 +102,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             />
           ))}
         </CardContainer>
+        <Menu />
       </Grid>
 
       {selectedChallenge && !blockProgress && (

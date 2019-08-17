@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import { createFade } from '../utils/animations';
 import Grid from '../components/Grid';
-
+import Menu from '../components/Menu';
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -203,6 +203,7 @@ function CreateChallenge({ history, onCreate }) {
           <Button disabled={!formValues}>Create Challenge</Button>
         </Form>
       </Container>
+      <Menu />
     </Grid>
   );
 }

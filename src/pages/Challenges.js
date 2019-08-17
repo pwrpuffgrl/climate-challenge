@@ -6,6 +6,7 @@ import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
+import Menu from '../components/Menu';
 
 const CardContainer = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
             />
           ))}
         </CardContainer>
+        <Menu />
       </Grid>
 
       {showJoined && (
