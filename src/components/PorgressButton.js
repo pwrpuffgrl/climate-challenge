@@ -4,17 +4,17 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   position: absolute;
   right: 50px;
-  bottom: 15px;
-  font-size: 20px;
+  bottom: 8px;
+  font-size: 24px;
   border: none;
   background: none;
-  color: #2e1f4c;
+  color: #6b5f81;
 `;
 
 function ProgressButton({ onClick }) {
   return (
     <StyledButton onClick={onClick}>
-      <i className="fas fa-tasks" />
+      <i className="far fa-check-square" />
     </StyledButton>
   );
 }

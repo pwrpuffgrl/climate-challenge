@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "csshake": "^1.5.3",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
     "moment": "^2.24.0",

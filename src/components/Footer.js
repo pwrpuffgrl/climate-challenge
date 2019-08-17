@@ -1,42 +1,40 @@
-import React from 'react';
+/*import React from 'react';
 import styled from 'styled-components';
+import icon from '../Images/icon.png';
 import { Link } from 'react-router-dom';
 
 const StyledFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 60px;
+  height: 80px;
   background: white;
 `;
 
-const NavLink = styled(Link)`
-  margin: 0;
-  font-size: 34px;
-  color: #936979;
-  text-decoration: none;
+const Background = styled.div`
+  background: #936979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
 `;
 
-function Footer() {
+const IMG = styled.img`
+  height: 150%;
+  width: 150%;
+`;
+
+function Footer(onClick) {
   return (
     <StyledFooter>
-      <NavLink to="/mychallenges">
-        <i className="fas fa-hand-holding-heart" />
-      </NavLink>
-      <NavLink to="/create">
-        <i className="fas fa-plus-circle" />
-      </NavLink>
-      <NavLink to="/">
-        <i className="fas fa-home" />
-      </NavLink>
-      <NavLink to="/challenges">
-        <i className="fas fa-globe-africa" />
-      </NavLink>
-      <NavLink to="/news">
-        <i className="fas fa-newspaper" />
-      </NavLink>
+      <Background>
+        <IMG src={icon} alt="icon" onClick={onClick} />
+      </Background>
     </StyledFooter>
   );
 }
 
 export default Footer;
+*/

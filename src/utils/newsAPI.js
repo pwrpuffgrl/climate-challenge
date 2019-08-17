@@ -1,6 +1,6 @@
 export function getArticles() {
   return fetch(
-    `https://newsapi.org/v2/everything?q=climatecrisis&apiKey=d2d2ce5a83f945829faea2da36c42397`
+    `https://newsapi.org/v2/everything?q=climatechange&apiKey=d2d2ce5a83f945829faea2da36c42397`
   )
     .then(response => response.json())
     .then(result => {

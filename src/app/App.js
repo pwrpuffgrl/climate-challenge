@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Challenges from '../pages/Challenges';
 import MyChallenges from '../pages/MyChallenges';
 import CreateChallenge from '../pages/Create';
+import Profile from '../pages/Profile';
 import Landing from '../pages/Landing';
 import NewsFeed from '../pages/News';
+import Login from '../pages/Login';
 import GlobalStyle from './GlobalStyle';
 import challengeData from '../pages/__mock__/cards.json';
+import userData from '../pages/__mock__/user.json';
 import { getFromLocal, setToLocal } from '../services';
 import * as moment from 'moment';
 import uuid from 'uuid/v1';
@@ -22,11 +25,18 @@ function App() {
   const [challenges, setChallenges] = useState(
     getFromLocal('challenges') || challengeData
   );
-
-  React.useEffect(() => setToLocal('challenges', challenges), [challenges]);
+  const [activeUser, setActiveUser] = useState(
+    getFromLocal('activeUser') || userData
+  );
+  const [showMenu, setShowMenu] = useState(false);
+  console.log(showMenu);
+  const [user, setUser] = useState(getFromLocal('user') || userData);
+  useEffect(() => setToLocal('user', user), [user]);
+  useEffect(() => setToLocal('challenges', challenges), [challenges]);
+  useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
   function handleJoinChallenge(id) {
-    const today = moment().toISOString();
+    const today = moment().format('YYYY-MM-DD');
     const index = challenges.findIndex(challenge => challenge._id === id);
     const challenge = challenges[index];
     setChallenges([
@@ -38,17 +48,23 @@ function App() {
         lastParticipated: today,
         endDate: moment(today)
           .add(challenge.duration, 'days')
-          .toISOString() // TODO: remove
+          .format('YYYY-MM-DD')
       },
       ...challenges.slice(index + 1)
     ]);
   }
 
   function handleDeleteChallenge(id) {
+    const sign = prompt('delete this challenge?');
     const newChallenges = challenges.filter(challenge => {
       return challenge._id !== id;
     });
-    setChallenges(newChallenges);
+
+    if (sign.toLowerCase() === 'yes') {
+      setTimeout(function() {
+        setChallenges(newChallenges);
+      }, 500);
+    }
   }
 
   function handleCreate(challenge) {
@@ -65,6 +81,13 @@ function App() {
     ]);
   }
 
+  function handleLogin(formValues) {
+    const profile = formValues.user_name;
+    console.log(formValues);
+    const index = user.findIndex(user => user.user_name === profile);
+    setActiveUser(user[index]);
+  }
+
   return (
     <Container>
       <Router>
@@ -75,6 +98,17 @@ function App() {
             path="/create"
             render={props => (
               <CreateChallenge onCreate={handleCreate} {...props} />
+            )}
+          />
+          )} />
+          <Route
+            path="/profile"
+            render={props => (
+              <Profile
+                activeUser={activeUser}
+                challenges={challenges.filter(challenge => challenge.joined)}
+                {...props}
+              />
             )}
           />
           )} />
@@ -94,13 +128,20 @@ function App() {
             path="/myChallenges"
             render={props => (
               <MyChallenges
+                activeUser={activeUser}
                 challenges={challenges.filter(challenge => challenge.joined)}
                 onJoinChallenge={handleJoinChallenge}
                 onUpdateChallenge={handleUpdateChallenge}
               />
             )}
           />
-          <Route path="/" component={Landing} />
+          <Route
+            path="/login"
+            render={props => (
+              <Login onLogin={handleLogin} activeUser={activeUser} {...props} />
+            )}
+          />
+          <Route path="/" components={Landing} />
         </Switch>
       </Router>
     </Container>

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import Grid from '../components/Grid';
-import Footer from '../components/Footer';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import ButtonLink from '../components/ButtonLink';
+import Menu from '../components/Menu';
 import * as moment from 'moment';
 
 const CardContainer = styled.div`
@@ -16,6 +16,7 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
+  padding-bottom: 80px;
 `;
 const CheckboxContainer = styled.form`
   display: flex;
@@ -38,32 +39,58 @@ const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
   padding-bottom: 10px;
+  margin: 10px;
 `;
 
 function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
+  const [blockProgress, setBlockProgress] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const tomorrow = moment()
+    .add(1, 'day')
+    .startOf('day');
+  const time = tomorrow.diff(moment().utc(), 'hours');
+  const today = moment().format('YYYY-MM-DD');
 
   function handleProgressClick(challenge) {
+    console.log(challenge);
     setSelectedChallenge(challenge);
+    if (challenge.lastParticipated === challenge.endDate) {
+      onUpdateChallenge({
+        ...challenge,
+        completed: true,
+        joined: false
+      });
+    }
+    if (challenge.modified === today) {
+      setBlockProgress(true);
+      setShowDialog(true);
+    }
   }
 
   function handleCheckbox(event) {
     const { value } = event.target;
-
     if (value === 'yes') {
       onUpdateChallenge({
         ...selectedChallenge,
-        lastParticipated: moment().toISOString()
+        karma: selectedChallenge.karma + 1,
+        streak: selectedChallenge.streak + 1,
+        modified: today,
+        lastParticipated: today
+      });
+    } else {
+      onUpdateChallenge({
+        ...selectedChallenge,
+        streak: 0,
+        modified: today
       });
     }
-
-    setSelectedChallenge(null);
   }
 
   return (
     <>
       <Grid>
-        <Header title="MY CHALLENGES" />
+        <Header title="My Challenges" />
         <CardContainer>
           {challenges.map(challenge => (
             <Card
@@ -75,10 +102,10 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             />
           ))}
         </CardContainer>
-        <Footer />
+        <Menu />
       </Grid>
 
-      {selectedChallenge && (
+      {selectedChallenge && !blockProgress && (
         <Dialog onClose={() => setSelectedChallenge(null)}>
           <Headline size="S" font="sub">
             Log your progress
@@ -92,7 +119,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
               name="progress"
               type="radio"
               value="yes"
-              onChange={handleCheckbox}
+              onClick={handleCheckbox}
             />
             <Label htmlFor="no">
               NO <i className="far fa-thumbs-down" />
@@ -105,6 +132,15 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
             />
           </CheckboxContainer>
           <ButtonLink to="/challenges"> Not now</ButtonLink>
+        </Dialog>
+      )}
+
+      {blockProgress && showDialog && (
+        <Dialog onClose={() => setShowDialog(false)}>
+          <Headline size="S" font="sub">
+            You can only log your progress once a day.
+          </Headline>
+          <Content>You can log again in about {time} hours.</Content>
         </Dialog>
       )}
     </>

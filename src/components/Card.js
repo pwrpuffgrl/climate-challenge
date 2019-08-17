@@ -10,14 +10,13 @@ import * as moment from 'moment';
 import Progress from '../components/Progress';
 import CardHeaderImage from '../Images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
-import { cardFade } from '../utils/animations';
 
 const StyledCard = styled.div`
   margin: 15px;
   position: relative;
   background: white;
+  min-width: 340px;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
-  animation: ${cardFade} 2s ease 1 both;
 `;
 
 const Content = styled.p`
@@ -27,6 +26,7 @@ const Content = styled.p`
   padding-bottom: 15px;
   font-weight: 200;
   line-height: 1.4;
+  margin: 10px;
 `;
 
 const DateRange = styled.div`
@@ -55,16 +55,30 @@ const ContentContainer = styled.div`
   margin-bottom: 10px;
 `;
 
+const Streak = styled.div`
+  right: 94px;
+  bottom: 13px;
+  position: absolute;
+  border: solid #6b5f81 1.5px;
+  color: #6b5f81;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 21px;
+  width: 22px;
+`;
+
 function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const [showDate, setShowDate] = useState(false);
-
-  const today = moment();
   const start = moment(challenge.startDate);
   const end = moment(challenge.endDate);
-  const timeLeft = end.diff(today, 'days');
+  const timeLeft = end.endOf('day').fromNow();
+
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
   const percentage = Math.round(per);
+  console.log(timePassed, challenge.duration, percentage);
 
   function handleJoinClick() {
     onJoin(challenge._id);
@@ -80,7 +94,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
 
   function renderDateType() {
     return joined ? (
-      <DateRange>Ends in {timeLeft} days </DateRange>
+      <DateRange>Ends {timeLeft} </DateRange>
     ) : (
       <DateRange>Duration: {challenge.duration} days </DateRange>
     );
@@ -106,6 +120,7 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
         {showDate && renderDateType()}
         {joined && <Progress percentage={percentage} />}
         {joined && <ProgressButton onClick={handleProgressClick} />}
+        {joined && <Streak>{challenge.streak}</Streak>}
       </ContentContainer>
     </StyledCard>
   );

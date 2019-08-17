@@ -25,9 +25,9 @@ function Progress({ percentage }) {
         width={25}
         styles={buildStyles({
           textColor: '#2e1f4c',
-          pathColor: '#2E1F4C',
+          pathColor: '#6b5f81',
           trailColor: 'white',
-          textSize: '160%'
+          textSize: '180%'
         })}
       />
     </ProgressContainer>

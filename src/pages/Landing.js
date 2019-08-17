@@ -39,8 +39,8 @@ function Landing() {
           <Title>
             Climate Cha<Span animation={appear}>lle</Span>nge
           </Title>
-          <StartLink animation={appear} to="/challenges">
-            Click to Start
+          <StartLink animation={appear} to="/login">
+            Login
           </StartLink>
         </Fullscreen>
       </BackgroundDiv>

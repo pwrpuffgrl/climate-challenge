@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { createFade } from '../utils/animations';
-import CreateBackground from '../Images/CreateBackground1.png';
-
+import Grid from '../components/Grid';
+import Menu from '../components/Menu';
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -46,14 +45,14 @@ const DropDown = styled.select`
   padding: 5px;
   border-radius: 8px;
   border: solid #46395c 0.5px;
+  overflow-y: auto;
 `;
 
 const Label = styled.label`
   font-size: 20px;
   font-weight: bold;
-  color: #936979;
-  text-shadow: 1px 1px rgba(256, 256, 256, 0.6);
   font-family: helvetica;
+  color: #46395c;
 `;
 
 const Checkbox = styled.input`
@@ -64,7 +63,7 @@ const Checkbox = styled.input`
 `;
 
 const Button = styled.button`
-  background: #7c5d6a;
+  background: #c39791;
   color: white;
   border: none;
   font-size: 20px;
@@ -78,11 +77,6 @@ const CheckboxContainer = styled.div`
   color: white;
 `;
 
-const CreateContainer = styled.div`
-  background: url(${CreateBackground});
-  filter: saturate(70%);
-`;
-
 function CreateChallenge({ history, onCreate }) {
   const [formValues, setFormValues] = React.useState({
     title: '',
@@ -93,7 +87,9 @@ function CreateChallenge({ history, onCreate }) {
     joined: false,
     startDate: '',
     endDate: '',
-    lastParticipated: ''
+    lastParticipated: '',
+    completed: false,
+    karma: 0
   });
 
   function handleChange(event) {
@@ -122,14 +118,18 @@ function CreateChallenge({ history, onCreate }) {
       duration: formValues.duration,
       category: formValues.category,
       joined: formValues.joined,
-      lastParticipated: ''
+      lastParticipated: formValues.lastParticipated,
+      karma: 0,
+      streak: 0
     };
     onCreate(challenge);
     history.replace('/challenges');
   }
 
+  const days = new Array(31).fill('');
+
   return (
-    <CreateContainer>
+    <Grid>
       <Header title="CREATE" />
       <Container>
         <Form onSubmit={handleSubmit}>
@@ -162,14 +162,18 @@ function CreateChallenge({ history, onCreate }) {
             />
           </FormRow>
           <FormRow>
-            <Label htmlFor="duration">Duration</Label>
-            <Input
+            <FormRow />
+            <DropDown
               name="duration"
               type="number"
               value={formValues.duration}
-              placeholder="Enter the duration in days"
               onChange={handleChange}
-            />
+            >
+              <option value="null">Select duration</option>
+              {days.map((day, index) => (
+                <option value={index + 1}>{index + 1}</option>
+              ))}
+            </DropDown>
           </FormRow>
           <FormRow>
             <DropDown
@@ -196,13 +200,11 @@ function CreateChallenge({ history, onCreate }) {
               />
             </CheckboxContainer>
           </FormRow>
-          <Button disabled={!formValues.title || !formValues.rules}>
-            Create Challenge
-          </Button>
+          <Button disabled={!formValues}>Create Challenge</Button>
         </Form>
       </Container>
-      <Footer />
-    </CreateContainer>
+      <Menu />
+    </Grid>
   );
 }
 

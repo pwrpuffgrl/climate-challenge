@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   position: absolute;
-  right: 15px;
-  bottom: 10px;
+  right: 12px;
+  bottom: 8px;
   font-size: 24px;
   border: none;
   background: none;
@@ -15,9 +15,9 @@ function JoinButton({ onClick, joined }) {
   return (
     <StyledButton onClick={onClick}>
       {joined ? (
-        <i class="far fa-minus-square" />
+        <i className="far fa-minus-square" />
       ) : (
-        <i class="far fa-plus-square" />
+        <i className="far fa-plus-square" />
       )}
     </StyledButton>
   );

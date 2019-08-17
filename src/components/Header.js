@@ -6,6 +6,8 @@ const StyledHeader = styled.div`
   align-items: center;
   min-height: 60px;
   z-index: 1;
+  display: flex;
+  justify-content: center;
 `;
 
 const StyledHeadline = styled(Headline)`

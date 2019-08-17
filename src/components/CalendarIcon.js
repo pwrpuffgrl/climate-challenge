@@ -10,6 +10,7 @@ const StyledCalender = styled.button`
   border: none;
   background: none;
   color: #2e1f4c;
+  margin-top: 10px;
 `;
 
 function CalenderIcon({ onClick }) {

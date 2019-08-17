@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
-import Footer from '../components/Footer';
 import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
+import Menu from '../components/Menu';
 
 const CardContainer = styled.div`
   display: flex;
@@ -15,36 +15,25 @@ const CardContainer = styled.div`
   max-width: 600px;
   position: relative;
   overflow-y: auto;
-`;
-
-const Button = styled.button`
-  background: #7c5d6a;
-  border: none;
-  height: 40px;
-  color: white;
-  margin-top: 30px;
-  border-radius: 12px;
-  font-family: 'Raleway';
-  font-size: 16px;
+  padding-bottom: 80px;
 `;
 
 function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
   const [showJoined, setShowJoined] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
+
   function handleJoin(id) {
     onJoinChallenge(id);
     setShowJoined(true);
   }
 
   function handleDelete(id) {
-    setShowDialog(!showDialog);
     onDeleteChallenge(id);
   }
 
   return (
     <>
       <Grid>
-        <Header title="CHALLENGES" />
+        <Header title="Challenges" />
         <CardContainer>
           {challengeData.map(challenge => (
             <Card
@@ -55,7 +44,7 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
             />
           ))}
         </CardContainer>
-        <Footer />
+        <Menu />
       </Grid>
 
       {showJoined && (
@@ -67,15 +56,6 @@ function Challenges({ challengeData, onJoinChallenge, onDeleteChallenge }) {
             </span>
           </Headline>
           <ButtonLink to="/mychallenges">See My Challenges</ButtonLink>
-        </Dialog>
-      )}
-
-      {showDialog && (
-        <Dialog onClose={() => setShowDialog(false)}>
-          <Headline size="S" font="sub">
-            Do you really want to delete this challenge?
-          </Headline>
-          <Button onClick={handleDelete}>Delete</Button>
         </Dialog>
       )}
     </>
