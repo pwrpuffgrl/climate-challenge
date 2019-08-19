@@ -16,9 +16,10 @@ export function postChallenge(data) {
 export function patchChallenge(data, id) {
   return fetchChallenge('PATCH', data, id);
 }
-export function deleteChallenge(data, id) {
-  return fetchChallenge('DELETE', data, id);
+export function deleteChallenge(id) {
+  return fetchChallenge('DELETE', id);
 }
+
 function fetchChallenge(method, data, id = '') {
   return fetch('/api/challenges/' + id, {
     method,

@@ -62,6 +62,7 @@ function App() {
       ...challenges[index],
       joined: !challenges[index].joined
     };
+
     setChallenges([
       ...challenges.slice(0, index),
       {
@@ -69,7 +70,7 @@ function App() {
         joined: !challenge.joined,
         startDate: today,
         lastParticipated: today,
-        endDate: moment(today)
+        endDate: moment()
           .add(challenge.duration, 'days')
           .format('YYYY-MM-DD')
       },
@@ -80,19 +81,14 @@ function App() {
     );
   }
 
-  function handleDeleteChallenge(id, challenge) {
+  function handleDeleteChallenge(id) {
     const sign = prompt('delete this challenge?');
-    const newChallenges = challenges.filter(challenge => {
-      return challenge._id !== id;
-    });
+
     if (sign.toLowerCase() === 'yes') {
       setTimeout(function() {
-        setChallenges(newChallenges);
+        deleteChallenge(id).then(setChallenges(challenges));
       }, 500);
     }
-    /* deleteChallenge(id, challenge).then(result =>
-      setChallenges([result, ...challenges])
-    );*/
   }
 
   function handleCreate(challenge) {

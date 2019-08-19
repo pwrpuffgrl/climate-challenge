@@ -26,13 +26,14 @@ const challengeSchema = new mongoose.Schema({
     default: false
   },
   startDate: {
-    type: String
+    type: Date,
+    default: Date.now()
   },
   endDate: {
-    type: String
+    type: Date
   },
-  lastParticipated: String,
-  modified: String,
+  lastParticipated: Date,
+  modified: Date,
   completed: {
     type: Boolean,
     default: false

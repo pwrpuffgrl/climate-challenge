@@ -19,4 +19,11 @@ module.exports = function(app) {
       .then(challenge => res.json(challenge))
       .catch(err => res.json(err));
   });
+
+  app.patch('/api/challenges/:id', (req, res) => {
+    const { id } = req.params;
+    Challenge.findByIdAndDelete(id, req.body)
+      .then(challenge => res.json(challenge))
+      .catch(err => res.json(err));
+  });
 };
