@@ -141,7 +141,7 @@ function App() {
               <Login onLogin={handleLogin} activeUser={activeUser} {...props} />
             )}
           />
-          <Route path="/" components={Landing} />
+          <Route path="/" render={Landing} />
         </Switch>
       </Router>
     </Container>
