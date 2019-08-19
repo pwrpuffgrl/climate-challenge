@@ -6,6 +6,7 @@ import florentine from '../Images/florentineProfile.png';
 import CardHeader from '../Images/CardHeader.png';
 import CategoryIcon from '../components/CategoryIcon';
 import Menu from '../components/Menu';
+import CountUp from 'react-countup';
 
 const Image = styled.img`
   height: 110px;
@@ -71,11 +72,10 @@ const Badge = styled.div`
 `;
 
 function Profile({ challenges, activeUser, ...props }) {
-  const challenge = challenges.map(challenge => challenge);
   function renderKarma() {
     const points = challenges.map(challenge => challenge.karma);
     const sum = points.reduce((a, b) => a + b, 0);
-    return sum;
+    return <CountUp end={sum}>sum</CountUp>;
   }
 
   return (

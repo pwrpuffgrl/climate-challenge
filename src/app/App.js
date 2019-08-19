@@ -58,37 +58,36 @@ function App() {
     const today = moment().format('YYYY-MM-DD');
     const index = challenges.findIndex(challenge => challenge._id === id);
 
+    const challengeToChange = challenges[index];
+
     const challenge = {
-      ...challenges[index],
-      joined: !challenges[index].joined
+      ...challengeToChange,
+      joined: !challengeToChange.joined,
+      startDate: today,
+      lastParticipated: today,
+      endDate: moment(today)
+        .add(challengeToChange.duration, 'days')
+        .format('YYYY-MM-DD')
     };
 
-    setChallenges([
-      ...challenges.slice(0, index),
-      {
-        ...challenge,
-        joined: !challenge.joined,
-        startDate: today,
-        lastParticipated: today,
-        endDate: moment()
-          .add(challenge.duration, 'days')
-          .format('YYYY-MM-DD')
-      },
-      ...challenges.slice(index + 1)
-    ]);
+    if (challengeToChange.joined === true) {
+      challenge.karma = 0;
+      challenge.streak = 0;
+    }
+
     patchChallenge(challenge, challenge._id).then(result =>
       updateChallengeInState(result)
     );
   }
 
   function handleDeleteChallenge(id) {
-    const sign = prompt('delete this challenge?');
-
-    if (sign.toLowerCase() === 'yes') {
-      setTimeout(function() {
-        deleteChallenge(id).then(setChallenges(challenges));
-      }, 500);
-    }
+    deleteChallenge(id).then(result => {
+      const index = challenges.findIndex(challenge => challenge._id === id);
+      setChallenges([
+        ...challenges.slice(0, index),
+        ...challenges.slice(index + 1)
+      ]);
+    });
   }
 
   function handleCreate(challenge) {

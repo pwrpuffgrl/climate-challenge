@@ -20,10 +20,10 @@ module.exports = function(app) {
       .catch(err => res.json(err));
   });
 
-  app.patch('/api/challenges/:id', (req, res) => {
+  app.delete('/api/challenges/:id', (req, res) => {
     const { id } = req.params;
-    Challenge.findByIdAndDelete(id, req.body)
-      .then(challenge => res.json(challenge))
+    Challenge.findByIdAndRemove(id)
+      .then(challenge => res.json({ success: true }))
       .catch(err => res.json(err));
   });
 };

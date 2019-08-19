@@ -17,7 +17,7 @@ export function patchChallenge(data, id) {
   return fetchChallenge('PATCH', data, id);
 }
 export function deleteChallenge(id) {
-  return fetchChallenge('DELETE', id);
+  return fetchChallenge('DELETE', null, id);
 }
 
 function fetchChallenge(method, data, id = '') {
@@ -26,6 +26,6 @@ function fetchChallenge(method, data, id = '') {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: data ? JSON.stringify(data) : undefined
   }).then(res => res.json());
 }

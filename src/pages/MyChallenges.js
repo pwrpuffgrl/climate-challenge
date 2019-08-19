@@ -105,6 +105,15 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
         <Menu />
       </Grid>
 
+      {!challenges && (
+        <Dialog onClose={() => setShowDialog(false)}>
+          <Headline size="S" font="sub">
+            You haven't joined any challenges yet.
+          </Headline>
+          <ButtonLink to="/challenges">See all challenges</ButtonLink>
+        </Dialog>
+      )}
+
       {selectedChallenge && !blockProgress && (
         <Dialog onClose={() => setSelectedChallenge(null)}>
           <Headline size="S" font="sub">

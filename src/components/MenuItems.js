@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import { createFade } from '../utils/animations';
+import BackgroundImage from '../Images/Abstract4.png';
 
 const A = styled.a`
   font-size: 20px;
-  color: #936979;
+  color: white;
   text-decoration: none;
   display: block;
   margin: 10px;
@@ -24,7 +25,7 @@ const Backdrop = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(256, 256, 256, 0.9);
 `;
 
 const Container = styled.div`
@@ -39,8 +40,8 @@ const Container = styled.div`
   bottom: 0;
 `;
 const MenuContainer = styled.div`
-  background: white;
-  color: #7c5d6a;
+  background-image: url(${BackgroundImage});
+  color: white;
   padding: 20px;
   min-height: 50%;
   width: 100%;
