@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MenuItems from './MenuItems';
 import MainLogo from './MainLogo';
 import { rotate } from '../utils/animations';
+import Leaf from '../Images/leaf.png';
 
 const Footer = styled.div`
   display: flex;
@@ -29,6 +30,11 @@ const Background = styled.div`
 
 const StyledLogo = styled(MainLogo)`
   fill: #936979;
+  position: relative;
+`;
+
+const Img = styled.img`
+  position: absolute;
 `;
 
 function Menu() {
@@ -40,6 +46,7 @@ function Menu() {
     <Footer>
       <Background>
         <StyledLogo animation={rotate} onClick={() => handleClick()} />
+        <Img src={Leaf} />
       </Background>
       {showMenu && <MenuItems onClose={() => setShowMenu(!showMenu)} />}
     </Footer>
