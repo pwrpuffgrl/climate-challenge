@@ -13,11 +13,19 @@ module.exports = function(app) {
       .catch(err => res.json(err));
   });
 
-  app.patch('/api/challenges/:id', (req, res) => {
+  // app.patch('/api/challenges/:id', (req, res) => {
+  //   const { id } = req.params;
+  //   Challenge.findByIdAndUpdate(id, req.body, { new: true })
+  //     .then(challenge => res.json(challenge))
+  //     .catch(err => res.json(err));
+  // });
+
+  app.patch('/api/challenges/:id', async (req, res) => {
     const { id } = req.params;
-    Challenge.findByIdAndUpdate(id, req.body, { new: true })
-      .then(challenge => res.json(challenge))
-      .catch(err => res.json(err));
+    await Challenge.findByIdAndUpdate(id, req.body, { new: true });
+    const foundChallenges = await Challenge.find();
+
+    res.json(foundChallenges);
   });
 
   app.delete('/api/challenges/:id', (req, res) => {

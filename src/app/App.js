@@ -73,6 +73,8 @@ function App() {
     if (challengeToChange.joined === true) {
       challenge.karma = 0;
       challenge.streak = 0;
+      challenge.modified = '2018-01-01';
+      challenge.lastParticipated = '2018-01-01';
     }
 
     patchChallenge(challenge, challenge._id).then(result =>
@@ -96,10 +98,10 @@ function App() {
     );
   }
 
-  function handleUpdateChallenge(challenge) {
-    patchChallenge(challenge, challenge._id).then(result =>
-      updateChallengeInState(result)
-    );
+  async function handleUpdateChallenge(challenge) {
+    const patchedChallenges = await patchChallenge(challenge, challenge._id);
+    console.log(patchedChallenges);
+    setChallenges(patchedChallenges);
   }
 
   function handleLogin(formValues) {

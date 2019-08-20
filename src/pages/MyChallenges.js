@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/Card';
@@ -51,20 +51,23 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
     .startOf('day');
   const time = tomorrow.diff(moment().utc(), 'hours');
   const today = moment().format('YYYY-MM-DD');
+  const filteredChallenges = challenges.filter(
+    challenge => !challenge.completed
+  );
 
   function handleProgressClick(challenge) {
-    console.log(challenge);
     setSelectedChallenge(challenge);
+    if (challenge.modified === today) {
+      setBlockProgress(true);
+      setShowDialog(true);
+    }
+
     if (challenge.lastParticipated === challenge.endDate) {
       onUpdateChallenge({
         ...challenge,
         completed: true,
         joined: false
       });
-    }
-    if (challenge.modified === today) {
-      setBlockProgress(true);
-      setShowDialog(true);
     }
   }
 
@@ -104,7 +107,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
         </CardContainer>
         <Menu />
       </Grid>
-
       {!challenges && (
         <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
@@ -113,7 +115,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
           <ButtonLink to="/challenges">See all challenges</ButtonLink>
         </Dialog>
       )}
-
       {selectedChallenge && !blockProgress && (
         <Dialog onClose={() => setSelectedChallenge(null)}>
           <Headline size="S" font="sub">
@@ -143,7 +144,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
           <ButtonLink to="/challenges"> Not now</ButtonLink>
         </Dialog>
       )}
-
       {blockProgress && showDialog && (
         <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
@@ -151,6 +151,7 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
           </Headline>
           <Content>You can log again in about {time} hours.</Content>
         </Dialog>
+      )}
       )}
     </>
   );

@@ -9,7 +9,7 @@ const Footer = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 10px;
   align-items: center;
   justify-content: center;
   height: 80px;
