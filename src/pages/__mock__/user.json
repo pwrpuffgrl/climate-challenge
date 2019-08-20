@@ -6,11 +6,23 @@
     "email": "florentine.felicitas@yicloud.com",
     "gender": "Female",
     "ip_address": "106.142.167.74",
-    "image_url": "http://dummyimage.com/184x240.jpg/ff4444/ffffff",
+    "image_url": "../Images/florentineProfile.png",
     "about_me": "Hi my name is Florentine, I'm a junior front end web developer from germany with a passion for environmental causes. I work with extinciton rebellion to advocate for conservation and live a vegan lifestyle to reduce my ecological footprint as much as possible.",
     "password": "1234",
     "user_name": "pwrpuffgrl",
-    "myChallenges": null,
+    "karmaPoints": 0
+  },
+  {
+    "id": 2,
+    "first_name": "Barkley",
+    "last_name": "Taylor",
+    "email": "barkleytaylor@me.com",
+    "gender": "Male",
+    "ip_address": "106.133.147.74",
+    "image_url": "../Images/barkleyProfile.jpg",
+    "about_me": "Hi my name is Barkley, I'm a junior front end web developer from germany. I am into fashion and hope to transform the fashion industry to become more sustainable. Slow fashion for the win!",
+    "password": "4321",
+    "user_name": "bananaboy",
     "karmaPoints": 0
   }
 ]

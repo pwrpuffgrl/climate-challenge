@@ -45,8 +45,8 @@ function Menu() {
   return (
     <Footer>
       <Background>
-        <StyledLogo animation={rotate} onClick={() => handleClick()} />
-        <Img src={Leaf} />
+        <StyledLogo animation={rotate} />
+        <Img src={Leaf} onClick={() => handleClick()} />
       </Background>
       {showMenu && <MenuItems onClose={() => setShowMenu(!showMenu)} />}
     </Footer>

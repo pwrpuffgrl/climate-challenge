@@ -29,15 +29,14 @@ const Container = styled.div`
 function App() {
   const [challenges, setChallenges] = useState([]);
   const [activeUser, setActiveUser] = useState(
-    getFromLocal('activeUser') || userData
+    getFromLocal('activeUser') || userData[0]
   );
 
   React.useEffect(() => {
     loadChallenges();
-  }, [challenges]);
+  }, []);
 
-  const [user, setUser] = useState(getFromLocal('user') || userData);
-  useEffect(() => setToLocal('user', user), [user]);
+  const [user] = useState(getFromLocal('user') || userData);
   useEffect(() => setToLocal('challenges', challenges), [challenges]);
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
@@ -59,7 +58,6 @@ function App() {
     const index = challenges.findIndex(challenge => challenge._id === id);
 
     const challengeToChange = challenges[index];
-
     const challenge = {
       ...challengeToChange,
       joined: !challengeToChange.joined,
@@ -100,9 +98,20 @@ function App() {
   }
 
   async function handleUpdateChallenge(challenge) {
+    setActiveUser({
+      ...activeUser,
+      karmaPoints: activeUser.karmaPoints + 1
+    });
     const patchedChallenges = await patchChallenge(challenge, challenge._id);
     console.log(patchedChallenges);
     setChallenges(patchedChallenges);
+  }
+
+  function handleCompleteChallenge(challenge) {
+    setActiveUser({
+      ...activeUser,
+      karmaPoints: activeUser.karmaPoints + challenge.karma
+    });
   }
 
   function handleLogin(formValues) {
@@ -110,6 +119,8 @@ function App() {
     const index = user.findIndex(user => user.user_name === profile);
     setActiveUser(user[index]);
   }
+
+  const myChallenges = challenges.filter(challenge => challenge.joined);
 
   return (
     <Container>
@@ -129,7 +140,7 @@ function App() {
             render={props => (
               <Profile
                 activeUser={activeUser}
-                challenges={challenges.filter(challenge => challenge.joined)}
+                challenges={myChallenges}
                 {...props}
               />
             )}
@@ -150,9 +161,10 @@ function App() {
             render={props => (
               <MyChallenges
                 activeUser={activeUser}
-                challenges={challenges.filter(challenge => challenge.joined)}
+                challenges={myChallenges}
                 onJoinChallenge={handleJoinChallenge}
                 onUpdateChallenge={handleUpdateChallenge}
+                onCompleteChallenge={handleCompleteChallenge}
               />
             )}
           />

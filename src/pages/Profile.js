@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
-import florentine from '../Images/florentineProfile.png';
+import Florentine from '../Images/florentineProfile.png';
+import Barkley from '../Images/barkleyProfile.jpg';
 import CardHeader from '../Images/CardHeader.png';
 import CategoryIcon from '../components/CategoryIcon';
 import Menu from '../components/Menu';
@@ -80,20 +81,16 @@ const SliderContainer = styled.div`
 `;
 function Profile({ challenges, activeUser, ...props }) {
   function renderKarma() {
-    const points = challenges.map(challenge => challenge.karma);
-    const sum = points.reduce((a, b) => a + b, 0);
-    return <CountUp end={sum}>sum</CountUp>;
+    const { karmaPoints } = activeUser;
+    console.log(karmaPoints);
+    return <CountUp end={karmaPoints}>{karmaPoints}</CountUp>;
   }
-
-  const filteredChallenges = challenges.filter(
-    challenge => challenge.joined === true
-  );
 
   return (
     <ProfileGrid>
       <Container>
         <ProfileHeader>
-          <Image src={florentine} />
+          <Image src={Florentine} />
           <Name size="L">
             {activeUser.first_name} {activeUser.last_name}
           </Name>
@@ -102,10 +99,10 @@ function Profile({ challenges, activeUser, ...props }) {
         <Overview>
           <Headline size="L">About me</Headline>
           <Container>{activeUser.about_me}</Container>
-          <Headline size="L">My Challenges</Headline>
+          <Headline size="L">My challenges</Headline>
           <SliderContainer>
             <BadgeSlider>
-              {filteredChallenges.map(challenge => (
+              {challenges.map(challenge => (
                 <Badge key={challenge._id}>
                   <Headline>
                     {challenge.title}
