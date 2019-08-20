@@ -8,7 +8,7 @@ function BadgeSlider(props) {
     dots: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 6000,
     slidesToShow: 1,
     speed: 2000
   };

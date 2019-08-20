@@ -56,11 +56,11 @@ function MenuItems({ showMenu, onClose }) {
       <Backdrop onClick={onClose} />
       <MenuContainer>
         <Headline size="M">Menu</Headline>
-        <A href="/mychallenges">My challenges</A>
-        <A href="/create">Create new challenge</A>
         <A href="/profile">Profile </A>
-        <A href="/challenges">All challenges</A>
         <A href="/news">Newsfeed</A>
+        <A href="/mychallenges">My challenges</A>
+        <A href="/challenges">All challenges</A>
+        <A href="/create">Create new challenge</A>
       </MenuContainer>
     </Container>
   );

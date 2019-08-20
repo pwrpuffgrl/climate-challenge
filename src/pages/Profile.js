@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
 import Florentine from '../Images/florentineProfile.png';
-import Barkley from '../Images/barkleyProfile.jpg';
 import CardHeader from '../Images/CardHeader.png';
 import CategoryIcon from '../components/CategoryIcon';
 import Menu from '../components/Menu';
