@@ -51,9 +51,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
     .startOf('day');
   const time = tomorrow.diff(moment().utc(), 'hours');
   const today = moment().format('YYYY-MM-DD');
-  const filteredChallenges = challenges.filter(
-    challenge => !challenge.completed
-  );
 
   function handleProgressClick(challenge) {
     setSelectedChallenge(challenge);
@@ -151,7 +148,6 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
           </Headline>
           <Content>You can log again in about {time} hours.</Content>
         </Dialog>
-      )}
       )}
     </>
   );

@@ -75,6 +75,7 @@ function App() {
       challenge.streak = 0;
       challenge.modified = '2018-01-01';
       challenge.lastParticipated = '2018-01-01';
+      challenge.completed = false;
     }
 
     patchChallenge(challenge, challenge._id).then(result =>

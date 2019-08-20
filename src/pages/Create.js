@@ -186,7 +186,7 @@ function CreateChallenge({ history, onCreate }) {
               onChange={handleChange}
             >
               <option>Select a category </option>
-              <option value="plastic">Plastic</option>
+              <option value="waste">Waste</option>
               <option value="transportation">Transportation</option>
               <option value="agriculture">Agriculture</option>
               <option value="activism">Activism</option>

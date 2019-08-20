@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import { createFade } from '../utils/animations';
-import BackgroundImage from '../Images/Abstract4.png';
+import BackgroundImage from '../Images/Abstract3.png';
 
 const A = styled.a`
   font-size: 20px;
