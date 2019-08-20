@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Trash from '../Images/trash.png';
 
 const StyledButton = styled.button`
   position: absolute;

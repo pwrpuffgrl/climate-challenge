@@ -54,7 +54,6 @@ function MyChallenges({
     if (value === 'yes') {
       const completed =
         selectedChallenge.lastParticipated === selectedChallenge.endDate;
-
       onUpdateChallenge({
         ...selectedChallenge,
         karma: selectedChallenge.karma + 1,

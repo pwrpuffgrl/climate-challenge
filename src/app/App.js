@@ -68,13 +68,14 @@ function App() {
         .format('YYYY-MM-DD')
     };
 
-    if (challengeToChange.joined === true) {
-      challenge.karma = 0;
-      challenge.streak = 0;
-      challenge.modified = '2018-01-01';
-      challenge.lastParticipated = '2018-01-01';
-      challenge.completed = false;
-    }
+    // if (challengeToChange.joined === true) {
+    //   challengeToChange.karma = 0;
+    //   challengeToChange.streak = 0;
+    //   challengeToChange.modified = '';
+    //   challengeToChange.lastParticipated = '';
+    //   challengeToChange.joined
+    //   challengeToChange.completed = false;
+    // }
 
     patchChallenge(challenge, challenge._id).then(result =>
       updateChallengeInState(result)
@@ -103,7 +104,6 @@ function App() {
       karmaPoints: activeUser.karmaPoints + 1
     });
     const patchedChallenges = await patchChallenge(challenge, challenge._id);
-    console.log(patchedChallenges);
     setChallenges(patchedChallenges);
   }
 
