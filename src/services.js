@@ -29,3 +29,21 @@ function fetchChallenge(method, data, id = '') {
     body: data ? JSON.stringify(data) : undefined
   }).then(res => res.json());
 }
+
+export function getUser() {
+  return fetch('/api/user').then(res => res.json());
+}
+
+export function patchUser(data, id) {
+  return fetchUser('PATCH', data, id);
+}
+
+function fetchUser(method, data, id = '') {
+  return fetch('/api/user/' + id, {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: data ? JSON.stringify(data) : undefined
+  }).then(res => res.json());
+}

@@ -9,14 +9,15 @@ import Landing from '../pages/Landing';
 import NewsFeed from '../pages/News';
 import Login from '../pages/Login';
 import GlobalStyle from './GlobalStyle';
-import userData from '../pages/__mock__/user.json';
 import {
   getFromLocal,
   setToLocal,
   getChallenges,
   postChallenge,
   patchChallenge,
-  deleteChallenge
+  deleteChallenge,
+  getUser,
+  patchUser
 } from '../services';
 import * as moment from 'moment';
 
@@ -28,20 +29,26 @@ const Container = styled.div`
 
 function App() {
   const [challenges, setChallenges] = useState([]);
-  const [activeUser, setActiveUser] = useState(
-    getFromLocal('activeUser') || userData[0]
-  );
 
+  const [user, setUser] = useState([]);
   React.useEffect(() => {
     loadChallenges();
   }, []);
 
-  const [user] = useState(getFromLocal('user') || userData);
-  useEffect(() => setToLocal('challenges', challenges), [challenges]);
+  React.useEffect(() => {
+    loadUser();
+  }, []);
+  const [activeUser, setActiveUser] = useState(
+    getFromLocal('activeUser') || user
+  );
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
 
   async function loadChallenges() {
     setChallenges(await getChallenges());
+  }
+
+  async function loadUser() {
+    setUser(await getUser());
   }
 
   async function handleJoinChallenge(id) {
@@ -58,6 +65,15 @@ function App() {
         .add(challengeToChange.duration, 'days')
         .format('YYYY-MM-DD')
     };
+
+    if (!challenge.joined) {
+      challenge.karma = 0;
+      challenge.streak = 0;
+      challenge.startDate = null;
+      challenge.endDate = null;
+      challenge.modified = null;
+      challenge.lastParticipated = null;
+    }
 
     const patchedChallenges = await patchChallenge(challenge, challenge._id);
     setChallenges(patchedChallenges);
@@ -88,11 +104,13 @@ function App() {
     setChallenges(patchedChallenges);
   }
 
-  function handleCompleteChallenge(challenge) {
+  async function handleCompleteChallenge(challenge) {
     setActiveUser({
       ...activeUser,
       karmaPoints: activeUser.karmaPoints + challenge.karma
     });
+    const patchedUser = await patchUser(user, user._id);
+    setUser(patchedUser);
   }
 
   function handleLogin(formValues) {

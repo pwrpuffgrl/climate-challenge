@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const fs = require('fs');
-const api = require('./server-api');
 
 const app = express();
 app.use(express.json());
@@ -19,6 +18,10 @@ try {
   };
 } catch (error) {}
 
+app.use('/api/challenges', require('./api/challenge'));
+app.use('/api/user', require('./api/user'));
+const port = 4000;
+
 // setup mongoose
 mongoose
   .connect(process.env.DB_URL, {
@@ -27,6 +30,6 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error(err));
 
-api(app);
-
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || port, () => {
+  console.log(`Server startet on port ${port}`);
+});
