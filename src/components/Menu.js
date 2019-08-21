@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MenuItems from './MenuItems';
-const Icon = styled.i`
-  font-size: 30px;
-  color: #936979;
-  bottom: 15px;
-  z-index: 4000;
-`;
+import MainLogo from './MainLogo';
+import { rotate } from '../utils/animations';
+import Leaf from '../Images/leaf.png';
 
 const Footer = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 10px;
   align-items: center;
   justify-content: center;
   height: 80px;
@@ -31,6 +28,15 @@ const Background = styled.div`
   width: 70px;
 `;
 
+const StyledLogo = styled(MainLogo)`
+  fill: #936979;
+  position: relative;
+`;
+
+const Img = styled.img`
+  position: absolute;
+`;
+
 function Menu() {
   const [showMenu, setShowMenu] = useState(false);
   function handleClick() {
@@ -39,9 +45,10 @@ function Menu() {
   return (
     <Footer>
       <Background>
-        <Icon onClick={() => handleClick()} className="fas fa-bars" />
+        <StyledLogo animation={rotate} />
+        <Img src={Leaf} onClick={() => handleClick()} />
       </Background>
-      {showMenu && <MenuItems />}
+      {showMenu && <MenuItems onClose={() => setShowMenu(!showMenu)} />}
     </Footer>
   );
 }

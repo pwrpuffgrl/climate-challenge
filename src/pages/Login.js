@@ -99,6 +99,7 @@ function Login({ history, activeUser, onLogin, ...props }) {
         <Input
           onChange={handleChange}
           name="password"
+          type="password"
           value={formValues.password}
         />
         <Button>Log in</Button>

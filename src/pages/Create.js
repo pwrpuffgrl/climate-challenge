@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { createFade } from '../utils/animations';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
+
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -120,7 +121,9 @@ function CreateChallenge({ history, onCreate }) {
       joined: formValues.joined,
       lastParticipated: formValues.lastParticipated,
       karma: 0,
-      streak: 0
+      streak: 0,
+      startDate: formValues.lastParticipated,
+      endDate: formValues.lastParticipated
     };
     onCreate(challenge);
     history.replace('/challenges');
@@ -182,7 +185,7 @@ function CreateChallenge({ history, onCreate }) {
               onChange={handleChange}
             >
               <option>Select a category </option>
-              <option value="plastic">Plastic</option>
+              <option value="waste">Waste</option>
               <option value="transportation">Transportation</option>
               <option value="agriculture">Agriculture</option>
               <option value="activism">Activism</option>

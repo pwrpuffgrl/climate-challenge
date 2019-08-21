@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import Progress from '../components/Progress';
 import CardHeaderImage from '../Images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
+import CountUp from 'react-countup';
 
 const StyledCard = styled.div`
   margin: 15px;
@@ -78,7 +79,6 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
   const timePassed = moment(challenge.lastParticipated).diff(start, 'days');
   const per = (timePassed / challenge.duration) * 100;
   const percentage = Math.round(per);
-  console.log(timePassed, challenge.duration, percentage);
 
   function handleJoinClick() {
     onJoin(challenge._id);
@@ -120,7 +120,11 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
         {showDate && renderDateType()}
         {joined && <Progress percentage={percentage} />}
         {joined && <ProgressButton onClick={handleProgressClick} />}
-        {joined && <Streak>{challenge.streak}</Streak>}
+        {joined && (
+          <Streak>
+            <CountUp end={challenge.streak}>{challenge.streak}</CountUp>
+          </Streak>
+        )}
       </ContentContainer>
     </StyledCard>
   );
