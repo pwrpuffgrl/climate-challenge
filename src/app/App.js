@@ -173,11 +173,7 @@ function App() {
               <Login onLogin={handleLogin} activeUser={activeUser} {...props} />
             )}
           />
-<<<<<<< HEAD
-          <Route path="/" render={Landing} />
-=======
           <Route path="/" component={Landing} />
->>>>>>> f8b30335560d8c83b2d34d8acf0d57880131d835
         </Switch>
       </Router>
     </Container>
