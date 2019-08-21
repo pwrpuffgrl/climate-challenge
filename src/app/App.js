@@ -44,16 +44,7 @@ function App() {
     setChallenges(await getChallenges());
   }
 
-  function updateChallengeInState(data) {
-    const index = challenges.findIndex(challenge => challenge._id === data._id);
-    setChallenges([
-      ...challenges.slice(0, index),
-      data,
-      ...challenges.slice(index + 1)
-    ]);
-  }
-
-  function handleJoinChallenge(id) {
+  async function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');
     const index = challenges.findIndex(challenge => challenge._id === id);
 
@@ -68,18 +59,8 @@ function App() {
         .format('YYYY-MM-DD')
     };
 
-    // if (challengeToChange.joined === true) {
-    //   challengeToChange.karma = 0;
-    //   challengeToChange.streak = 0;
-    //   challengeToChange.modified = '';
-    //   challengeToChange.lastParticipated = '';
-    //   challengeToChange.joined
-    //   challengeToChange.completed = false;
-    // }
-
-    patchChallenge(challenge, challenge._id).then(result =>
-      updateChallengeInState(result)
-    );
+    const patchedChallenges = await patchChallenge(challenge, challenge._id);
+    setChallenges(patchedChallenges);
   }
 
   function handleDeleteChallenge(id) {
