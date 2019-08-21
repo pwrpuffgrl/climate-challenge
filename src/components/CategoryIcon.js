@@ -9,7 +9,7 @@ const StyledIcon = styled.div`
 
 function getIcon(category) {
   const iconMapping = {
-    plastic: 'fas fa-recycle',
+    waste: 'fas fa-recycle',
     transportation: 'fas fa-car-side',
     activism: 'fas fa-fist-raised',
     agriculture: 'fab fa-pagelines',

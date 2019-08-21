@@ -70,3 +70,11 @@ export const popUp = props => keyframes`
     transform: translate3d(0px, 0, 0);
   }
 `;
+
+export const rotate = props => keyframes` 
+ from {
+ transform: rotate(0);
+  }
+  to  {
+transform: rotate(180deg);
+  }`;

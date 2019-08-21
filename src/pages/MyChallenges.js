@@ -8,6 +8,7 @@ import Headline from '../components/Headline';
 import ButtonLink from '../components/ButtonLink';
 import Menu from '../components/Menu';
 import * as moment from 'moment';
+import ProgressDialog from '../components/ProgressDialog';
 
 const CardContainer = styled.div`
   display: flex;
@@ -18,23 +19,6 @@ const CardContainer = styled.div`
   overflow-y: auto;
   padding-bottom: 80px;
 `;
-const CheckboxContainer = styled.form`
-  display: flex;
-  margin-top: 20px;
-  align-items: center;
-  color: white;
-`;
-const Checkbox = styled.input`
-  height: 16px;
-  width: 16px;
-`;
-const Label = styled.label`
-  font-size: 16px;
-  font-weight: bold;
-  color: #242d42;
-  font-family: helvetica;
-  padding: 10px;
-`;
 const Content = styled.p`
   font-family: helvetica;
   font-size: 16px;
@@ -42,9 +26,13 @@ const Content = styled.p`
   margin: 10px;
 `;
 
-function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
+function MyChallenges({
+  challenges,
+  onJoinChallenge,
+  onUpdateChallenge,
+  onCompleteChallenge
+}) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
-  const [blockProgress, setBlockProgress] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const tomorrow = moment()
     .add(1, 'day')
@@ -53,31 +41,32 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
   const today = moment().format('YYYY-MM-DD');
 
   function handleProgressClick(challenge) {
-    console.log(challenge);
-    setSelectedChallenge(challenge);
-    if (challenge.lastParticipated === challenge.endDate) {
-      onUpdateChallenge({
-        ...challenge,
-        completed: true,
-        joined: false
-      });
-    }
     if (challenge.modified === today) {
-      setBlockProgress(true);
       setShowDialog(true);
+      return;
     }
+
+    setSelectedChallenge(challenge);
   }
 
   function handleCheckbox(event) {
     const { value } = event.target;
     if (value === 'yes') {
+      const completed =
+        selectedChallenge.lastParticipated === selectedChallenge.endDate;
       onUpdateChallenge({
         ...selectedChallenge,
         karma: selectedChallenge.karma + 1,
         streak: selectedChallenge.streak + 1,
         modified: today,
-        lastParticipated: today
+        lastParticipated: today,
+        completed,
+        joined: !completed
       });
+
+      if (completed) {
+        onCompleteChallenge(selectedChallenge);
+      }
     } else {
       onUpdateChallenge({
         ...selectedChallenge,
@@ -104,38 +93,21 @@ function MyChallenges({ challenges, onJoinChallenge, onUpdateChallenge }) {
         </CardContainer>
         <Menu />
       </Grid>
-
-      {selectedChallenge && !blockProgress && (
-        <Dialog onClose={() => setSelectedChallenge(null)}>
+      {!challenges && (
+        <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
-            Log your progress
+            You haven't joined any challenges yet.
           </Headline>
-          <Content>Did you master the challenge today?</Content>
-          <CheckboxContainer>
-            <Label htmlFor="yes">
-              YES <i className="far fa-thumbs-up" />
-            </Label>
-            <Checkbox
-              name="progress"
-              type="radio"
-              value="yes"
-              onClick={handleCheckbox}
-            />
-            <Label htmlFor="no">
-              NO <i className="far fa-thumbs-down" />
-            </Label>
-            <Checkbox
-              name="progress"
-              type="radio"
-              onChange={handleCheckbox}
-              value="no"
-            />
-          </CheckboxContainer>
-          <ButtonLink to="/challenges"> Not now</ButtonLink>
+          <ButtonLink to="/challenges">See all challenges</ButtonLink>
         </Dialog>
       )}
-
-      {blockProgress && showDialog && (
+      {selectedChallenge && (
+        <ProgressDialog
+          onClose={() => setSelectedChallenge(null)}
+          onProgress={handleCheckbox}
+        />
+      )}
+      {showDialog && (
         <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
             You can only log your progress once a day.
