@@ -40,4 +40,17 @@ describe('Climate Challenge', () => {
       cy.location('pathname').should('be', '/challenges');
     });
   });
+
+  describe('Challenges', () => {
+    beforeEach(() => {
+      cy.visit('http://localhost:3000/challenges');
+    });
+    it('lets you participate in a challenge and navigates to myChallenges', () => {
+      cy.get('[data-cy="join-button"]')
+        .eq(1)
+        .click();
+      cy.get('[data-cy="dialog-button"]').click();
+      cy.location('pathname').should('be', '/mychallenges');
+    });
+  });
 });

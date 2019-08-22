@@ -14,7 +14,7 @@ const StyledButton = styled.button`
 
 function JoinButton({ onClick, joined }) {
   return (
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} data-cy="join-button">
       {joined ? (
         <i className="far fa-minus-square" />
       ) : (
