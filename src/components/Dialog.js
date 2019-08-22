@@ -46,8 +46,7 @@ function Dialog({ children, onClose }) {
 }
 
 Dialog.propTypes = {
-  onClose: propTypes.func,
-  children: propTypes.element
+  onClose: propTypes.func
 };
 
 export default Dialog;
