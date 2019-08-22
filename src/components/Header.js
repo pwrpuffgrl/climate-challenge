@@ -20,7 +20,7 @@ const StyledHeadline = styled(Headline)`
 
 function Header({ title, ...props }) {
   return (
-    <StyledHeader>
+    <StyledHeader data-cy="header-title">
       <StyledHeadline size="XL" font="main">
         {title}
       </StyledHeadline>
