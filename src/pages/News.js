@@ -55,8 +55,6 @@ const Content = styled.div`
 const A = styled.a`
   font-family: helvetica;
   font-size: 14px;
-  padding: 20px;
-  margin: 10px;
   color: slategray;
   text-decoration: none;
 `;

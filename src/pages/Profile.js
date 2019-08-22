@@ -30,6 +30,19 @@ const Container = styled.div`
   color: #46395c;
 `;
 
+const AboutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-family: 'helvetica';
+  font-weight: 200;
+  line-height: 1.4;
+  font-size: 16px;
+  padding: 20px;
+  margin: 0;
+  color: #46395c;
+  text-align: justify;
+`;
+
 const ProfileHeader = styled.div`
   background: url(${CardHeader});
   position: relative;
@@ -97,7 +110,7 @@ function Profile({ challenges, activeUser, ...props }) {
         </ProfileHeader>
         <Overview>
           <Headline size="L">About me</Headline>
-          <Container>{activeUser.about_me}</Container>
+          <AboutContainer>{activeUser.about_me}</AboutContainer>
           <Headline size="L">My challenges</Headline>
           <SliderContainer>
             <BadgeSlider>

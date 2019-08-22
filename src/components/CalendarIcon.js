@@ -11,6 +11,10 @@ const StyledCalender = styled.button`
   background: none;
   color: #2e1f4c;
   margin-top: 10px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 function CalenderIcon({ onClick }) {
