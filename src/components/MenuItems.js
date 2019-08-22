@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Headline from './Headline';
 import { createFade } from '../utils/animations';
 import BackgroundImage from '../Images/Abstract3.png';
+import propTypes from 'prop-types';
 
 const A = styled.a`
   font-size: 20px;
@@ -67,4 +68,8 @@ function MenuItems({ showMenu, onClose }) {
   );
 }
 
+MenuItems.propTypes = {
+  showMenu: propTypes.bool,
+  onClose: propTypes.func
+};
 export default MenuItems;

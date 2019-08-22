@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn, fadeOut } from '../utils/animations';
 import MainLogo from '../components/MainLogo';
+import propTypes from 'prop-types';
 
 const Input = styled.input`
   font-size: 16px;
@@ -108,4 +109,8 @@ function Login({ history, activeUser, onLogin, ...props }) {
   );
 }
 
+Login.propTypes = {
+  activeUser: propTypes.object,
+  onLogin: propTypes.func
+};
 export default Login;

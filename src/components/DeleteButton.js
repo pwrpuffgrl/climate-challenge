@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const StyledButton = styled.button`
   position: absolute;
@@ -19,4 +20,7 @@ function DeleteButton({ onClick }) {
   );
 }
 
+DeleteButton.propTypes = {
+  onClick: propTypes.func
+};
 export default DeleteButton;

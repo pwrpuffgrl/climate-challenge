@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { createFade } from '../utils/animations';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
+import propTypes from 'prop-types';
 
 const Container = styled.div`
   width: 100%;
@@ -211,4 +212,7 @@ function CreateChallenge({ history, onCreate }) {
   );
 }
 
+CreateChallenge.propTypes = {
+  onCreate: propTypes.func
+};
 export default CreateChallenge;

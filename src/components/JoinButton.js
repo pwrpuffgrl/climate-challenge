@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const StyledButton = styled.button`
   position: absolute;
@@ -22,5 +23,10 @@ function JoinButton({ onClick, joined }) {
     </StyledButton>
   );
 }
+
+JoinButton.propTypes = {
+  onClick: propTypes.func,
+  joined: propTypes.bool
+};
 
 export default JoinButton;

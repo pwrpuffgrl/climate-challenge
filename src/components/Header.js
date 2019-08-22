@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
+import propTypes from 'prop-types';
 
 const StyledHeader = styled.div`
   align-items: center;
@@ -27,4 +28,7 @@ function Header({ title, ...props }) {
   );
 }
 
+Header.propTypes = {
+  title: propTypes.string
+};
 export default Header;

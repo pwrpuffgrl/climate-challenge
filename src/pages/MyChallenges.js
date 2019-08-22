@@ -9,6 +9,7 @@ import ButtonLink from '../components/ButtonLink';
 import Menu from '../components/Menu';
 import * as moment from 'moment';
 import ProgressDialog from '../components/ProgressDialog';
+import propTypes from 'prop-types';
 
 const CardContainer = styled.div`
   display: flex;
@@ -119,4 +120,10 @@ function MyChallenges({
   );
 }
 
+MyChallenges.propTypes = {
+  challenges: propTypes.array,
+  onJoinChallenge: propTypes.func,
+  onUpdateChallenge: propTypes.func,
+  onCompleteChallenge: propTypes.func
+};
 export default MyChallenges;

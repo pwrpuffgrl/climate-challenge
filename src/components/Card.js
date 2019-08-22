@@ -131,11 +131,11 @@ function Card({ challenge, onJoin, joined, onProgress, onDelete }) {
 }
 
 Card.propTypes = {
-  title: PropTypes.string,
-  rules: PropTypes.string,
-  tips: PropTypes.string,
-  duration: PropTypes.number,
-  joined: PropTypes.bool
+  challenge: PropTypes.object,
+  onJoin: PropTypes.func,
+  joined: PropTypes.bool,
+  onProgress: PropTypes.func,
+  onDelete: PropTypes.func
 };
 
 export default Card;

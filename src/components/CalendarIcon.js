@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CalenderLogo from './CalenderLogo';
+import propTypes from 'prop-types';
 
 const StyledCalender = styled.button`
   position: absolute;
@@ -24,5 +25,9 @@ function CalenderIcon({ onClick }) {
     </StyledCalender>
   );
 }
+
+CalenderIcon.propTypes = {
+  onClick: propTypes.func
+};
 
 export default CalenderIcon;

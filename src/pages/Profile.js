@@ -8,6 +8,7 @@ import CategoryIcon from '../components/CategoryIcon';
 import Menu from '../components/Menu';
 import CountUp from 'react-countup';
 import BadgeSlider from '../components/Slider';
+import propTypes from 'prop-types';
 
 const Image = styled.img`
   height: 110px;
@@ -94,7 +95,6 @@ const SliderContainer = styled.div`
 function Profile({ challenges, activeUser, ...props }) {
   function renderKarma() {
     const { karmaPoints } = activeUser;
-    console.log(karmaPoints);
     return <CountUp end={karmaPoints}>{karmaPoints}</CountUp>;
   }
 
@@ -131,4 +131,8 @@ function Profile({ challenges, activeUser, ...props }) {
   );
 }
 
+Profile.propTypes = {
+  challenge: propTypes.object,
+  activeUser: propTypes.object
+};
 export default Profile;

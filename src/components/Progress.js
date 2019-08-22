@@ -5,6 +5,7 @@ import {
 import styled from 'styled-components';
 import 'react-circular-progressbar/dist/styles.css';
 import React from 'react';
+import propTypes from 'prop-types';
 
 const ProgressContainer = styled.div`
   height: 50px;
@@ -34,4 +35,7 @@ function Progress({ percentage }) {
   );
 }
 
+ProgressContainer.propTypes = {
+  percentage: propTypes.number
+};
 export default Progress;
