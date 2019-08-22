@@ -8,7 +8,7 @@ import CalendarIcon from './CalendarIcon';
 import CategoryIcon from './CategoryIcon';
 import * as moment from 'moment';
 import Progress from '../components/Progress';
-import CardHeaderImage from '../Images/CardHeader.png';
+import CardHeaderImage from '../images/CardHeader.png';
 import ProgressButton from '../components/PorgressButton';
 import CountUp from 'react-countup';
 

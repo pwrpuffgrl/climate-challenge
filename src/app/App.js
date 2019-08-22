@@ -32,24 +32,26 @@ function App() {
 
   const [user, setUser] = useState([]);
   React.useEffect(() => {
+    async function loadChallenges() {
+      setChallenges(await getChallenges());
+    }
+
     loadChallenges();
   }, []);
 
   React.useEffect(() => {
+    async function loadUser() {
+      setUser(await getUser());
+    }
+
     loadUser();
   }, []);
+
   const [activeUser, setActiveUser] = useState(
     getFromLocal('activeUser') || user
   );
+
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
-
-  async function loadChallenges() {
-    setChallenges(await getChallenges());
-  }
-
-  async function loadUser() {
-    setUser(await getUser());
-  }
 
   async function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');

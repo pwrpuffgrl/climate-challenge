@@ -175,7 +175,9 @@ function CreateChallenge({ history, onCreate }) {
             >
               <option value="null">Select duration</option>
               {days.map((day, index) => (
-                <option value={index + 1}>{index + 1}</option>
+                <option key={index + 1} value={index + 1}>
+                  {index + 1}
+                </option>
               ))}
             </DropDown>
           </FormRow>

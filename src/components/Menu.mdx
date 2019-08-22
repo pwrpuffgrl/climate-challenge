@@ -1,22 +1,16 @@
 ---
-name: Header
+name: Menu
 menu: Components
 ---
 
 import { Props, Playground } from 'docz';
+import Menu from './Card';
 import GlobalStyle from '../app/GlobalStyle';
-import Header from './Header';
 
 <GlobalStyle />
-
-# Header
-
-<Props of={Header} />
 
 # Basic Usage
 
 <Playground>
-  <>
-    <Header title="My Challenges" />
-  </>
+  <Menu />
 </Playground>
