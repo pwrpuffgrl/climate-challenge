@@ -51,7 +51,15 @@ function App() {
     getFromLocal('activeUser') || user
   );
 
-  useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
+  useEffect(() => {
+    async function updateUser() {
+      const result = await patchUser(activeUser, activeUser._id);
+      console.log(result);
+      setToLocal('activeUser', result);
+    }
+
+    updateUser();
+  }, [activeUser]);
 
   async function handleJoinChallenge(id) {
     const today = moment().format('YYYY-MM-DD');
@@ -111,9 +119,6 @@ function App() {
       ...activeUser,
       karmaPoints: activeUser.karmaPoints + challenge.karma
     });
-    const patchedUser = await patchUser(user, user._id);
-    setUser(patchedUser);
-    console.log('app');
   }
 
   function handleLogin(formValues) {

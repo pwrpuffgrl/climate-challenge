@@ -15,4 +15,12 @@ router.post('/new', (req, res) => {
   });
 });
 
+router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
+  await User.findByIdAndModify(id, req.body, { new: true });
+  const foundUser = await User.find();
+
+  res.json(foundUser);
+});
+
 module.exports = router;
