@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
-import florentine from '../images/florentineProfile.png';
+import florentine from '../images/Profile.png';
 import CardHeader from '../components/challenge/CardHeader.png';
 import CategoryIcon from '../components/challenge/CategoryIcon';
 import Menu from '../components/Menu';
