@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Card from '../components/Card';
+import Card from '../components/challenge/Card';
 import Grid from '../components/Grid';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';

@@ -32,6 +32,7 @@ const DialogContainer = styled.div`
   min-height: 200px;
   margin-left: 10px;
   margin-right: 10px;
+  position: relative;
 `;
 
 function Dialog({ children, onClose }) {

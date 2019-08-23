@@ -1,5 +1,3 @@
-import { css } from 'docz-plugin-css';
-
 export default {
   htmlContext: {
     head: {
