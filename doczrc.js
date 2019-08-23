@@ -15,6 +15,10 @@ export default {
           rel: 'stylesheet',
           href:
             'https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap'
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://kit.fontawesome.com/7e8b067f68.js'
         }
       ]
     }

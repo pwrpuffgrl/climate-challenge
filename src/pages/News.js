@@ -4,12 +4,12 @@ import Header from '../components/Header';
 import Grid from '../components/Grid';
 import { getArticles } from '../utils/newsAPI';
 import Headline from '../components/Headline';
-import { cardFade } from '../utils/animations';
+
 import Menu from '../components/Menu';
 
 const CardContainer = styled.div`
   margin: 0 auto;
-  padding: 0;
+  padding-bottom: 80px;
   max-width: 600px;
   position: relative;
   overflow-y: auto;
@@ -29,7 +29,6 @@ const NewsCard = styled.div`
   opacity: 1;
   text-align: left;
   box-shadow: 11px 6px 36px -2px rgba(0, 0, 0, 0.26);
-  animation: ${cardFade} 2s ease 1 both;
 `;
 
 const CardHeader = styled.div`

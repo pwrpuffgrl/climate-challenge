@@ -91,17 +91,17 @@ function Login({ history, activeUser, onLogin, ...props }) {
       <Form onSubmit={handleSubmit}>
         <Label htmlFor="user_name">Name</Label>
         <Input
-          onChange={handleChange}
+          onInput={handleChange}
           name="user_name"
-          value={formValues.user_name}
+          defaultValue={formValues.user_name}
         />
         <FormRow />
         <Label htmlFor="password">Password</Label>{' '}
         <Input
-          onChange={handleChange}
+          onInput={handleChange}
           name="password"
           type="password"
-          value={formValues.password}
+          defaultValue={formValues.password}
         />
         <Button>Log in</Button>
       </Form>
