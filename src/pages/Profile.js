@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
-import Florentine from '../images/florentineProfile.png';
+import florentine from '../images/florentineProfile.png';
 import CardHeader from '../components/challenge/CardHeader.png';
 import CategoryIcon from '../components/challenge/CategoryIcon';
 import Menu from '../components/Menu';
@@ -102,7 +102,7 @@ function Profile({ challenges, activeUser, ...props }) {
     <ProfileGrid>
       <Container>
         <ProfileHeader>
-          <Image src={Florentine} />
+          <Image src={florentine} />
           <Name size="L">
             {activeUser.first_name} {activeUser.last_name}
           </Name>
