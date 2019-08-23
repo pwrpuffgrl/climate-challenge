@@ -113,6 +113,7 @@ function App() {
     });
     const patchedUser = await patchUser(user, user._id);
     setUser(patchedUser);
+    console.log('app');
   }
 
   function handleLogin(formValues) {
