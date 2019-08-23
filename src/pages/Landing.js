@@ -5,7 +5,7 @@ import MainLogo from '../components/MainLogo';
 import styled from 'styled-components';
 import { fadeIn, fadeOut, appear } from '../utils/animations';
 import ButtonLink from '../components/ButtonLink';
-import Background from '../Images/Abstract4.png';
+import Background from '../images/FullBackground.png';
 
 const Span = styled.span`
   color: white;
@@ -39,7 +39,7 @@ function Landing() {
           <Title>
             Climate Cha<Span animation={appear}>lle</Span>nge
           </Title>
-          <StartLink animation={appear} to="/login">
+          <StartLink type="link" animation={appear} to="/login">
             Login
           </StartLink>
         </Fullscreen>

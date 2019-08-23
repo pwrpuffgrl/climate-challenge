@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from '../components/Headline';
 import ProfileGrid from '../components/ProfileGrid';
-import Florentine from '../Images/florentineProfile.png';
-import CardHeader from '../Images/CardHeader.png';
-import CategoryIcon from '../components/CategoryIcon';
+import Florentine from '../images/florentineProfile.png';
+import CardHeader from '../components/challenge/CardHeader.png';
+import CategoryIcon from '../components/challenge/CategoryIcon';
 import Menu from '../components/Menu';
 import CountUp from 'react-countup';
 import BadgeSlider from '../components/Slider';
+import propTypes from 'prop-types';
 
 const Image = styled.img`
   height: 110px;
@@ -28,6 +29,19 @@ const Container = styled.div`
   padding: 0px;
   margin: 0;
   color: #46395c;
+`;
+
+const AboutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-family: 'helvetica';
+  font-weight: 200;
+  line-height: 1.4;
+  font-size: 16px;
+  padding: 20px;
+  margin: 0;
+  color: #46395c;
+  text-align: justify;
 `;
 
 const ProfileHeader = styled.div`
@@ -81,7 +95,6 @@ const SliderContainer = styled.div`
 function Profile({ challenges, activeUser, ...props }) {
   function renderKarma() {
     const { karmaPoints } = activeUser;
-    console.log(karmaPoints);
     return <CountUp end={karmaPoints}>{karmaPoints}</CountUp>;
   }
 
@@ -97,7 +110,7 @@ function Profile({ challenges, activeUser, ...props }) {
         </ProfileHeader>
         <Overview>
           <Headline size="L">About me</Headline>
-          <Container>{activeUser.about_me}</Container>
+          <AboutContainer>{activeUser.about_me}</AboutContainer>
           <Headline size="L">My challenges</Headline>
           <SliderContainer>
             <BadgeSlider>
@@ -118,4 +131,8 @@ function Profile({ challenges, activeUser, ...props }) {
   );
 }
 
+Profile.propTypes = {
+  challenge: propTypes.object,
+  activeUser: propTypes.object
+};
 export default Profile;

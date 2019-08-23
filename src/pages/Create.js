@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { createFade } from '../utils/animations';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
+import propTypes from 'prop-types';
 
 const Container = styled.div`
   width: 100%;
@@ -78,6 +79,10 @@ const CheckboxContainer = styled.div`
   color: white;
 `;
 
+const StyledError = styled.div`
+  color: #c39791;
+`;
+
 function CreateChallenge({ history, onCreate }) {
   const [formValues, setFormValues] = React.useState({
     title: '',
@@ -92,6 +97,28 @@ function CreateChallenge({ history, onCreate }) {
     completed: false,
     karma: 0
   });
+
+  const [errors, setErrors] = React.useState({});
+  function validate() {
+    const errors = {};
+
+    if (formValues.title.trim() === '') {
+      errors.title = 'Please enter a title';
+    }
+    if (formValues.rules.trim() === '') {
+      errors.rules = 'Please tell us about the rules';
+    }
+    if (formValues.tips.trim() === '') {
+      errors.tips = 'Please give some tips';
+    }
+    if (formValues.duration === '') {
+      errors.duration = 'Please select a duration';
+    }
+    if (formValues.categroy === '') {
+      errors.category = 'Please select a category';
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -111,6 +138,11 @@ function CreateChallenge({ history, onCreate }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const errors = validate();
+    if (errors) {
+      setErrors(errors);
+      return;
+    }
 
     const challenge = {
       title: formValues.title,
@@ -144,7 +176,12 @@ function CreateChallenge({ history, onCreate }) {
               value={formValues.title}
               placeholder="Please enter a title"
               onChange={handleChange}
+              error={errors.title}
+              data-cy="input-title"
             />
+            {errors.title && (
+              <StyledError data-cy="error">{errors.title}</StyledError>
+            )}
           </FormRow>
           <FormRow>
             <Label htmlFor="rules">Rules</Label>
@@ -153,7 +190,10 @@ function CreateChallenge({ history, onCreate }) {
               value={formValues.rules}
               placeholder="What are the rules for this challenge?"
               onChange={handleChange}
+              error={errors.rules}
+              data-cy="input-rules"
             />
+            {errors.title && <StyledError>{errors.rules}</StyledError>}
           </FormRow>
           <FormRow>
             <Label htmlFor="tips">Tips</Label>
@@ -162,7 +202,10 @@ function CreateChallenge({ history, onCreate }) {
               value={formValues.tips}
               placeholder="Share helpful strategies and tips for completing this challenge!"
               onChange={handleChange}
+              error={errors.tips}
+              data-cy="input-tips"
             />
+            {errors.title && <StyledError>{errors.tips}</StyledError>}
           </FormRow>
           <FormRow>
             <FormRow />
@@ -171,10 +214,15 @@ function CreateChallenge({ history, onCreate }) {
               type="number"
               value={formValues.duration}
               onChange={handleChange}
+              error={errors.duration}
+              data-cy="input-duration"
             >
+              {errors.title && <StyledError>{errors.duration}</StyledError>}
               <option value="null">Select duration</option>
               {days.map((day, index) => (
-                <option value={index + 1}>{index + 1}</option>
+                <option key={index + 1} value={index + 1}>
+                  {index + 1}
+                </option>
               ))}
             </DropDown>
           </FormRow>
@@ -183,6 +231,8 @@ function CreateChallenge({ history, onCreate }) {
               name="category"
               value={formValues.category}
               onChange={handleChange}
+              error={errors.category}
+              data-cy="input-category"
             >
               <option>Select a category </option>
               <option value="waste">Waste</option>
@@ -190,6 +240,7 @@ function CreateChallenge({ history, onCreate }) {
               <option value="agriculture">Agriculture</option>
               <option value="activism">Activism</option>
             </DropDown>
+            {errors.title && <StyledError>{errors.category}</StyledError>}
           </FormRow>
           <FormRow>
             <CheckboxContainer>
@@ -200,10 +251,13 @@ function CreateChallenge({ history, onCreate }) {
                 type="checkbox"
                 value={formValues.joined}
                 onChange={handleCheckboxChange}
+                data-cy="checkbox"
               />
             </CheckboxContainer>
           </FormRow>
-          <Button disabled={!formValues}>Create Challenge</Button>
+          <Button disabled={!formValues} data-cy="submit-button">
+            Create Challenge
+          </Button>
         </Form>
       </Container>
       <Menu />
@@ -211,4 +265,7 @@ function CreateChallenge({ history, onCreate }) {
   );
 }
 
+CreateChallenge.propTypes = {
+  onCreate: propTypes.func
+};
 export default CreateChallenge;

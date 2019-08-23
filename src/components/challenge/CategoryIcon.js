@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const StyledIcon = styled.div`
   margin: 8px;
@@ -27,4 +28,7 @@ function CategoryIcon({ category }) {
   );
 }
 
+CategoryIcon.propTypes = {
+  category: propTypes.string
+};
 export default CategoryIcon;

@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Headline from './Headline';
 import { createFade } from '../utils/animations';
-import BackgroundImage from '../Images/Abstract3.png';
+import BackgroundImage from '../images/MenuBackground.png';
+import propTypes from 'prop-types';
 
 const A = styled.a`
   font-size: 20px;
@@ -25,7 +26,7 @@ const Backdrop = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(256, 256, 256, 0.9);
+  background: rgba(256, 256, 256, 0.7);
 `;
 
 const Container = styled.div`
@@ -48,6 +49,7 @@ const MenuContainer = styled.div`
   position: absolute;
   top: 0;
   animation: ${createFade} 0.5s;
+  box-shadow: 0 8px 10px #c8c5be;
 `;
 
 function MenuItems({ showMenu, onClose }) {
@@ -66,4 +68,8 @@ function MenuItems({ showMenu, onClose }) {
   );
 }
 
+MenuItems.propTypes = {
+  showMenu: propTypes.bool,
+  onClose: propTypes.func
+};
 export default MenuItems;

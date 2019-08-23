@@ -16,7 +16,9 @@ const StyledButton = styled.button`
 function ButtonLink({ children, to, ...other }) {
   return (
     <Link to={to}>
-      <StyledButton {...other}>{children}</StyledButton>
+      <StyledButton {...other} data-cy="dialog-button">
+        {children}
+      </StyledButton>
     </Link>
   );
 }

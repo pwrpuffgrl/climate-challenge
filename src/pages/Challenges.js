@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Card from '../components/Card';
+import Card from '../components/challenge/Card';
 import ButtonLink from '../components/ButtonLink';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
-
+import propTypes from 'prop-types';
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -61,5 +61,11 @@ function Challenges({ challenges, onJoinChallenge, onDeleteChallenge }) {
     </>
   );
 }
+
+Challenges.propTypes = {
+  challenges: propTypes.array,
+  onJoinChallenge: propTypes.func,
+  onDeleteChallenge: propTypes.func
+};
 
 export default Challenges;

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Card from '../components/Card';
+import Card from '../components/challenge/Card';
 import Grid from '../components/Grid';
 import Dialog from '../components/Dialog';
 import Headline from '../components/Headline';
-import ButtonLink from '../components/ButtonLink';
 import Menu from '../components/Menu';
 import * as moment from 'moment';
 import ProgressDialog from '../components/ProgressDialog';
+import propTypes from 'prop-types';
 
 const CardContainer = styled.div`
   display: flex;
@@ -34,6 +34,7 @@ function MyChallenges({
 }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
+
   const tomorrow = moment()
     .add(1, 'day')
     .startOf('day');
@@ -51,9 +52,11 @@ function MyChallenges({
 
   function handleCheckbox(event) {
     const { value } = event.target;
+
     if (value === 'yes') {
       const completed =
         selectedChallenge.lastParticipated === selectedChallenge.endDate;
+
       onUpdateChallenge({
         ...selectedChallenge,
         karma: selectedChallenge.karma + 1,
@@ -66,6 +69,7 @@ function MyChallenges({
 
       if (completed) {
         onCompleteChallenge(selectedChallenge);
+        console.log('completed');
       }
     } else {
       onUpdateChallenge({
@@ -90,23 +94,18 @@ function MyChallenges({
               onProgress={() => handleProgressClick(challenge)}
             />
           ))}
+          {!challenges && <div>You haven't joined any challenges yet.</div>}
         </CardContainer>
         <Menu />
       </Grid>
-      {!challenges && (
-        <Dialog onClose={() => setShowDialog(false)}>
-          <Headline size="S" font="sub">
-            You haven't joined any challenges yet.
-          </Headline>
-          <ButtonLink to="/challenges">See all challenges</ButtonLink>
-        </Dialog>
-      )}
+
       {selectedChallenge && (
         <ProgressDialog
           onClose={() => setSelectedChallenge(null)}
           onProgress={handleCheckbox}
         />
       )}
+
       {showDialog && (
         <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
@@ -119,4 +118,10 @@ function MyChallenges({
   );
 }
 
+MyChallenges.propTypes = {
+  challenges: propTypes.array,
+  onJoinChallenge: propTypes.func,
+  onUpdateChallenge: propTypes.func,
+  onCompleteChallenge: propTypes.func
+};
 export default MyChallenges;

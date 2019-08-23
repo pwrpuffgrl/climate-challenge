@@ -35,18 +35,6 @@ export const appear = props => keyframes`
  }
 `;
 
-export const cardFade = props => keyframes`
-  from {
-    opacity: 0.8;
-    transform: translate3d(-200px, 0px, 0px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0px, 0, 0);
-  }
-`;
-
 export const createFade = props => keyframes`
   from {
     opacity: 0;

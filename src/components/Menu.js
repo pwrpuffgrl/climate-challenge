@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import MenuItems from './MenuItems';
 import MainLogo from './MainLogo';
 import { rotate } from '../utils/animations';
-import Leaf from '../Images/leaf.png';
+import Leaf from '../images/LeafIcon.png';
 
 const Footer = styled.div`
   display: flex;

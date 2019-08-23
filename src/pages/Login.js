@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn, fadeOut } from '../utils/animations';
 import MainLogo from '../components/MainLogo';
+import propTypes from 'prop-types';
 
 const Input = styled.input`
   font-size: 16px;
@@ -90,17 +91,17 @@ function Login({ history, activeUser, onLogin, ...props }) {
       <Form onSubmit={handleSubmit}>
         <Label htmlFor="user_name">Name</Label>
         <Input
-          onChange={handleChange}
+          onInput={handleChange}
           name="user_name"
-          value={formValues.user_name}
+          defaultValue={formValues.user_name}
         />
         <FormRow />
         <Label htmlFor="password">Password</Label>{' '}
         <Input
-          onChange={handleChange}
+          onInput={handleChange}
           name="password"
           type="password"
-          value={formValues.password}
+          defaultValue={formValues.password}
         />
         <Button>Log in</Button>
       </Form>
@@ -108,4 +109,8 @@ function Login({ history, activeUser, onLogin, ...props }) {
   );
 }
 
+Login.propTypes = {
+  activeUser: propTypes.object,
+  onLogin: propTypes.func
+};
 export default Login;
