@@ -55,10 +55,6 @@ function MyChallenges({
 
     if (value === 'yes') {
       const completed = today === selectedChallenge.endDate;
-      console.log(
-        selectedChallenge.lastParticipated,
-        selectedChallenge.endDate
-      );
 
       onUpdateChallenge({
         ...selectedChallenge,
@@ -72,7 +68,6 @@ function MyChallenges({
 
       if (completed) {
         onCompleteChallenge(selectedChallenge);
-        renderDialog();
       }
     } else {
       onUpdateChallenge({
@@ -81,10 +76,6 @@ function MyChallenges({
         modified: today
       });
     }
-  }
-
-  function renderDialog() {
-    return <Dialog>Congrats on completing this challenge!</Dialog>;
   }
 
   return (

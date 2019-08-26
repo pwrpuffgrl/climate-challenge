@@ -54,9 +54,8 @@ function App() {
   useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
   useEffect(() => {
     async function updateUser() {
-      const result = await patchUser(user, user._id);
-      console.log(result);
-      setActiveUser(result);
+      const result = await patchUser(activeUser, activeUser._id);
+      setUser(result);
     }
 
     updateUser();
