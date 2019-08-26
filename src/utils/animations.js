@@ -61,8 +61,10 @@ export const popUp = props => keyframes`
 
 export const rotate = props => keyframes` 
  from {
- transform: rotate(0);
+    transform: rotate(0);
   }
+  
   to  {
-transform: rotate(180deg);
-  }`;
+    transform: rotate(180deg);
+  }
+`;
