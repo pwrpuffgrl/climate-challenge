@@ -72,7 +72,6 @@ function MyChallenges({
 
       if (completed) {
         onCompleteChallenge(selectedChallenge);
-        console.log('completed');
         renderDialog();
       }
     } else {

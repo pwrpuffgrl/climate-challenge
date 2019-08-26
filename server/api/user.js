@@ -10,14 +10,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/new', (req, res) => {
-  data.map(data => {
-    User.create;
-  });
+  User.create(req.body)
+    .then(user => res.json(user))
+    .catch(err => res.json(err));
 });
 
 router.patch('/:id', async (req, res) => {
   const { id } = req.params;
-  await User.findByIdAndModify(id, req.body, { new: true });
+  await User.findByIdAndUpdate(id, req.body, { new: true });
   const foundUser = await User.find();
 
   res.json(foundUser);

@@ -31,6 +31,10 @@ function App() {
   const [challenges, setChallenges] = useState([]);
 
   const [user, setUser] = useState([]);
+  const [activeUser, setActiveUser] = useState(
+    getFromLocal('activeUser') || {}
+  );
+
   React.useEffect(() => {
     async function loadChallenges() {
       setChallenges(await getChallenges());
@@ -47,15 +51,12 @@ function App() {
     loadUser();
   }, []);
 
-  const [activeUser, setActiveUser] = useState(
-    getFromLocal('activeUser') || user
-  );
-
+  useEffect(() => setToLocal('activeUser', activeUser), [activeUser]);
   useEffect(() => {
     async function updateUser() {
-      const result = await patchUser(activeUser, activeUser._id);
+      const result = await patchUser(user, user._id);
       console.log(result);
-      setToLocal('activeUser', result);
+      setActiveUser(result);
     }
 
     updateUser();
@@ -119,9 +120,12 @@ function App() {
       ...activeUser,
       karmaPoints: activeUser.karmaPoints + challenge.karma
     });
+    const patchedUser = await patchUser(activeUser, activeUser._id);
+    setUser(patchedUser);
   }
 
   function handleLogin(formValues) {
+    console.log('login!');
     const profile = formValues.user_name;
     const index = user.findIndex(user => user.user_name === profile);
     setActiveUser(user[index]);
@@ -167,7 +171,6 @@ function App() {
             path="/myChallenges"
             render={props => (
               <MyChallenges
-                activeUser={activeUser}
                 challenges={myChallenges}
                 onJoinChallenge={handleJoinChallenge}
                 onUpdateChallenge={handleUpdateChallenge}

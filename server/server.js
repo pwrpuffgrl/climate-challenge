@@ -36,7 +36,7 @@ app.listen(process.env.PORT || port, () => {
 });
 
 // static file serving
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // catch all handler for client deeplinks
 app.get('/*', function(req, res) {
