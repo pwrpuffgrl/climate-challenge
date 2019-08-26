@@ -34,6 +34,7 @@ function MyChallenges({
 }) {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
+  const [congrats, setCongrats] = useState(false);
 
   const tomorrow = moment()
     .add(1, 'day')
@@ -68,6 +69,7 @@ function MyChallenges({
 
       if (completed) {
         onCompleteChallenge(selectedChallenge);
+        setCongrats(true);
       }
     } else {
       onUpdateChallenge({
@@ -96,14 +98,12 @@ function MyChallenges({
         </CardContainer>
         <Menu />
       </Grid>
-
       {selectedChallenge && (
         <ProgressDialog
           onClose={() => setSelectedChallenge(null)}
           onProgress={handleCheckbox}
         />
       )}
-
       {showDialog && (
         <Dialog onClose={() => setShowDialog(false)}>
           <Headline size="S" font="sub">
@@ -112,6 +112,16 @@ function MyChallenges({
           <Content>You can log again in about {time} hours.</Content>
         </Dialog>
       )}
+      {congrats && (
+        <Dialog onClose={() => setCongrats(false)}>
+          <Headline>Congrats!!! You've completed this challenge!</Headline>
+          <Content>
+            &#9829; Keep up the good work and thank you for making a
+            difference!&#9829;
+          </Content>
+        </Dialog>
+      )}
+      }
     </>
   );
 }

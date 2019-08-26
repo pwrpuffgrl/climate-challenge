@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Logo(props) {
+function Logo({ ...props }) {
   return (
     <svg viewBox="0 0 512 512" {...props}>
       <path
